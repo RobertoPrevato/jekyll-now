@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Just because something works, it doesn't mean that is well done
+title: Always use the right tool for the job
 ---
 
 [Ferdi Giardini](http://www.ferdigiardini.com/) is one of the best teachers I had during my university studies. He's both artist and designer, and he's famous in Italy for work of arts and objects he designed.
