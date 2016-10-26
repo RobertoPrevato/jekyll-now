@@ -4,12 +4,14 @@ title: Just because something works, it doesn't mean that is well done
 ---
 
 I read few times a book with a collection of Murphy's laws, and I don't remember if I read anything like this:
+
 > *“Just because something works, it doesn't mean that is well done.”* 
 
 However, this is something I often thought at work.
 
 Because often, when you tell somebody that something is done badly, this is the answer you get: 
->“But it works...”. 
+
+> *“But it works...”. *
 
 Where “it works” means: “it does what is needed”.
 Now, I consider this a fallacy, a logical mistake. Because the fact that something works to some extent, doesn't make it automatically well done; and saying that it works doesn't stand as an argument against the fact that is bad.
