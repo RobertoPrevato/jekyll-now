@@ -35,6 +35,6 @@ This way of thinking is also poor from a human point of view.
 
 ---
 
-Going back to the main topic, if that is really what they teach at Carnegie Institute of Technology, I'm glad I attended lessons at Polytechnic Institute of Torino. Being a graphic designer, the presentation and communicational skills were always important to me and to my teachers. Nevertheless, we've been taught that product quality is the primary objective and that it comes from technical knowledge, not from marketing.
+Going back to the main topic, if that is really what they teach at Carnegie Institute of Technology, I'm glad I attended my studies at Polytechnic Institute of Torino. Being a graphic designer, the presentation and communicational skills were always important to me and to my teachers. Nevertheless, we've been taught that product quality is the primary objective and that it comes from technical knowledge, not from marketing.
 
 > L'arrosto è più importante del fumo, non viceversa.
