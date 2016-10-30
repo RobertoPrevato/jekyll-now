@@ -503,6 +503,10 @@ a {
   -o-transition: all 600ms ease-in;
   -ms-transition: all 600ms ease-in;
   transition: all 600ms ease-in;
+  
+  &.blog-background-small {
+    max-height: 300px;
+  }
 }
 
 .blog-background-shade {
