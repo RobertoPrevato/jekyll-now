@@ -47,7 +47,7 @@
     </div>
     
     <div id="banner-wrap">
-      <div class="blog-background blog-custom-background"></div>
+      <div class="blog-background blog-custom-background {% ifnot page.headline %} blog-background-small{% endif %}"></div>
       <div id="banner">
         {% if page.headline %}
         <div id="banner-content">
