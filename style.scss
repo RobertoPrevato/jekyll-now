@@ -658,3 +658,11 @@ body {
 .wrapper-footer {
   clear: both;
 }
+
+#masthead {
+  .site-name {
+    a:hover, a:active {
+      color: #fff;
+    }
+  }
+}

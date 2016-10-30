@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roberto Prevato - Curriculum</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <link href="//fonts.googleapis.com/css?family=Cabin:400,700,400italic,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles/cv.css" />
+</head>
+<body>
+<header id="header">
+  <div id="logo-region">
+    <a href="http://www.ugrose.com">
+      <img src="/styles/logo.png" alt="Roberto Prevato" width="91" height="50">
+    </a>
+    <h6><a href="https://github.com/RobertoPrevato/">Roberto Prevato - roberto.prevato@gmail.com</a></h6>
+  </div>
+  <h1>Roberto Prevato - work experience and competences - <a href="content/RobertoPrevato_CV_2016-10.pdf" download="">curriculum vitae in pdf format</a></h1>
+</header>
+  <div class="controls">
+    <input id="competences" type="radio" name="topic" checked="checked" value="competences" />
+    <label for="competences">Competences</label>
+    <input id="work-experience" type="radio" name="topic" value="experience" />
+    <label for="work-experience">Work experience</label>
+    <label for="view">View:</label>
+    <select id="view" name="view">
+      <option value="dendrogram" selected="selected">Dendrogram</option>
+      <option value="bubble">Bubbles</option>
+      <option value="circle-pack">Grouped bubbles</option>
+    </select>
+  </div>
+  <div id="chart"></div>
+  <script src="scripts/libs/d3.js"></script>
+  <script src="/scripts/cv.min.js"></script>
+</body>
+</html>
