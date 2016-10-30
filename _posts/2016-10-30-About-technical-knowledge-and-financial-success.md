@@ -6,11 +6,12 @@ title: About technical knowledge and financial success
 Few months ago I came across the picture of a slide on the internet, stating this sentence:
 
 > «85% of your financial success is due to your personality and ability to communicate, negotiate, and lead. Shockingly, only 15% is due to technical knowledge.».
+
 > ~ Carnegie Institute of Technology
 
 The picture can be found [here on Facebook](https://www.facebook.com/rayhigdonpage/photos/a.702466263100437.1073741825.144337455579990/1007791749234552/?type=3&theater).
 
-While I agree that having a good personality and understanding of yourself, being able to speak and work with other people are the *conditio sine qua non*, the indispensable and essential condition for any success in life, the overall sentence gives me revulsion.
+While I agree that having a good personality and understanding of yourself, being able to speak and work with others are the *conditio sine qua non*, the indispensable and essential condition for financial success in life, the overall sentence gives me revulsion.
 
 I love the metaphor attributed to Bernard of Chartres, that says that we are like dwarfs standing on the shoulders of giants (nanos gigantum humeris insidentes), meaning that whatever we achieve today is thanks to what our ancestors did before us. This concept is not new: the attribution to Bernard is due to John of Salisbury and dates back to 1159, when John wrote in his Metalogicon: *"Bernard of Chartres used to compare us to dwarfs perched on the shoulders of giants. He pointed out that we see more and farther than our predecessors, not because we have keener vision or greater height, but because we are lifted up and borne aloft on their gigantic stature."*.
 
