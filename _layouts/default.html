@@ -33,10 +33,10 @@
           <div id="navigation-wrap">
             <div id="nav">
               <ul>
-                <li id="active">
+                <li{% if page.title == 'Blog'%} id="active"{%endif%}>
                   <a href="{{ site.baseurl }}/" class="blog-menu-item">Blog</a>
                 </li>
-                <li>
+                <li{% if page.title == 'About'%} id="active"{%endif%}>
                   <a href="{{ site.baseurl }}/about" class="blog-menu-item">About</a>
                 </li>
               </ul>
@@ -52,7 +52,7 @@
         <div id="banner-content">
           <h2>
             <span class="blog-text blog-headline editable-text" id="headline">
-              personal observations here
+              {{ page.headline }}
             </span>
           </h2>
         </div>
