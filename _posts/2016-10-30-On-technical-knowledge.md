@@ -1,4 +1,9 @@
-Few months ago I saw a picture of a slide on the internet, reciting this sentence:
+---
+layout: post
+title: About technical knowledge
+---
+
+Few months ago I came across the picture of a slide on the internet, reciting this sentence:
 
 > «85% of your financial success is due to your personality and ability to communicate, negotiate, and lead. Shockingly, only 15% is due to technical knowledge.».
 
