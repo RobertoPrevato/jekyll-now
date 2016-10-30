@@ -5,7 +5,7 @@ headline: something about myself
 permalink: /about/
 ---
 
-## Designer turned programmer
+# Designer turned programmer
 
 I am a graphic designer from the province of Turin (Italy) now working as DevOps and applications architect for financial services; husband of a wonderful musician who plays for the Polish folk group called Mazowsze. Fond of Philosophy, novels, underground music, visual arts and (mostly criminal) tv series. 
 
