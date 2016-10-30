@@ -28,7 +28,7 @@ Besides, how can you be certain that project management requires less technical 
 This way of thinking is also poor from a human point of view.
 
 * It takes for granted the job of people who are focusing themselves on technical skills.
-* It takes for granted comforts that are not accessible to many people. Things like access to electricity, internet, clear water shouldn't be taken for granted just because they weren't invented yesterday.
+* It takes for granted comforts that are still not accessible to everyone. Things like access to electricity, internet, clear water shouldn't be taken for granted just because they weren't invented yesterday.
 * It seems to suggest that financial success is a measure of people's value or a human's best objective in life. This is a concept dear to the blindest people who come from wealthy families and are not gifted with much intelligence or insight.
 
 ---
