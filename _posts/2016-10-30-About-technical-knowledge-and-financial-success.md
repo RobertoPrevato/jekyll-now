@@ -6,7 +6,6 @@ title: About technical knowledge and financial success
 Few months ago I came across the picture of a slide on the internet, stating this sentence:
 
 > «85% of your financial success is due to your personality and ability to communicate, negotiate, and lead. Shockingly, only 15% is due to technical knowledge.».
-
 > ~ Carnegie Institute of Technology
 
 The picture can be found [here on Facebook](https://www.facebook.com/rayhigdonpage/photos/a.702466263100437.1073741825.144337455579990/1007791749234552/?type=3&theater).
