@@ -288,6 +288,12 @@ footer {
 @import "highlights";
 @import "svg-icons";
 
+.entry {
+  ul li {
+    margin-bottom: 10px;
+  }
+}
+
 h1 {
   line-height: 1.2;
 }
