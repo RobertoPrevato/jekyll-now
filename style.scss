@@ -287,3 +287,363 @@ footer {
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
 @import "svg-icons";
+
+h1 {
+  line-height: 1.2;
+}
+
+.site-description {
+  margin: 5px 0 0 0;
+}
+
+a {
+  font-family: Cabin;
+}
+
+.post-date {
+  padding-left: 25px;
+  background: url(/images/calendar.svg);
+  background-size: 14px;
+  background-repeat: no-repeat;
+  background-position: 1px 3px;
+  font-size: 15px;
+}
+
+#header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  z-index: 15;
+}
+
+#masthead {
+  width: 100%;
+  position: relative;
+  background: rgba(0, 0, 0, .6);
+  text-align: right;
+  z-index: 15;
+}
+
+#masthead-wrap {
+  display: table;
+  width: 100%;
+  max-width: 1140px;
+  padding: 0 2em;
+  height: 88px;
+  margin: 0 auto;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+#masthead .sitename {
+  display: table-cell;
+  width: 50%;
+  text-align: left;
+  max-width: 60%;
+  vertical-align: middle;
+}
+
+.site-name {
+  text-align: left;
+}
+
+.blog-logo {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.blog-logo img, .blog-logo span {
+    vertical-align: top !important;
+}
+
+#navigation .sitename {
+    display: none;
+}
+
+#navigation-wrap {
+    position: relative;
+    max-width: 1140px;
+    padding: 20px 2em;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#nav {
+    overflow: hidden;
+    display: inline-block;
+    max-width: 78%;
+    margin: 0 1em 0 0;
+}
+
+#nav ul {
+    list-style: none;
+    margin: 0 auto;
+}
+
+#nav ul li {
+  position: relative;
+}
+
+#nav ul li a {
+  font-size: 18px;
+  color: #63a2a3;
+  /*color: #ccc;*/
+  display: block;
+  font-weight: 700;
+  padding: 4px 0 2px;
+  -webkit-transition: all 100ms linear;
+  -moz-transition: all 100ms linear;
+  -o-transition: all 100ms linear;
+  -ms-transition: all 100ms linear;
+  transition: all 100ms linear;
+}
+
+#nav ul li > a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #4f898a;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+#nav ul li > a:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+#nav ul li#active a {
+  color: #fff;
+}
+
+#nav ul li#active a:before {
+  background-color: #fff;
+}
+
+#nav ul li, #nav ul span {
+    list-style: none;
+    display: inline-block;
+    margin: 0 15px;
+    font: 14px/1 'Cabin', Helvetica, sans-serif;
+}
+
+/* ??? */
+#social {
+    position: absolute;
+    right: 2em;
+    top: 20px;
+    display: inline-block;
+    max-width: 20%;
+    height: 26px;
+    margin-top: -3px;
+    overflow: hidden;
+}
+
+#navigation {
+    width: 100%;
+    max-height: 60px;
+    position: relative;
+    background: rgba(0, 0, 0, .3);
+    /*background: rgba(0,0,0,0.5);*/
+    z-index: 15;
+    box-sizing: border-box;
+}
+
+#banner-wrap {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #000000;
+  overflow: hidden;
+}
+
+#headline {
+  min-height: 1em; 
+  padding-right: 1px;
+}
+
+.blog-background {
+  position: relative;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-image: url(/images/valentino.png);
+  
+  width: 100%;
+  opacity: .3;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-color: transparent;
+  z-index: 10;/*
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;*/
+  -webkit-transition: all 600ms ease-in;
+  -moz-transition: all 600ms ease-in;
+  -o-transition: all 600ms ease-in;
+  -ms-transition: all 600ms ease-in;
+  transition: all 600ms ease-in;
+}
+
+.blog-background-shade {
+  opacity: .8;/* ??? */
+  opacity: .3;
+}
+
+.blog-background:before {
+  content: '';
+  display: inline-block;
+  padding-top: 36%;
+}
+
+.banner {
+  background: #4f898a;
+  color: #ffffff;
+  position: relative;
+  text-align: center;
+  z-index: 11;
+}
+
+#banner-content:after {
+  position: relative;
+  color: #4f898a;
+  background: #ffffff;
+  font-size: 20px;
+  line-height: .5;
+  margin-top: 2px;
+  content: '\25B2';
+  display: block;
+  text-align: center;
+  padding: 0;
+  -moz-transform: scale(4, 1) rotate(180deg);
+  -webkit-transform: scale(4, 1) rotate(180deg);
+  -o-transform: scale(4, 1) rotate(180deg);
+  -ms-transform: scale(4, 1) rotate(180deg);
+  transform: scale(4, 1) rotate(180deg);
+}
+
+#banner-content {
+  background: #4f898a;
+  color: #ffffff;
+  text-align: center;
+}
+
+#banner-content h2 {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin: 0 auto;
+  font-size: 1.75em;
+      color: floralwhite;
+    font-family: monospace;
+}
+
+
+body {
+  /*background-color: pink;*/
+}
+
+@media only screen and (min-width : 650px) {
+  .left-column {
+    float: left;
+    width: 80%;
+    padding-right: 50px;
+  }
+
+  .right-column {
+    margin-left: 80%;
+    padding-top: 35px;
+    padding-left: 10px;
+  }
+}
+
+@media only screen and (max-width : 650px) {
+
+  .site-description {
+    text-align: left;
+  }
+
+  #masthead-wrap {
+    padding: 0;
+  }
+
+  #masthead {
+    background: #000;
+  }
+  
+  #navigation {
+    background-color: rgba(0, 0, 0, .8);
+    max-height: initial;
+  }
+  
+  #navigation-wrap {
+    padding: 20px 0.2em;
+  }
+  
+  #nav ul li, #nav ul span {
+    margin: 0 15px 6px 15px;
+  }
+  
+  #masthead .site-avatar {
+    display: none;
+  }
+
+  #nav ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #nav ul li {
+    display: block;
+  }
+
+  #header {
+    position: static;
+  }
+
+  #banner-wrap {
+    display: none;
+  }
+
+  .right-column {
+    margin-top: 15px;
+    border-top: 1px solid #ccc;
+    padding-top: 11px;
+  }
+  
+  br {
+    display: none;
+  }
+
+}
+
+.right-column .blog-author-title {
+  font-family: 'Cabin';
+  font-size: 1em;
+  margin: 0;
+}
+
+.right-column p {
+  font-size: 15px;
+  line-height: 22px;
+  margin: 5px 0;
+}
+
+.wrapper-footer {
+  clear: both;
+}
