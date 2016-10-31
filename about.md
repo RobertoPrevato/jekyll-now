@@ -28,4 +28,11 @@ I am fond of board games and used to play Dungeons&Dragons a lot (unfortunately 
 
 ### Contacts
 
-[roberto.prevato@gmail.com](mailto:roberto.prevato@gmail.com)
+<ul>
+  <li>Email [roberto.prevato@gmail.com](mailto:roberto.prevato@gmail.com)</li>
+  <li>Twitter [https://twitter.com/RobertoPrevato](https://twitter.com/RobertoPrevato)</li>
+  <li>GitHub [https://github.com/RobertoPrevato](https://github.com/RobertoPrevato)</li>
+  <li>LinkedIn [https://pl.linkedin.com/in/roberto-prevato-a186a650](https://pl.linkedin.com/in/roberto-prevato-a186a650)</li>
+</ul>
+
+
