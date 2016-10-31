@@ -9,7 +9,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@RobertoPrevato">
     <meta name="twitter:url" content="{{ page.url }}">
-    <meta name="twitter:description" content="{{ page.content | strip_html | xml_escape | truncate: 200 }}">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta name="twitter:creator" content="@RobertoPrevato">
     <meta name="twitter:image:src" content="{{ site.avatar }}">
     <link href="//fonts.googleapis.com/css?family=Cabin:400,700,400italic,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
