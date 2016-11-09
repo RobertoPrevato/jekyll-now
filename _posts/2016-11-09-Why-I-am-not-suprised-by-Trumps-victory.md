@@ -22,8 +22,8 @@ Mind you: this is the first time I express publicly my opinions on this matter, 
 
 I don't feel superior just because of my ideas, I'm just observing. On the contrary, I always have doubts about myself: this is something I inherited from my mom. I know I can always learn something new, and that everyone (well, *almost everyone*) has something to teach to others.
 
-At work is the same: even if I am a quite accomplished developer and I am dictatorial in the code reviews I do, I never feel satisfied with my own skills. There is so much to learn in life, that feeling *completely* accomplished simply doesn't make sense.  
+At work is the same: even if I am an accomplished developer and I am dictatorial in the code reviews I do, I never feel satisfied with my own skills. There is so much to learn in life, that feeling *completely* accomplished simply doesn't make sense.  
 
-Because as I mentioned above, in many contexts there is a toxic atmosphere: whoever things differently than the recognized "intelligentsia" or establishment, is regarded as ignorant like a capra (goat).
+In many contexts there is a toxic atmosphere: whoever thinks differently than the recognized "intelligentsia" or establishment, is regarded as ignorant like a capra (goat).
 
 And you know what? I like goats, so if some radical chic will call me this way, for my ideas, I won't feel offended. Not a single bit.
