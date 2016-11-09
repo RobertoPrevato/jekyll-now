@@ -3,7 +3,7 @@ layout: post
 title: Why I am not surprised by Trump's victory
 ---
 
-I am not surprised by Trump's victory and I don't feel sorry about it. Because I saw it already happening in Italy (my home country), with Berlusconi. I was adolescent when Berlusconi started gaining popularity and I was already interested in politics and following the news regularly. Of course things in Italy were on a different scale: apparently, everything comes in bigger size in USA, but still the same *substance*.
+I am not surprised by Trump's victory and I don't feel sorry about it. Because I saw it already happening in Italy (my home country), with Berlusconi. I was adolescent when Berlusconi started gaining popularity, I was already interested in politics and following the news regularly. Of course things in Italy were on a different scale: apparently, everything comes in bigger size in USA, but still the same *substance*.
 
 It seems that Democrats in US did the same mistake done by left wing in Italy: they were too sure of themselves, too arrogantly convinced of their intellectual superiority, and did nothing to demonstrate it. They fostered the idea that Republican voters are ignorant by definition and should feel ashamed of themselves - exactly the same thing done by left wing in Italy.
 
