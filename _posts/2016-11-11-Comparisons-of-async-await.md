@@ -88,8 +88,8 @@ In both situations (callbacks or coroutines), the event loop is responsible of f
 Note how the C# async / await syntax is similar:
 
 ```cs
-// we know that the function will take time to execute and can be made asynchronous, so we decorate it with "async" and
-// wrap its return type in Task<A>
+// we know that the function will take time to execute and can be made asynchronous,
+// so we decorate it with "async" and wrap its return type in Task<A>
 public async Task<int> DoSomethingThatTakesTimeAndReturnInteger()  
 {  
     // ... this function does something that takes time and then returns int
@@ -100,7 +100,8 @@ public async Task<int> DoSomethingThatTakesTimeAndReturnInteger()
     return Int32.Parse(fileContent);
 }
 
-// we know that the following function will call another asynchronous function, so we use Task instead of "void" return type
+// we know that the following function will call another asynchronous 
+// function, so we use Task instead of "void" return type
 public async Task SomeFunctionWithoutReturnValue()
 {
     // the 'await' keyword automatically unwraps the Task<int> to the desired int result.
@@ -131,7 +132,7 @@ async function read () {
 ```
 
 ## A curiosity for .NET programmers
-A curiosity that many .NET developers don't know about, while non-beginner Python developers interested in .NET *should* know, is that it is possible to implement coroutines in .NET using the *IEnumerable* and *yield return* syntax. *yield return* syntax in .NET is performing a similar operation to *await*: it is an explicit instruction to let know when code execution should be stopped inside a function and return to the calling function. This opens up for potentially creative uses of the syntax.
+A curiosity that many .NET developers don't know about, while non-beginner Python developers interested *should* know, is that it is possible to implement coroutines using the *IEnumerable* and *yield return* syntax. *yield return* syntax is performing a similar operation to *await*: it is an explicit instruction to let know when code execution should be stopped inside a function and return to the calling function. This opens up for potentially creative uses of the syntax.
 
 For example:
 
