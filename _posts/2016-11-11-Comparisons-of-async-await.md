@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Comparison of .NET, Python and JavaScript async await
+title: Comparison of async await syntax in .NET, Python and JavaScript
 ---
 
 While I am planning to write a review of aiohttp, an event-driven HTTP client/server implementation for Python, I decided to write something about asynchronous programming and the async/await syntax in .NET, Python and JavaScript.
