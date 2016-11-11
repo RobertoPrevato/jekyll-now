@@ -199,7 +199,7 @@ I expect Python developers to know more than .NET developers on this detail, bec
 Interestingly, somebody created a discrete event simulation library in .NET inspired by SimPy, called [Dessert](https://github.com/pomma89/Dessert). It demonstrates the use of yield return syntax to implement coroutines in C#, F#, VB.NET and Boo programming language. This approach, if further investigated, could offer interesting results in .NET, like it did in Python.
 
 ## A curiosity for everyone
-One of the best features of asyncio, is that it allows to use custom implementations of the event loop. [Yury Selivanov claims that](https://magic.io/blog/uvloop-blazing-fast-python-networking/), when replacing asyncio built-in event loop with another implementation called [*uvloop*](https://github.com/MagicStack/uvloop), built upon [libuv](http://libuv.org/), it is possible to obtain a web server that is 2x faster than NodeJs, and competing with implementations created with [Go programming language](https://golang.org/).
+One of the best features of asyncio, is that it allows to use custom implementations of the event loop. [Yury Selivanov claims that](https://magic.io/blog/uvloop-blazing-fast-python-networking/), when replacing asyncio built-in event loop with another implementation called [uvloop](https://github.com/MagicStack/uvloop), built upon [libuv](http://libuv.org/), it is possible to obtain a web server that is 2x faster than NodeJs, and competing with implementations created with [Go programming language](https://golang.org/).
 
 ---
 
