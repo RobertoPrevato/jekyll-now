@@ -139,7 +139,7 @@ public IEnumerable<int> GetIterable()
 {
     //
     // NB: code execution doesn't get here when executing:
-    //   var foo = GetIterable();
+    //   GetIterable();
     // it gets here when entering the foreach loop!
     //
     yield return 1;
