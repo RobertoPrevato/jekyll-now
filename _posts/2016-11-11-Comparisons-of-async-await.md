@@ -45,12 +45,12 @@ var fileName = "myfile.foo";
 
 fs.exists(fileName, (exists) => {
   if (exists) {
-	// open, do something...
+    // open, do something...
     fs.open(fileName, "r", (err, fd) => {
     
     });
   } else {
-	console.error("myfile.foo does not exist");
+    console.error("myfile.foo does not exist");
   }
 });
 
@@ -85,7 +85,7 @@ loop.run_until_complete(main(loop))
 
 In both situations (callbacks or coroutines), the event loop is responsible of firing the right callback, or restart code execution at the right 'await' point, when necessary. I agree that coroutines pattern is more convenient and more readable than the callbacks pattern. Python community is particularly sensitive and cultured when it comes to code readability, so this is not a surprise.
 
-Note how the C# async / await syntax (which probably inspired Python community), is absolutely similar:
+Note how the C# async / await syntax (which probably inspired Python in words' choice), is similar:
 
 ```cs
 // we know that the function will take time to execute and can be made asynchronous, so we decorate it with "async" and
@@ -113,7 +113,7 @@ public async Task SomeFunctionWithoutReturn()
 
 As mentioned above, despite the similarity in syntax and perceived behavior of C# and Python async await, their implementations work in a completely different way and are suitable for different scenarios.
 
-Small wonder, the async await in EcmaScript 7 will behave like in C# and Python, and work in a similar way to Python's implementation, since they both work on an event loop:
+Small wonder, the async await in EcmaScript 7 will behave like in C# and Python, and internally works in a similar way to Python's implementation, since they both work on an event loop:
 
 ```javascript
 
