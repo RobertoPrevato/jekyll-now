@@ -83,7 +83,7 @@ loop = asyncio.get_event_loop()
 loop.run_until_complete(main(loop))
 ```
 
-In both situations (callbacks or coroutines), the event loop is responsible of firing the right callback, or restart code execution at the right 'await' point, when necessary. I agree that coroutines pattern is more convenient and more readable than the callbacks pattern. Python community is particularly sensitive and cultured when it comes to code readability, so this is not a surprise.
+In both situations (callbacks or coroutines), the event loop is responsible of firing the right callback, or restart code execution at the right 'await' point, when necessary. I agree that coroutines pattern is more convenient and more readable than the callbacks pattern. Python community is particularly sensitive and cultured when it comes to code readability, so this is not surprising.
 
 Note how the C# async / await syntax is similar:
 
@@ -101,12 +101,14 @@ public async Task<int> DoSomethingThatTakesTimeAndReturnInteger()
 }
 
 // we know that the following function will call another asynchronous function, so we use Task instead of "void" return type
-public async Task SomeFunctionWithoutReturn()
+public async Task SomeFunctionWithoutReturnValue()
 {
-   int id = await DoSomethingThatTakesTimeAndReturnInteger();
-   
-   // continue...
-   System.Diagnostics.Debug.WriteLine("The id is: " + id.ToString());
+    // the 'await' keyword automatically unwraps the Task<int> to the desired int result.
+    // code execution restarts from this point when the result of the task is available
+    int id = await DoSomethingThatTakesTimeAndReturnInteger();
+    
+    // continue...
+    System.Diagnostics.Debug.WriteLine("The id is: " + id.ToString());
 }
 
 ```
