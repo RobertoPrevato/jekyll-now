@@ -190,7 +190,7 @@ I expect Python developers to know more than .NET developers on this detail, bec
 * Python *await* works now replaces the *yield from* syntax
 * There is a popular, production ready implementation of discrete-event simulation library in Python, called SimPy, which is using this technique to implement coroutines
 
-Interestingly, somebody created a discrete event simulation library in .NET inspired by SimPy, and called [Dessert](https://github.com/pomma89/Dessert). It demonstrates the use of yield return syntax to implement coroutines in C#. This approach, if investigated, could offer interesting results in .NET!
+Interestingly, somebody created a discrete event simulation library in .NET inspired by SimPy, called [Dessert](https://github.com/pomma89/Dessert). It demonstrates the use of yield return syntax to implement coroutines in C#. This approach, if further investigated, could offer interesting results in .NET, like it did in Python.
 
 ---
 
