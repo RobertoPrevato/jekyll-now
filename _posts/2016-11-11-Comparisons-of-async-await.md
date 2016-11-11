@@ -186,7 +186,8 @@ public static void Main(params string[] args)
 I expect Python developers to know more than .NET developers on this detail, because:
 
 * Python features a similar *yield* syntax and was actively used in creative ways (not only to save RAM while iterating over big objects!)
-* Python *await* works similarly to, and replaces the *yield from* syntax
+* yield from was initially used to implement coroutines and async support in Python
+* Python *await* works now replaces the *yield from* syntax
 * There is a popular, production ready implementation of discrete-event simulation library in Python, called SimPy, which is using this technique to implement coroutines
 
 Interestingly, somebody created a discrete event simulation library in .NET inspired by SimPy, and called [Dessert](https://github.com/pomma89/Dessert). It demonstrates the use of yield return syntax to implement coroutines in C#. This approach, if investigated, could offer interesting results in .NET!
