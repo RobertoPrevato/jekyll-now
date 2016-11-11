@@ -195,7 +195,7 @@ Interestingly, somebody created a discrete event simulation library in .NET insp
 ---
 
 ## Conclusions, going back to aiohttp
-I find fascinating how programming languages affect each other and evolve together. This is not surprising, since every product of technology takes inspiration from its competitors, but I think there is a lot of emotional sensitivity in the design of programming languages. Many choices are taken because of the *way of thinking* of their authors, rather than technical limitations. This makes the design of programming languages an expression of art and creativity, more than many other technical fields.
+I find fascinating how programming languages affect each other and evolve together. This is not surprising, since every product of technology takes inspiration from its competitors, but I think there is a lot of emotional sensitivity in the design of programming languages. Many choices are taken because of the *way of thinking* of their authors, rather than technical limitations. This makes the design of programming languages an expression of art and creativity, more than many other products of technology.
 
 aiohttp is one of the main characters taking part in an epic battle between Python and other programming languages, to be more competitive in the field of asynchronous programming. One of the most notable features of Python, being "batteries included", which means rich in built-in features, represents its biggest limitation in this field, since most of the existing code is synchronous. For this reason, the developers of asynchronous code in Python community have today a great responsibility.
 
