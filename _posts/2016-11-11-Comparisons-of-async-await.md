@@ -96,17 +96,17 @@ public async Task<int> DoSomethingThatTakesTimeAndReturnInteger()
     
     string fileContent = await ReadFromFile(@"C:\Some\File\Location\foo.txt");
     
-	// this is just an example, imagine a text file that contains only an integer value
+    // this is just an example, imagine a text file that contains only an integer value
     return Int32.Parse(fileContent);
 }
 
 // we know that the following function will call another asynchronous function, so we use Task instead of "void" return type
 public async Task SomeFunctionWithoutReturn()
 {
-	int id = await DoSomethingThatTakesTimeAndReturnInteger();
-	
-	// continue...
-	System.Diagnostics.Debug.WriteLine("The id is: " + id.ToString());
+   int id = await DoSomethingThatTakesTimeAndReturnInteger();
+   
+   // continue...
+   System.Diagnostics.Debug.WriteLine("The id is: " + id.ToString());
 }
 
 ```
@@ -137,47 +137,47 @@ For example:
 
 public IEnumerable<int> GetIterable()
 {
-	//
-	// NB: code execution doesn't get here when executing:
-	//   var foo = GetIterable();
-	// it gets here when entering the foreach loop!
-	//
-	yield return 1;
-	
-	// this piece of code is executed while looping for the second time on the iterable.
-	System.Diagnostics.Debug.WriteLine("... 2");
-		
-	yield return 2;
-	
-	// this piece of code is executed while looping for the third time on the iterable. (and so on...)
-	System.Diagnostics.Debug.WriteLine("... 3");
-	
-	yield return 3;
-	
-	System.Diagnostics.Debug.WriteLine("... 4");
-	
-	yield return 4;
-	
-	System.Diagnostics.Debug.WriteLine("... 5");
-	
-	yield return 5;
-	
-	System.Diagnostics.Debug.WriteLine("End of the iterable!!");
+    //
+    // NB: code execution doesn't get here when executing:
+    //   var foo = GetIterable();
+    // it gets here when entering the foreach loop!
+    //
+    yield return 1;
+
+    // this piece of code is executed while looping for the second time on the iterable.
+    System.Diagnostics.Debug.WriteLine("... 2");
+        
+    yield return 2;
+
+    // this piece of code is executed while looping for the third time on the iterable. (and so on...)
+    System.Diagnostics.Debug.WriteLine("... 3");
+
+    yield return 3;
+
+    System.Diagnostics.Debug.WriteLine("... 4");
+
+    yield return 4;
+
+    System.Diagnostics.Debug.WriteLine("... 5");
+
+    yield return 5;
+
+    System.Diagnostics.Debug.WriteLine("End of the iterable!!");
 }
 
 
-public static void Main(params string[] args) {
+public static void Main(params string[] args) 
+{
+    // NB: code execution does not get inside the `GetIterable` function!!
+    var iterable = GetIterable();
 
-	// NB: code execution does not get inside the `GetIterable` function!!
-	var iterable = GetIterable();
-
-	// code execution gets inside the "GetIterable" function only when the foreach loop starts
-	foreach (int i in iterable) 
-	{
-		// in the first loop; i is 1 (the first returned value)
-		// the "... 2" output to debug console appears only afte the end of the first iteration, and so on.
-		// it works like a coroutine on the single thread which is executing this code.
-	}
+    // code execution gets inside the "GetIterable" function only when the foreach loop starts
+    foreach (int i in iterable) 
+    {
+        // in the first loop; i is 1 (the first returned value)
+        // the "... 2" output to debug console appears only afte the end of the first iteration, and so on.
+        // it works like a coroutine on the single thread which is executing this code.
+    }
 }
 
 
