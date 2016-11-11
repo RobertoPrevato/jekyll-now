@@ -199,4 +199,5 @@ I find fascinating how programming languages affect each other and evolve togeth
 
 aiohttp is one of the main characters taking part in an epic battle between Python and other programming languages, to be more competitive in the field of asynchronous programming. One of the most notable features of Python, being "batteries included", which means rich in built-in features, represents its biggest limitation in this field, since most of the existing code is synchronous. For this reason, the developers of asynchronous code in Python community have today a great responsibility.
 
+Preview: I published a [project template for aiohttp web applications using three tier architecture in GitHub](github.com/RobertoPrevato/aiohttp-three-template).
 Soon a review of aiohttp will be following!
