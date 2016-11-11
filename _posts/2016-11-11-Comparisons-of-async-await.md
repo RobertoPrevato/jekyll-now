@@ -85,7 +85,7 @@ loop.run_until_complete(main(loop))
 
 In both situations (callbacks or coroutines), the event loop is responsible of firing the right callback, or restart code execution at the right 'await' point, when necessary. I agree that coroutines pattern is more convenient and more readable than the callbacks pattern. Python community is particularly sensitive and cultured when it comes to code readability, so this is not a surprise.
 
-Note how the C# async / await syntax (which probably inspired Python in words' choice), is similar:
+Note how the C# async / await syntax is similar:
 
 ```cs
 // we know that the function will take time to execute and can be made asynchronous, so we decorate it with "async" and
@@ -184,6 +184,7 @@ public static void Main(params string[] args)
 ```
 
 I expect Python developers to know more than .NET developers on this detail, because:
+
 * Python features a similar *yield* syntax and was actively used in creative ways (not only to save RAM while iterating over big objects!)
 * Python *await* works similarly to, and replaces the *yield from* syntax
 * There is a popular, production ready implementation of discrete-event simulation library in Python, called SimPy, which is using this technique to implement coroutines
