@@ -9,7 +9,7 @@ Python has a long history of asynchronous programming for web servers, with the 
 
 The most notable difference between aiohttp and other existing implementations, is that aiohttp is using the latest Python built-in features for concurrency. [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) himself worked on the implementation of a built-in event loop for Python, initially called [project "Tulip"](https://www.youtube.com/watch?v=aurOB4qYuFM), then asyncio, to add async support in Python.
 
-This introduces the discussion about *async await* syntax in Python, which was [recently introduced](https://www.python.org/dev/peps/pep-0492/) in the version 3.5 of the language, as a more convenient replacement of the previous *@asyncio.coroutine* and *yield from* syntax (*async* replaces the decorator *@asyncio.coroutine*, *await* replaces *yield from*).
+This introduces the discussion about *async await* syntax in Python, which was [recently introduced](https://www.python.org/dev/peps/pep-0492/) in the version 3.5 of the language, as a more convenient replacement of the previous *@asyncio.coroutine* and *yield from* syntax.
 The same syntax exists in .NET framework since 2012, and is being implemented in EcmaScript 7, to offer a user friendlier alternative to callbacks.
 
 ## A tiny bit of history
@@ -95,23 +95,17 @@ Note how the C# async / await syntax is similar:
 // so we decorate it with "async" and wrap its return type in Task<A>
 public async Task<int> DoSomethingThatTakesTimeAndReturnInteger()  
 {  
-    // ... this function does something that takes time and then returns int
-    
     string fileContent = await ReadFromFile(@"C:\Some\File\Location\foo.txt");
     
-    // this is just an example, imagine a text file that contains only an integer value
     return Int32.Parse(fileContent);
 }
 
-// we know that the following function will call another asynchronous 
-// function, so we use Task instead of "void" return type
+// the following function has no return value, but calls another asynchronous
+// function, so the Task return type is used instead of "void"
 public async Task SomeFunctionWithoutReturnValue()
 {
-    // the 'await' keyword automatically unwraps the Task<int> to the desired int result.
-    // code execution restarts from this point when the result of the task is available
     int id = await DoSomethingThatTakesTimeAndReturnInteger();
     
-    // continue...
     System.Diagnostics.Debug.WriteLine("The id is: " + id.ToString());
 }
 
