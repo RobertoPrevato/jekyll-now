@@ -31,7 +31,7 @@ In practice, having an event loop for asynchronicity is just an implementation d
 
 Although coroutines and callbacks allow to obtain the same results, they are very different in practice. JavaScript historically adopted the callbacks pattern to implement asynchronous code; Python's designers decided to adopt the coroutines pattern, considered to be more readable and more convenient to write. Arguably they are right and this opinion is now shared by the JavaScript/EcmaScript designers, since they are implementing the [async/await syntax for EcmaScript 7](https://ponyfoo.com/articles/understanding-javascript-async-await).
 
-Example of callback pattern:
+Example of callback pattern in JavaScript (NodeJs):
 
 ```javascript
 // asynchronous code implemented using callbacks (using lambda syntax)
@@ -56,6 +56,8 @@ fs.exists(fileName, (exists) => {
 
 console.log("Hello World");
 ```
+
+Callbacks are passed as function arguments, knowing that they will be executed *somewhere* during code execution.
 
 Example of coroutines pattern in Python using async await syntax, [using an example from official aiohttp documentation](http://aiohttp.readthedocs.io/en/stable/):
 
@@ -83,6 +85,7 @@ loop = asyncio.get_event_loop()
 loop.run_until_complete(main(loop))
 ```
 
+Like written in the comments above, *async* and *await* keywords are explicit instructions to specify when code execution can continue somewhere else; in other words when the event loop can dedicate itself to other portions of the code. When an awaited operation completes, code execution restarts from the await statement. This happens transparently for the programmer, handled by the implementation of the event loop.
 In both situations (callbacks or coroutines), the event loop is responsible of firing the right callback, or restart code execution at the right 'await' point, when necessary. I agree that coroutines pattern is more convenient and more readable than the callbacks pattern. Python community is particularly sensitive and cultured when it comes to code readability, so this is not surprising.
 
 Note how the C# async / await syntax is similar:
@@ -194,6 +197,9 @@ I expect Python developers to know more than .NET developers on this detail, bec
 * There is a popular, production ready implementation of discrete-event simulation library in Python, called SimPy, which is using this technique to implement coroutines
 
 Interestingly, somebody created a discrete event simulation library in .NET inspired by SimPy, called [Dessert](https://github.com/pomma89/Dessert). It demonstrates the use of yield return syntax to implement coroutines in C#, F#, VB.NET and Boo programming language. This approach, if further investigated, could offer interesting results in .NET, like it did in Python.
+
+## A curiosity for everyone
+One of the best features of asyncio, is that it allows to use custom implementations of the event loop. [Yury Selivanov claims that](https://magic.io/blog/uvloop-blazing-fast-python-networking/), when replacing asyncio built-in event loop with another implementation called [*uvloop*](https://github.com/MagicStack/uvloop), built upon [libuv](http://libuv.org/), it is possible to obtain a web server that is 2x faster than NodeJs, and competing with implementations created with [Go programming language](https://golang.org/).
 
 ---
 
