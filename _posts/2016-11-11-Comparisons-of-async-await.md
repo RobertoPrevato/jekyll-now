@@ -9,7 +9,7 @@ Python has a long history of asynchronous programming for web servers, with the 
 
 The most notable difference between aiohttp and other existing implementations, is that aiohttp is using the latest Python built-in features for concurrency. [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) himself worked on the implementation of a built-in event loop for Python, initially called [project "Tulip"](https://www.youtube.com/watch?v=aurOB4qYuFM), then asyncio, to implement async support in Python.
 
-This introduces the discussion about *async await* syntax in Python, which was [recently introduced](https://www.python.org/dev/peps/pep-0492/) in the version 3.5 of the language, as a more convenient replacement of the previous *@asyncio.coroutine* and *yield from* syntax (async replaces the decorator @asyncio.coroutine, await replaces yield from).
+This introduces the discussion about *async await* syntax in Python, which was [recently introduced](https://www.python.org/dev/peps/pep-0492/) in the version 3.5 of the language, as a more convenient replacement of the previous *@asyncio.coroutine* and *yield from* syntax (*async* replaces the decorator *@asyncio.coroutine*, *await* replaces *yield from*).
 The same syntax exists in .NET framework since 2012, and is being implemented in EcmaScript 7, to offer a user friendlier replacement of callbacks.
 
 ## A tiny bit of history
