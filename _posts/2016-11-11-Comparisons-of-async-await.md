@@ -5,7 +5,7 @@ title: Comparison of async await syntax in .NET, Python and JavaScript
 
 While I am planning to write a review of aiohttp, an event-driven HTTP client/server implementation for Python, I decided to write something about asynchronous programming and the async/await syntax in .NET, Python and JavaScript.
 
-Python has a long history of asynchronous programming for web servers, with the first release of [twisted](https://en.wikipedia.org/wiki/Twisted_(software)) framework dating back to 2002, and other implementations such as [gevent](http://www.gevent.org/) and [Tornado](http://www.tornadoweb.org/en/stable/), so one may be wondering why a new implementation was needed at all.
+Python has a long history of asynchronous programming for web servers using event loops, with the first release of [twisted](https://en.wikipedia.org/wiki/Twisted_(software)) framework dating back to 2002, and other implementations such as [gevent](http://www.gevent.org/) and [Tornado](http://www.tornadoweb.org/en/stable/), so one may be wondering why a new implementation was needed at all.
 
 The most notable difference between aiohttp and other existing implementations, is that aiohttp is using the latest Python built-in features for concurrency. [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) himself worked on the implementation of a built-in event loop for Python, initially called [project "Tulip"](https://www.youtube.com/watch?v=aurOB4qYuFM), then asyncio, to add async support in Python.
 
