@@ -113,7 +113,7 @@ public async Task SomeFunctionWithoutReturnValue()
 
 As described above, despite the similarity in syntax and perceived behavior of C# and Python async await, their implementations work in a completely different way and are suitable for different scenarios.
 
-Small wonder, the async await in EcmaScript 7 will behave like in C# and Python, and internally works in a similar way to Python's implementation, since they both work on an event loop:
+Small wonder, the async await in EcmaScript 7 will look like in C# and Python, and internally works in a similar way to Python's implementation, since they both use an event loop:
 
 ```javascript
 
