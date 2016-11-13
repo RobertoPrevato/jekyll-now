@@ -27,3 +27,10 @@ At work is the same: even if I am an accomplished developer and I am dictatorial
 In many contexts there is a toxic atmosphere: whoever thinks differently than the recognized "intelligentsia" or establishment, is regarded as ignorant like a capra (goat).
 
 And you know what? I like goats, so if some radical chic will call me this way, for my ideas, I won't feel offended. Not a single bit.
+
+## Edit
+I am not alone in my interpretation:
+
+* [Democrats, Trump, and the Ongoing, Dangerous Refusal to Learn the Lesson of Brexit](https://theintercept.com/2016/11/09/democrats-trump-and-the-ongoing-dangerous-refusal-to-learn-the-lesson-of-brexit/)
+* [Jonathan Pie's comment](https://www.youtube.com/watch?v=GLG9g7BcjKs)
+* [Mark Blyth on the Brexit vote](https://www.youtube.com/embed/nwK0jeJ8wxg)
