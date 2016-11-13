@@ -129,7 +129,7 @@ async function read () {
 ```
 
 ## A curiosity for .NET programmers
-A curiosity that not many .NET developers know about, while non-beginner Python developers *should* know, is that it is possible to implement coroutines using the *IEnumerable* and *yield return* syntax. *yield return* syntax is performing a similar operation to *await*: it is an explicit instruction to let know when code execution should be stopped inside a function and return to the calling function. This opens up for potentially creative uses of the syntax.
+Something that not many .NET developers know about, while non-beginner Python developers *should* know, is that it is possible to implement coroutines using the *IEnumerable* and *yield return* syntax. *yield return* does something similar to *await*: it is an explicit instruction to let know when code execution should be stopped inside a function and continue somewhere else. This opens up for potentially creative uses of the syntax.
 
 For example:
 
