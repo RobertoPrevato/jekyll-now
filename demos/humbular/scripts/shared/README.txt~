@@ -1,0 +1,17 @@
+### README ###
+
+This directory contains base functions, defined with R.js, jQuery and UnderscoreJs.
+
+These functions are independent from any web framework.
+
+The Knight tools is able to sort scripts by dependencies defined using R.js,
+to automatically generate <script> elements inside root-level .html files.
+
+Knight supports multiple calls to R.js in a single file.
+
+Another option is to defined modules and dependencies with comments:
+
+//Module: name
+//Deps: a, b, c, d
+
+In this case, only one module per file can be defined.

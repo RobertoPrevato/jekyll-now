@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--
+/**
+ * jQuery-KingTable 1.0.1
+ * https://github.com/RobertoPrevato/jQuery-KingTable
+ *
+ * Copyright 2016, Roberto Prevato
+ * http://ugrose.com
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+-->
+<html lang="en">
+<head>
+  <!-- Force latest IE rendering engine or ChromeFrame if installed -->
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  <meta charset="utf-8">
+  <title>jQuery-KingTable</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="jQuery-KingTable, a jQuery plugin for administrative tables that are able to build themselves, on the basis of their input data. Example with custom filters." />
+  <meta name="copyright" content="Copyright 2015 Roberto Prevato roberto.prevato@gmail.com" />
+  <!-- Page styles-->
+  <link rel="stylesheet" href="styles/examples.css">
+  <link rel="stylesheet" href="styles/kingtable.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body class="theme-flatwhite">
+  <header id="header">
+    <div id="logo-region">
+      <img src="styles/logo.png" alt="Roberto Prevato" width="91" height="50">
+      <h6><a href="https://github.com/RobertoPrevato/jQuery-KingTable">Roberto Prevato - roberto.prevato@gmail.com</a></h6>
+    </div>
+    <h1>jQuery-KingTable<span> - example with complex filters, defined by implementer</span></h1>
+    <label for="theme">Theme</label>
+    <select id="theme">
+      <option value="theme-flatwhite" selected="selected">Flat white</option>
+      <option value="theme-flatblack">Flat black</option>
+      <option value="theme-clear">Clear</option>
+      <option value="theme-dark">Dark</option>
+      <option value="theme-midnight">Midnight</option>
+      <option value="theme-olive">Olive</option>
+      <option value="theme-bronze">Bronze</option>
+      <option value="theme-ultramarine">Ultramarine</option>
+    </select>
+  </header>
+  <div id="content"></div>
+  <footer id="footer"></footer>
+  <!-- libs -->
+  <script src="scripts/libs/lodash.js"></script>
+  <script src="scripts/libs/jquery.js"></script>
+  <script src="scripts/libs/r.js"></script>
+  <script>
+      R.debug = true;
+  </script>
+  <script src="scripts/areas/public/ready.js"></script>
+  <!-- utility function for localization -->
+  <script src="scripts/libs/i.js"></script>
+  <script src="scripts/areas/public/locale/en.js"></script>
+  <script src="scripts/areas/public/locale/it.js"></script>
+  <script src="scripts/areas/public/locale/pl.js"></script>
+  <!-- jQuery sortable is required to sort the columns, but of course not mandatory -->
+  <script src="scripts/libs/jquery-ui-sortable.js"></script>
+  <!-- core functions -->
+  <script src="scripts/libs/jquery.kingtable.min.js"></script>
+  <script id="custom-filters" type="text/html">
+    <div class="left-column">
+      <dl>
+        <dt>
+          <label for="red-from">Red range</label>
+        </dt>
+        <dd>
+          <input id="red-from" type="text" name="red-from" placeholder="from red %" />
+          <input type="text" name="red-to" placeholder="to red %" />
+        </dd>
+        <dt>
+          <label for="green-from">Green range</label>
+        </dt>
+        <dd>
+          <input id="green-from" type="text" name="green-from" placeholder="from green %" />
+          <input type="text" name="green-to" placeholder="to green %" />
+        </dd>
+        <dt>
+          <label for="blue-from">Blue range</label>
+        </dt>
+        <dd>
+          <input id="blue-from" type="text" name="blue-from" placeholder="from blue %" />
+          <input type="text" name="blue-to" placeholder="to blue %" />
+        </dd>
+        <dt>
+          <label>Dominance</label>
+        </dt>
+        <dd>
+          <label for="red-dominance">Red</label>
+          <input id="red-dominance" type="radio" name="dominance" value="red" />
+          <label for="green-dominance">Green</label>
+          <input id="green-dominance" type="radio" name="dominance" value="green" />
+          <label for="blue-dominance">Blue</label>
+          <input id="blue-dominance" type="radio" name="dominance" value="blue" />
+        </dd>
+      </dl>
+      <br class="break" />
+    </div>
+    <div class="buttons break">
+      <button class="btn btn-default btn-clear-filters">Clear filters</button>
+    </div>
+  </script>
+  <script src="scripts/data.js"></script>
+  <script>
+    (function () {
+      $("#content").kingtable({
+        id: "colors-table",
+        data: COLORS,
+        filtersView: "custom-filters",//can be the id of an element;
+        filtersViewOpen: true,
+        filters: {
+          "red-to": function (filter, obj) {
+            var val = parseInt(filter.value);
+            if (isNaN(val)) return true;
+              //invalid value
+            return val >= parseInt(obj.red);
+          },
+          "red-from": function (filter, obj) {
+            var val = parseInt(filter.value);
+            if (isNaN(val)) return true;
+              //invalid value
+            return val <= parseInt(obj.red);
+          },
+          "blue-to": function (filter, obj) {
+            var val = parseInt(filter.value);
+            if (isNaN(val)) return true;
+              //invalid value
+            return val >= parseInt(obj.blue);
+          },
+          "blue-from": function (filter, obj) {
+            var val = parseInt(filter.value);
+            if (isNaN(val)) return true;
+              //invalid value
+            return val <= parseInt(obj.blue);
+          },
+          "green-to": function (filter, obj) {
+            var val = parseInt(filter.value);
+            if (isNaN(val)) return true;
+              //invalid value
+            return val >= parseInt(obj.green);
+          },
+          "green-from": function (filter, obj) {
+            var val = parseInt(filter.value);
+            if (isNaN(val)) return true;
+              //invalid value
+            return val <= parseInt(obj.green);
+          },
+          "dominance": function (filter, obj) {
+            var val = filter.value,
+              red = parseInt(obj.red),
+              green = parseInt(obj.green),
+              blue = parseInt(obj.blue),
+              max = Math.max(red, green, blue);
+            switch (val) {
+              case "red":
+                return red === max;
+              case "green":
+                return green === max;
+              case "blue":
+                return blue === max;
+            }
+            return true;
+          }
+        },
+        orderBy: "name",
+        sortOrder: "asc",
+        columns: {
+          name: "Name",
+          color: {
+            displayName: "Color",
+            template: "<span class=\"ui-color\" style=\"background-color:{{color}}\"></span>{%print($highlight(color))%}"
+          },
+          red: "Red",
+          green: "Green",
+          blue: "Blue",
+          hue: "Hue",
+          hslLight: "Light (HSL)",
+          hslSaturation: "Saturation (HSL)",
+          hsvSaturation: "Saturation (HSV)",
+          hsvValue: "Value (HSV)"
+        }
+      });
+      
+      var permittedCharacters = function (e, c) {
+        //characters or characters combination always permitted
+        if (_.contains([8, 0, 37, 39, 9], c) || (e.ctrlKey && _.contains([120, 118, 99, 97, 88, 86, 67], c))) return true;
+        return false;
+      }
+      //simple input constraint:
+      $("#content").on("keypress", ".filters-region input[name]", function (e) {
+        var c = e.keyCode ? e.keyCode : e.charCode, key = String.fromCharCode(c);
+        if (!permittedCharacters(e, c) && !key.match(/[0-9]/)) return false;
+        return true;
+      });
+      
+    })();
+  </script>
+  <script type="text/javascript" src="scripts/ga.js"></script>
+</body>
+</html>
+

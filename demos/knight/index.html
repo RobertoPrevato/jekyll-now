@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+/*
+ * Knight 1.0.0
+ * https://github.com/RobertoPrevato/Knight
+ *
+ * Copyright 2015, Roberto Prevato
+ * http://ugrose.com
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+-->
+<html lang="en">
+<head>
+	<!-- Force latest IE rendering engine or ChromeFrame if installed -->
+	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+	<meta charset="utf-8">
+	<title>Knight</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Angular and Knockout templates packer. Packs .html files into .js for Angular or Knockout. Integrable with Angular, Knockout." />
+	<meta name="copyright" content="Copyright 2015 Roberto Prevato roberto.prevato@gmail.com" />
+	<!-- Bootstrap styles -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+	<!-- Generic page styles -->
+  <link rel="stylesheet" href="docs/styles/styles.css">
+	<link rel="icon" href="docs/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <header>
+    <h1 class="title">Knight</h1>
+		<h3>utility tool to pack .html files inside .js, providing implementations for Angular and Knockout</h3>
+  </header>
+  <div id="main">
+		<hr />
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><a href="index.html">About</a></li>
+			<li role="presentation"><a href="docs/angular.html">Angular</a></li>
+			<li role="presentation"><a href="docs/knockout.html">Knockout</a></li>
+		</ul>
+		<div id="content">
+			<h3>Repository structure</h3>
+			<ol>
+				<li>The <strong>source</strong> folder contains the tool source code, which is in Python.</li>
+				<li>This code can be executed by both Python 2.x and Python 3.x.</li>
+				<li>The <strong>source</strong> folder also contains a setup.py file used with <a href="http://cx-freeze.readthedocs.org/">cx_Freeze</a> to generate the executables.</li>
+				<li>The <strong>built</strong> folder contains executables versions of the application: Windows users who don't want to (or cannot) install Python, can use the .exe file provided there.</li>
+				<li>The <strong>docs</strong> folder contains information used for this documentation, and files for examples in Angular and Knockout.</li>
+			</ol>
+			<h3>Commands</h3>
+			<ol class="commands">
+				<li>
+					<strong>-h --help</strong>
+					<p>displays the help for the console application</p>
+					<hr />
+					<img src="docs/images/console-app-help.png" alt="Console application help" />
+				</li>
+				<li>
+					<strong>-p / --path <em>path</em> -m / --mode <em>mode {ko,ng}</em></strong>
+					<p>starting from the given folder path, looks recursively inside each direct child folder, and generates for each of them a <strong>templates.js</strong> file containing the packed HTML files.</p>
+					<hr />
+					<h5>Example:</h5>
+					<ul>
+						<li><strong>~/scripts/areas/</strong>
+							<ul>
+								<li>public/account/templates/settings.html</li>
+								<li>public/account/templates/details.html</li>
+								<li>public/help/templates/some-name-1.html</li>
+								<li>public/help/templates/some-name-2.html</li>
+								<li>public/templates.js <em><-- generated file containing all .html files found under "public" directory</em></li>
+							</ul>
+						</li>
+						<li><strong>~/scripts/areas/</strong>
+							<ul>
+								<li>admin/accounts/templates/list/accounts-table.html</li>
+								<li>admin/accounts/templates/list/accounts-filters.html</li>
+								<li>admin/accounts/templates/accounts-dashboard.html</li>
+								<li>admin/messages/templates/list/messages-table.html</li>
+								<li>admin/messages/templates/list/messages-filters.html</li>
+								<li>admin/messages/templates/messages-dashboard.html</li>
+								<li>admin/templates.js <em><-- generated file containing all .html files found under "admin" directory</em></li>
+							</ul>
+						</li>
+					</ul>
+					<img src="docs/images/console-app-templates.png" alt="Console application templates" />
+				</li>
+			</ol>
+			<h3>Optional parameters</h3>
+			<ol class="commands">
+				<li>
+					<strong>-a --appname <em>application name</em></strong>
+					<p>when generating templates.js files for Angular, the name of a global variable referencing the application object (default == "app").</p>
+				</li>
+				<li>
+					<strong>-u --underscoreJsCompile <em>js global variable name</em></strong>
+					<p>allows to run UnderscoreJs compilation on templates, using the given global variable/function. The parameter determines the context passed as argument for <strong>_.template</strong> function (default == null).</p>
+					<p>N.B. UnderscoreJs is not required, if this parameter is not specified.</p>
+				</li>
+			</ol>
+		</div>
+	</div>
+  <hr />
+	<div>
+		<h4>Notes:</h4>
+		<ol>
+      <li>External libraries are loaded using <a href="http://en.wikipedia.org/wiki/Content_delivery_network">CDN</a>; if the connection is not stable this demo could stop working.</li>
+		</ol>
+	</div>
+	<hr />
+	<footer>
+		<ul>
+			<li><a href="https://github.com/RobertoPrevato/Knight">GitHub repository</a></li>
+			<li>Demo built using <a href="http://getbootstrap.com/">Bootstrap</a> and Icons from <a href="http://glyphicons.com/">Glyphicons</a>.</li>
+		</ul>
+	</footer>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+@import "structure/header.less";
+@import "structure/dashboard.less";
+
+body {
+	padding: 0 20px 40px 20px;
+}
+
+#content {
+	padding: 20px 30px 10px 30px;
+}

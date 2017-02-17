@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+/*
+ * Knight 1.0.0
+ * https://github.com/RobertoPrevato/Knight
+ *
+ * Copyright 2015, Roberto Prevato
+ * http://ugrose.com
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+-->
+<html lang="en">
+<head>
+	<!-- Force latest IE rendering engine or ChromeFrame if installed -->
+	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+	<meta charset="utf-8">
+	<title>Knight - Knockout example</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Angular and Knockout templates packer. Packs .html files into .js for Angular or Knockout. Integrable with Angular, Knockout." />
+	<meta name="copyright" content="Copyright 2015 Roberto Prevato roberto.prevato@gmail.com" />
+	<!-- Bootstrap styles -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+	<!-- Generic page styles -->
+  <link rel="stylesheet" href="styles/styles.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <header>
+    <h1 class="title">Knight - Knockout example</h1>
+		<h3>utility tool to pack .html files inside .js, providing implementations for Angular and Knockout</h3>
+  </header>
+  <div id="main">
+		<hr />
+		<ul class="nav nav-tabs">
+			<li role="presentation"><a href="../index.html">About</a></li>
+			<li role="presentation"><a href="angular.html">Angular</a></li>
+			<li role="presentation" class="active"><a href="knockout.html">Knockout</a></li>
+		</ul>
+    <div id="partial">
+			<h3>Click on the links below to change view:</h3>
+			<ul>
+				<li><a href="#/dashboard">Dashboard</a></li>
+				<li><a href="#/profile">Profile</a></li>
+			</ul>
+			<p>See the source code to see how the html templates are packed inside .js files.</p>
+			<p><strong>NB:</strong> Knockout is customized in this example, to support in memory-HTML templates <em>ko-template-engine.js</em>.</p>
+			<hr />
+			<div id="content" data-bind="template: 'view'"></div>
+    </div>
+    <hr />
+	</div>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<!-- knockout -->
+	<script src="scripts/libs/knockout.js"></script>
+	<script src="scripts/libs/simrou.js"></script>
+
+  <!-- knockout stuff -->
+	<script src="scripts/examples/knockout/ko-template-engine.js"></script>
+	<script src="scripts/examples/knockout/ko-shortcuts.js"></script>
+
+	<!-- app object -->
+	<script src="scripts/examples/knockout/app.js"></script>
+
+	<script src="scripts/examples/knockout/areas/dashboard/models/dashboard.js"></script>
+	<script src="scripts/examples/knockout/areas/profile/models/profile.js"></script>
+
+	<script src="scripts/examples/knockout/areas/common/templates.js"></script>
+	<script src="scripts/examples/knockout/areas/dashboard/templates.js"></script>
+	<script src="scripts/examples/knockout/areas/profile/templates.js"></script>
+
+	<script src="scripts/examples/knockout/router.js"></script>
+	<script src="scripts/examples/knockout/ready.js"></script>
+</body>
+</html>

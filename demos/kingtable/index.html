@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+/**
+ * jQuery-KingTable 1.0.0
+ * https://github.com/RobertoPrevato/jQuery-KingTable
+ *
+ * Copyright 2015, Roberto Prevato
+ * http://ugrose.com
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+-->
+<html lang="en">
+<head>
+  <!-- Force latest IE rendering engine or ChromeFrame if installed -->
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  <meta charset="utf-8">
+  <title>jQuery-KingTable</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="jQuery-KingTable, a jQuery plugin for administrative tables that are able to build themselves, on the basis of their input data." />
+  <meta name="copyright" content="Copyright 2015 Roberto Prevato roberto.prevato@gmail.com" />
+  <link rel="stylesheet" href="styles/examples.css">
+  <link rel="stylesheet" href="styles/kingtable.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body class="theme-flatwhite">
+  <header id="header">
+    <div id="logo-region">
+      <img src="styles/logo.png" alt="Roberto Prevato" width="91" height="50">
+      <h6><a href="https://github.com/RobertoPrevato/jQuery-KingTable">Roberto Prevato - roberto.prevato@gmail.com</a></h6>
+    </div>
+    <h1>jQuery-KingTable</h1>
+    <label for="theme">Theme</label>
+    <select id="theme">
+      <option value="theme-flatwhite" selected="selected">Flat white</option>
+      <option value="theme-flatblack">Flat black</option>
+      <option value="theme-clear">Clear</option>
+      <option value="theme-dark">Dark</option>
+      <option value="theme-midnight">Midnight</option>
+      <option value="theme-olive">Olive</option>
+      <option value="theme-bronze">Bronze</option>
+      <option value="theme-ultramarine">Ultramarine</option>
+    </select>
+  </header>
+  <div id="content"></div>
+  <footer id="footer"></footer>
+  <!-- libs -->
+  <script src="scripts/libs/lodash.js"></script>
+  <script src="scripts/libs/jquery.js"></script>
+  <script src="scripts/libs/r.js"></script>
+  <script>
+      R.debug = true;
+  </script>
+  <script src="scripts/areas/public/ready.js"></script>
+  <!-- utility function for localization -->
+  <script src="scripts/libs/i.js"></script>
+  <script src="scripts/areas/public/locale/en.js"></script>
+  <script src="scripts/areas/public/locale/it.js"></script>
+  <script src="scripts/areas/public/locale/pl.js"></script>
+  <!-- core functions -->
+  <script src="scripts/libs/jquery.kingtable.min.js"></script>
+  <!-- jQuery sortable is required to sort the columns, but of course not mandatory -->
+  <script src="scripts/libs/jquery-ui-sortable.js"></script>
+  <script src="scripts/data.js"></script>
+  <script>
+    (function () {
+      $.KingTable.Templates["king-table-squares"] = "<ul class=\"king-table-body squares\"></ul>";
+      window.onerror = function(message, url, lineNumber) {
+        //save error and send to server for example.
+        alert(message + " " + url + " " + lineNumber);
+        return true;
+      };
+      $("#content").kingtable({
+        id: "colors-table",
+        data: COLORS,//table is fixed!
+        collectionName: "colors",
+        orderBy: "name",
+        sortOrder: "asc",
+        columns: {
+          name: "Name",
+          color: {
+            displayName: "Color",
+            template: "<span class=\"ui-color\" style=\"background-color:{{color}}\"></span>{%print($highlight(color))%}"
+          },
+          red: "Red",
+          green: "Green",
+          blue: "Blue",
+          hue: "Hue",
+          hslLight: "Light (HSL)",
+          hslSaturation: "Saturation (HSL)",
+          hsvSaturation: "Saturation (HSV)",
+          hsvValue: "Value (HSV)"
+        },
+        extraViews: [
+          {
+            name: "Squares",
+            value: "squares",
+            getItemTemplate: function () {
+              return "<li title=\"{{name}}\" style=\"background-color:{{color}}\"></li>";
+            }
+          }
+        ]
+      });
+    })();
+  </script>
+  <script type="text/javascript" src="scripts/ga.js"></script>
+</body>
+</html>
+

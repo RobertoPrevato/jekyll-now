@@ -1,0 +1,183 @@
+//
+// Base model
+//
+R("model", ["extend", "events"], function (Extend, Events) {
+
+  //
+  //	Base model definition
+  //
+  var Model = function (attributes, staticProperties) {
+    if (staticProperties) _.extend(this, staticProperties);
+    var attrs = attributes || {};
+    this.cid = _.uniqueId('c');
+    this.disposables = [];
+    attrs = _.defaults({}, attrs, _.result(this, 'defaults'));
+    var p = "attrsFilter";
+    if (this[p])
+      attrs = this[p](attrs);
+    this.set(attrs);
+    this.changed = {};
+    this.initialize.apply(this, arguments);
+  };
+
+  // Attach all inheritable methods to the Model prototype.
+  _.extend(Model.prototype, Events, {
+
+    initialize: function () { },
+
+    result: function (name, args) {
+      //similar to _.result, but with arguments
+      if (this[name])
+        return _.isFunction(this[name]) ? this[name](args) : this[name];
+      return null;
+    },
+
+    set: function (name, value) {
+      //sets observable properties in this object
+      //passing a plain object as first parameter, will set multiple properties and values
+      //if this object already contains a function with the name, calls it passing the value (useful for observables)
+      if (typeof name == 'object') {
+        _.each(name, function (v, k) {
+          this.set(k, v);
+        }, this);
+        return this;
+      }
+      //if value is a function; just set it
+      if (_.isFunction(value)) {
+        this[name] = value;
+        return this;
+      }
+      _.isFunction(this[name]) ? this[name](value) : this[name] = ko.o(value);
+      return this;
+    },
+
+    invert: function (a) {
+      //passing the name of a property which is an observable boolean, inverts its value
+      this[a](!this[a]());
+      return this;
+    },
+
+    swap: function (a, b) {
+      //passing the names of two different observable properties,
+      //swaps their values
+      var self = this;
+      var c = self[a]();
+      var d = self[b]();
+      self[a](d);
+      self[b](c);
+      return self;
+    },
+
+    copy: function (a, b) {
+      var self = this;
+      if (typeof a == "object") {
+        for (var x in a) {
+          self.copy(x, a[x]);
+        }
+        return self;
+      }
+      return self[b](self[a]());
+    },
+
+    merge: function (o) {
+      //passing a plain object with properties and values,
+      //merges these properties and values into the object
+      //if this object contains a function with name that matches a property name, calls it passing the value (useful for observables)
+      for (var x in o) {
+        _.isFunction(this[x]) ? this[x](o[x]) : this[x] = o[x];
+      }
+      return this;
+    },
+
+    //shortcut for defer with binding to model context
+    defer: function (fn, a) {
+      return this.delay(fn, 0, a);
+    },
+
+    delay: function (fn, ms, a) {
+      _.delay(_.bind(function () {
+        _.isFunction(fn) ? fn.call(this, a) : this[fn](a);
+      }, this), ms);
+      return this;
+    },
+
+    interval: function (name, fn, ms) {
+      this.clearInterval(name);
+      var id = this[name] = window.setInterval(_.bind(fn, this), ms);
+      this.disposables.push({
+        dispose: _.partial(function (name, intervalId) {
+          window.clearInterval(intervalId);
+        }, name, id)
+      });
+      return this;
+    },
+
+    clearInterval: function (name) {
+      if (this[name]) window.clearInterval(this[name]), this[name] = null;
+      return this;
+    },
+
+    //shortcut for subscribe with binding to model context
+    sub: function (name, fn) {
+      //support calling passing an object
+      if (_.isObject(name)) {
+        var x;
+        for (x in name) {
+          this.sub(x, name[x]);
+        }
+        return this;
+      }
+      if (_.isString(fn)) fn = this[fn];//support call with a function name
+      this.disposables.push(this[name].subscribe(fn.bind(this)));
+      return this;
+    },
+
+    //function to dispose of the subscriptions
+    dispose: function () {
+      //dispose subscriptions (and computed if we start using them)
+      var disposables = this.disposables;
+      for (var i = 0, l = disposables.length; i < l; i++)
+        disposables[i].dispose();
+      //call on dispose method
+      if (this.onDispose) this.onDispose();
+      return this;
+    },
+
+    //NB: for models that implement two observables: "error" and "loading";
+    //function to set an error message and allow a retry
+    setError: function (message, retryCallback) {
+      var obj = this;
+      return this.error({
+        title: message,
+        retry: retryCallback ? function () {
+          obj.error(void (0)).loading(true);
+          //use a delay when trying again
+          _.delay(retryCallback.bind(obj), 300);
+        } : null
+      }).loading(false);
+    },
+
+    serialize: function () {
+      var o = {};
+      _.each(_.keys(this.defaults), function (n) {
+        o[n] = this[n]();
+      }, this);
+      return o;
+    },
+
+    pick: function (arr) {
+      if (_.isString(arr))
+        arr = _.toArray(arguments);
+      var o = {};
+      _.each(arr, function (n) {
+        o[n] = ko.unwrap(this[n]);
+      }, this);
+      return o;
+    }
+
+  });
+
+  Model.extend = Extend;
+
+  return Model;
+});
