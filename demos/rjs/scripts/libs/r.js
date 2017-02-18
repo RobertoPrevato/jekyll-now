@@ -2,11 +2,11 @@
  * R.js, ultralight solution to dependencies management.
  * https://github.com/RobertoPrevato/R.js
  *
- * Copyright 2015, Roberto Prevato
- * http://ugrose.com
+ * Copyright 2017, Roberto Prevato
+ * https://ugrose.com
  *
  * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
+ * https://www.opensource.org/licenses/MIT
  */
 (function(global, factory) {
   if (typeof module === "object" && typeof module.exports === "object") {
