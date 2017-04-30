@@ -46,72 +46,37 @@
   <script src="es6-promise.js"></script>
   <script src="kingtable.js"></script>
   <script src="data/people.js"></script>
-  <!-- in this example, the filters template is defined in a script tag -->
-  <script id="custom-filters" type="text/html">
-    <div class="left-column">
-      <dl>
-        <dt>
-          <label for="start-birthdate">Birthdate from:</label>
-        </dt>
-        <dd>
-          <input id="start-birthdate" type="text" class="datepicker birthdate" name="start-birthdate" readonly />
-        </dd>
-        <dt>
-          <label for="end-birthdate">Birthdate to:</label>
-        </dt>
-        <dd>
-          <input id="end-birthdate" type="text" class="datepicker birthdate" name="end-birthdate" readonly />
-        </dd>
-        <dt>
-          <label for="start-registration">Registered from:</label>
-        </dt>
-        <dd>
-          <input id="start-registration" type="text" class="datepicker registration" name="start-registration" readonly />
-        </dd>
-        <dt>
-          <label for="end-registration">Registered to:</label>
-        </dt>
-        <dd>
-          <input id="end-registration" type="text" class="datepicker registration" name="end-registration" readonly />
-        </dd>
-      </dl>
-      <br class="break" />
-    </div>
-    <div class="buttons">
-      <button class="btn btn-default btn-clear-filters">Clear filters</button>
-    </div>
+  <script>
+  (function () {
+
+    var table = window.table = new KingTable({
+      id: "people-table",
+      data: PEOPLE, // array of items: this demo shows a Fixed table (see tables mode wiki page for more information)
+      caption: "KingTable - people demo with client side pagination (whole collection in memory)",
+      element: document.getElementById("main"),
+      columns: {
+        name: "Name",
+        email: "Email",
+        phone: "Phone",
+        birthdate: {
+          name: "Birthdate"
+        },
+        isActive: {
+          name: "Active",
+          hidden: 1
+        },
+        _id: {
+          secret: true
+        },
+        address: "Address",
+        company: "Company",
+        gender: "Gender",
+        registered: "Registered"
+      }
+    });
+
+    table.render();
+  })();
   </script>
-    <script>
-    (function () {
-
-      var table = window.table = new KingTable({
-        id: "people-table",
-        data: PEOPLE, // array of items: this demo shows a Fixed table (see tables mode wiki page for more information)
-        caption: "KingTable - people demo with client side pagination (whole collection in memory)",
-        element: document.getElementById("main"),
-        columns: {
-          name: "Name",
-          email: "Email",
-          phone: "Phone",
-          birthdate: {
-            name: "Birthdate"
-          },
-          isActive: {
-            name: "Active",
-            hidden: 1
-          },
-          _id: {
-            secret: true
-          },
-          address: "Address",
-          company: "Company",
-          gender: "Gender",
-          registered: "Registered"
-        }
-      });
-
-      table.render();
-    })();
-    </script>
 </body>
 </html>
