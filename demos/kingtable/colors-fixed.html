@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Force latest IE rendering engine or ChromeFrame if installed -->
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]--> 
+  <title>KingTable colors demo</title>
+  <link rel="shortcut icon" type="image/png" href="ugr.png">
+  <meta name="author" content="Roberto Prevato">
+  <link rel="stylesheet" type="text/css" href="examples.css">
+  <link rel="stylesheet" href="kingtable.css">
+</head>
+<body class="theme-flatwhite">
+  <header id="header">
+    <div id="logo-region">
+      <img src="rp.png" alt="Roberto Prevato" width="91" height="50">
+      <h6><a href="https://github.com/RobertoPrevato/KingTable">https://github.com/RobertoPrevato/KingTable</a></h6>
+    </div>
+  </header>
+    <div class="theme-region">
+      <label for="theme">Theme: </label>
+      <select id="theme">
+        <option value="theme-flatwhite" selected="selected">Flat white</option>
+        <option value="theme-flatblack">Flat black</option>
+        <option value="theme-clear">Clear</option>
+        <option value="theme-dark">Dark</option>
+        <option value="theme-midnight">Midnight</option>
+      </select>
+      <script>
+        (function () {
+          var a = document.getElementById("theme");
+          a.addEventListener("change", function (e) {
+            var v = a.value;
+            document.body.className = v;
+          }, true);
+        })();
+      </script>
+    </div>
+  <div id="main"></div>
+  <script src="es6-promise.js"></script>
+  <script src="kingtable.js"></script>
+  <script src="colors.js"></script>
+    <script>
+    (function () {
+      
+      var table = window.table = new KingTable({
+        id: "colors-table",
+        data: COLORS, // array of items: this demo shows a Fixed table (see tables mode wiki page for more information)
+        caption: "KingTable - colors demo with client side pagination (whole collection in memory)",
+        element: document.getElementById("main"),
+        columns: {
+          name: "Name",
+          color: {
+            name: "Color",
+            html: function (item, value) {
+              return "<span class=\"kt-color\" style=\"background-color:" + value + "\"></span><span class=\"kt-color-hex\">" + this.highlight(value) + "</span>";
+            }
+          },
+          red: "Red",
+          green: "Green",
+          blue: "Blue",
+          hue: "Hue",
+          hslLight: "Light (HSL)",
+          hslSaturation: "Saturation (HSL)",
+          hsvSaturation: "Saturation (HSV)",
+          hsvValue: "Value (HSV)"
+        },
+        extraViews: [
+          {
+            name: "Squares",
+            value: "squares",
+            getItemTemplate: function () {
+              return "<li title=\"{{name}}\" style=\"background-color:{{color}}\"></li>";
+            }
+          }
+        ]
+      });
+
+      table.render().then(function () {
+        // ok
+        console.log("ok :)");
+      }, function () {
+        // error
+        console.log("noo :(");
+      });
+    })();
+    </script>
+</body>
+</html>
