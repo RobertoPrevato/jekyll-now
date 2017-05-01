@@ -33,17 +33,37 @@
       <h6><a href="https://github.com/RobertoPrevato/KingTable">https://github.com/RobertoPrevato/KingTable</a></h6>
     </div>
   </header>
-    <div class="theme-region">
-      <label for="theme">Theme: </label>
-      <select id="theme">
-        <option value="theme-flatwhite" selected="selected">Flat white</option>
-        <option value="theme-flatblack">Flat black</option>
-        <option value="theme-clear">Clear</option>
-        <option value="theme-dark">Dark</option>
-        <option value="theme-midnight">Midnight</option>
-      </select>
-    </div>
-  <div id="main"></div>
+  <div class="theme-region">
+    <label for="theme">Theme: </label>
+    <select id="theme">
+      <option value="theme-flatwhite" selected="selected">Flat white</option>
+      <option value="theme-flatblack">Flat black</option>
+      <option value="theme-clear">Clear</option>
+      <option value="theme-dark">Dark</option>
+      <option value="theme-midnight">Midnight</option>
+    </select>
+  </div>
+  <div class="info">
+    <h2>This page shows how to use KingTable in plain text - suitable for example, for NodeJS console applications and email bodies in plain text.</h2>
+    <p>Controls below shows how to implement custom controls (see <em>common.js</em>)</p>
+    <p>Try to open the browser console, and type:</p>
+    <pre>
+      table.search("1981")
+      table.search(null)
+      table.sortBy("name desc")
+      table.sortBy("gender, birthdate desc")
+    </pre>
+    <hr>
+  </div>
+  <div id="plain-controls" class="buttons">
+    <button id="first">First</button>
+    <button id="prev">Prev</button>
+    <button id="next">Next</button>
+    <button id="last">Last</button>
+    <button id="refresh">Refresh</button>
+  </div>
+
+  <pre id="main"></pre>
   <script src="common.js"></script>
   <script src="es6-promise.js"></script>
   <script src="kingtable.js"></script>
@@ -57,6 +77,7 @@
       caption: "KingTable - people demo with client side pagination (whole collection in memory)",
       element: document.getElementById("main"),
       sortBy: "name",
+      builder: "text", // use plain text builder
       columns: {
         name: "Name",
         email: "Email",
