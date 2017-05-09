@@ -112,12 +112,13 @@ Notes
 ***
 
 Links
-##### _Interesting blog post on a bug that was introduced in an Apple update:_ [mnot’s blog - Caching POST (24/09/2012)](https://www.mnot.net/blog/2012/09/24/caching_POST)
-##### _Example of caching HTTP POST responses using a forward cache proxy and creating POST request bodies digests_: [ebay tech blog - Caching HTTP POST Requests and Responses (08/20/2012)](http://www.ebaytechblog.com/2012/08/20/caching-http-post-requests-and-responses/)
-##### _About Duck typing - don't miss to read about Alex Martelli_: [Wikipedia - Duck typing](https://en.wikipedia.org/wiki/Duck_typing)
+* _Interesting blog post on a bug that was introduced in an Apple update:_ [mnot’s blog - Caching POST (24/09/2012)](https://www.mnot.net/blog/2012/09/24/caching_POST)
+* _Example of caching HTTP POST responses using a forward cache proxy and creating POST request bodies digests_: [ebay tech blog - Caching HTTP POST Requests and Responses (08/20/2012)](http://www.ebaytechblog.com/2012/08/20/caching-http-post-requests-and-responses/)
+* _About Duck typing - don't miss to read about Alex Martelli_: [Wikipedia - Duck typing](https://en.wikipedia.org/wiki/Duck_typing)
 ***
 
-Icons credits
+Icons credits:
+
 [http://www.flaticon.com](http://www.flaticon.com).
 
 * clock - Prosymbols - http://www.flaticon.com/authors/prosymbols
