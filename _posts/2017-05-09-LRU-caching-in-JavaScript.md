@@ -3,9 +3,9 @@ layout: post
 title: HTTP POST LRU caching in JavaScript
 ---
 
-I recently published in GitHub the second version of a [library of mine](https://github.com/RobertoPrevato/KingTable), that allows implementing administrative tables with small amount of code. The first version of this library helped many, who contacted me in the last months, asking things and giving great advices; so I decided to create a new, improved version, in plain vanilla JavaScript, ES6.
+I recently published in GitHub the second version of a [library of mine](https://github.com/RobertoPrevato/KingTable), for administrative tables that require a small amount of code. The first version of this library helped many, who contacted me in the last months, asking things and giving great advices; so I decided to create a new, improved version, in plain vanilla JavaScript, ES6.
 
-I always found **very** boring implementing administrative tables, and somehow ended up creating my own library to obtain something as customizable and helpful as possible. I called it [`KingTable`](https://github.com/RobertoPrevato/KingTable).
+I always found **extremely** boring implementing administrative tables, and somehow ended up creating my own library to obtain something as customizable and helpful as possible. I called it [`KingTable`](https://github.com/RobertoPrevato/KingTable).
 
 ![Live demo](https://robertoprevato.github.io/demos/kingtable/images/demo.gif)
 
