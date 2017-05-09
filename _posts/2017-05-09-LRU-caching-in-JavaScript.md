@@ -60,7 +60,7 @@ The definition of `same` is taken from URL: if the URL is exactly the same as on
 
 Browsers are implemented to handle this response header transparently, so programmers only need to use HTTP GET and use `Cache-Control` headers, to obtain caching quite easily: no change is required on code that creates AJAX requests.
 
-[![HTTP GET and Cache-Control](http://i3.ytimg.com/vi/quRT5_IzP-0/maxresdefault.jpg)](https://youtu.be/quRT5_IzP-0)
+[![HTTP GET and Cache-Control](https://i3.ytimg.com/vi/quRT5_IzP-0/maxresdefault.jpg)](https://youtu.be/quRT5_IzP-0)
 
 This only works using [HTTP GET¹](#note-1) method and transmitting all filters criteria inside the URL. The usual way to do so is using a query string (e.g. _?hello=world_).
 
