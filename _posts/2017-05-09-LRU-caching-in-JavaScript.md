@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Example HTTP POST LRU caching in JavaScript
+title: HTTP POST LRU caching in JavaScript
 ---
 
 I recently published in GitHub the second version of a [library of mine](https://github.com/RobertoPrevato/KingTable), that allows implementing administrative tables with small amount of code. The first version of this library helped many, who contacted me in the last months, asking things and giving great advices; so I decided to create a new, improved version, in plain vanilla JavaScript, ES6.
@@ -86,7 +86,7 @@ As mentioned previously, a client side caching mechanism has been implemented fo
 
 Caching mechanism is configurable, so users of the library can disable it, specify max age of cached items, maximum number of cached items (LRU size), and even the storage to cache items. `sessionStorage` is used by default, so cache is automatically removed when the [browser is closed³](#note-3). A custom implementation of storage can be otherwise used to cache items in page memory, only as long as page stays open and is not reloaded, which can be a good option in SPA.
 
-I described all these options in the [GitHub wiki, here](https://github.com/RobertoPrevato/KingTable/wiki).
+I described all these options in the [KingTable wiki](https://github.com/RobertoPrevato/KingTable/wiki).
 
 * [LRU cache wrapper source code.](https://github.com/RobertoPrevato/KingTable/blob/master/source/code/scripts/data/lru.js)
 * [In-Memory Storage compatible object source code.](https://github.com/RobertoPrevato/KingTable/blob/master/source/code/scripts/data/memstore.js)
@@ -95,40 +95,36 @@ I described all these options in the [GitHub wiki, here](https://github.com/Robe
 ## And that's all!
 Easy caching that works in any circumstance and can be configured as needed!
 
-## Demos
-* [Index of demos](https://robertoprevato.github.io/demos/kingtable/index.html)
-* [Colors demo (rich HTML)](https://robertoprevato.github.io/demos/kingtable/colors.html)
-* [People demo (rich HTML)](https://robertoprevato.github.io/demos/kingtable/people.html)
-* [People demo (plain HTML, without handlers)](https://robertoprevato.github.io/demos/kingtable/people-html.html)
-* [People demo (plain text)](https://robertoprevato.github.io/demos/kingtable/people-plain.html)
-* [How to display pictures](https://robertoprevato.github.io/demos/kingtable/default-by-type.html)
-
 ***
 Notes
-<div style="font-size:12px">
+<div style="font-size:15px">
  <p>
- <a name="note-1">1.</a> Both HTTP1.1 and HTTP/2 specifications contemplate caching of HTTP POST responses containing a `Cache-Control` header. In practice, this is not how browsers are implemented. Tests using latest Chrome ([I prepared a video, here](https://youtu.be/c0-P6--iTX8)), Firefox and Opera reveals how cache is <strong>not</strong> used when using HTTP POST, even if a `Cache-Control` header is sent from server to client, and even with `Content-Location`, even for following GET requests.
+ <a name="note-1">1.</a> Both HTTP1.1 and HTTP/2 specifications contemplate caching of HTTP POST responses containing a `Cache-Control` header. In practice, this is not how browsers are implemented. Tests using latest Chrome (<a href="https://youtu.be/c0-P6--iTX8">I prepared a video, here</a>), Firefox and Opera reveals how cache is <strong>not</strong> used when using HTTP POST, even if a `Cache-Control` header is sent from server to client, and even with `Content-Location`, even for following GET requests.
  </p>
  <p>
  <a name="note-2">2.</a> The principle of duck typing has been applied, so any object implementing the interface of storage objects works (<em>getItem, setItem, removeItem, clear</em>). Alex Martelli (2000): <em>"don't check whether it IS-a duck: check whether it QUACKS-like-a duck, WALKS-like-a duck, etc, etc, depending on exactly what subset of duck-like behaviour you need to play your language-games with."</em>.
  </p>
  <p>
- <a name="note-3">3.</a> Web Storage API is safe from attacks coming from other websites, as every cache is only readable from the same web domain, however the sessionStorage should be cleared automatically upon user's log out (the user could leave the browser open after logging out, potentially exposing cache data to other users using the same browser)</em>.
+ <a name="note-3">3.</a> Web Storage API is safe from attacks coming from other websites, as every cache is only readable from the same web domain, however the sessionStorage should be cleared automatically upon user's log out (the user could leave the browser open after logging out, potentially exposing cache data to other users using the same browser).
  </p>
 </div>
 
 ***
 
 Useful links
-
-_Interesting blog post on a bug that was introduced in an Apple update:_:
+<div style="font-size:15px">
+ <p>
+_Interesting blog post on a bug that was introduced in an Apple update:_
 [mnot’s blog - Caching POST (24/09/2012)](https://www.mnot.net/blog/2012/09/24/caching_POST)
-
+ </p>
+ <p>
 _Example of caching HTTP POST responses using a forward cache proxy and creating POST request bodies digests_:
 [ebay tech blog - Caching HTTP POST Requests and Responses (08/20/2012)](http://www.ebaytechblog.com/2012/08/20/caching-http-post-requests-and-responses/)
-
+ </p>
+ <p>
 _About Duck typing - don't miss to read about Alex Martelli_: [Wikipedia - Duck typing](https://en.wikipedia.org/wiki/Duck_typing)
-
+ </p>
+</div>
 ***
 
 Icons credits
