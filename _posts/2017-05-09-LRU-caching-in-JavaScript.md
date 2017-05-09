@@ -111,27 +111,15 @@ Notes
 
 ***
 
-Useful links
-<div style="font-size:15px">
- <p>
-_Interesting blog post on a bug that was introduced in an Apple update:_
-[mnot’s blog - Caching POST (24/09/2012)](https://www.mnot.net/blog/2012/09/24/caching_POST)
- </p>
- <p>
-_Example of caching HTTP POST responses using a forward cache proxy and creating POST request bodies digests_:
-[ebay tech blog - Caching HTTP POST Requests and Responses (08/20/2012)](http://www.ebaytechblog.com/2012/08/20/caching-http-post-requests-and-responses/)
- </p>
- <p>
-_About Duck typing - don't miss to read about Alex Martelli_: [Wikipedia - Duck typing](https://en.wikipedia.org/wiki/Duck_typing)
- </p>
-</div>
+Links
+##### _Interesting blog post on a bug that was introduced in an Apple update:_ [mnot’s blog - Caching POST (24/09/2012)](https://www.mnot.net/blog/2012/09/24/caching_POST)
+##### _Example of caching HTTP POST responses using a forward cache proxy and creating POST request bodies digests_: [ebay tech blog - Caching HTTP POST Requests and Responses (08/20/2012)](http://www.ebaytechblog.com/2012/08/20/caching-http-post-requests-and-responses/)
+##### _About Duck typing - don't miss to read about Alex Martelli_: [Wikipedia - Duck typing](https://en.wikipedia.org/wiki/Duck_typing)
 ***
 
 Icons credits
-[http://www.flaticon.com/](http://www.flaticon.com).
+[http://www.flaticon.com](http://www.flaticon.com).
 
-| Icon        | Author           |
-|-------------|------------------|
-| clock       | Prosymbols - http://www.flaticon.com/authors/prosymbols |
-| girl        | Freepik - http://www.freepik.com |
-| server      | popcorn art - http://www.flaticon.com/authors/popcorns-arts |
+* clock - Prosymbols - http://www.flaticon.com/authors/prosymbols
+* girl - Freepik - http://www.freepik.com
+* server -popcorn art - http://www.flaticon.com/authors/popcorns-arts
