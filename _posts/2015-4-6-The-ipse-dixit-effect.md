@@ -30,7 +30,7 @@ var deps ﻿=﻿ fn.toString().match(/function\s*\(([^\)]*)\)/)[1].split(/\s?,\s
 //deps --> ["$scope", "$http"]
 ```
 
-And had asked other programmers for their opinions on StackOverflow, in reality most people would have just dumped this idea, etiquetting it as tricky and bizarre, underlying the fact that it breaks any JavaScript minification.
+And had asked other programmers for their opinions on StackOverflow, in reality most people would have just dumped this idea, labelling it as tricky and bizarre, underlying the fact that it breaks any JavaScript minification.
 If somebody working for Google instead introduces this concept...
 > “Wow! It is **GENIAL**!”
 
