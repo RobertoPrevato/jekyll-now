@@ -15,7 +15,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- Force latest IE rendering engine or ChromeFrame if installed -->
   <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-  <title>KingTable people demo</title>
+  <title>KingTable people demo with XLSX Plugin</title>
   <link rel="shortcut icon" type="image/png" href="ugr.png">
   <meta name="author" content="Roberto Prevato">
   <link rel="stylesheet" type="text/css" href="examples.css">
@@ -47,6 +47,12 @@
   <script src="common.js"></script>
   <script src="es6-promise.js"></script>
   <script src="kingtable.js"></script>
+
+  <!-- for export to excel: -->
+  <script src="xlsx.core.min.js"></script>
+  <script src="blob.js"></script>\
+  <script src="kingtable.xlsx.js"></script>
+
   <script src="data/people.js"></script>
   <script>
   (function () {
@@ -54,7 +60,7 @@
     var table = window.table = new KingTable({
       id: "people-table",
       data: PEOPLE, // array of items: this demo shows a Fixed table (see tables mode wiki page for more information)
-      caption: "KingTable - people demo with client side pagination (whole collection in memory)",
+      caption: "KingTable - people demo with client side pagination (whole collection in memory) and XLSX Plugin",
       element: document.getElementById("main"),
       sortBy: "name",
       columns: {
