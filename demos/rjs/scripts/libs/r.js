@@ -3,18 +3,24 @@
  * https://github.com/RobertoPrevato/R.js
  *
  * Copyright 2017, Roberto Prevato
- * https://ugrose.com
+ * https://robertoprevato.github.io
  *
  * Licensed under the MIT license:
- * https://www.opensource.org/licenses/MIT
+ * http://www.opensource.org/licenses/MIT
  */
-(function(global, factory) {
-  if (typeof module === "object" && typeof module.exports === "object") {
-    module.exports = factory();
+;(function(factory) {
+  if (typeof module !== "undefined" && module.exports) {
+    // Node/CommonJS
+    module.exports = factory(this);
+  } else if (typeof define === "function" && define.amd) {
+    // AMD
+    var global=this;
+    define("r", function(){ return factory(global);});
   } else {
-    factory();
+    // Browser globals
+    this.R = factory(this);
   }
-}(typeof window !== "undefined" ? window : this, function() {
+}(function(global) {
   var bag = {}, queue = {}, len = "length", psh = "push";
 
   function indexOf(arr, val) {
@@ -25,7 +31,7 @@
     }
     return -1;
   }
-
+  
   function onDefined(key) {
     var x, resolved = [], res = "resolved";
     for (x in queue) {
@@ -47,8 +53,15 @@
     for (var i = 0, l = resolved[len]; i < l; i++)
       delete queue[resolved[i]];
   }
-
-  this.R = function (key, deps, fn) {
+  
+  function logwait(name) {
+    var c = console;
+    c.log("R.js: waiting for", name);
+    var trace = "trace";
+    if (c[trace]) c[trace]();
+  }
+  
+  var R = function (key, deps, fn) {
     var a = arguments, al = a[len], und = undefined;
     if (!al) return R;
     if (al == 1) {
@@ -75,7 +88,7 @@
     if (!d) return null;
     for (var i = 0, l = d[len]; i < l; i++)
       if (d[i] === und)
-        waitingfor[psh](deps[i]), R.debug ? console.log("R.js: waiting for", deps[i]) : 0;
+        waitingfor[psh](deps[i]), R.debug ? logwait(deps[i]) : 0;
 
     if (waitingfor[len]) {
       queue[key] = [waitingfor, deps, fn];
