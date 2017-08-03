@@ -13,16 +13,14 @@ The application consists of following elements:
 5. [Application Insights](https://azure.microsoft.com/en-us/services/application-insights) to collect application telemetries
 6. Integration with [Azure Active Directory (AAD)](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis)
 
-As part of our automated deployments, most of these resources are provisioned using [Azure Resource Manager (ARM) templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates).
-
-I thought to share my experience with Azure Search, since a few things made me scratch my head for a while.
+As part of our automated deployments, most of these resources are provisioned using [Azure Resource Manager (ARM) templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates). I decided to share my experience with Azure Search, since a few things made me scratch my head.
 
 ## Basics of Azure Search
 To use an Azure Search service, three kinds of components can be configured:
 
 * **Index**: holds the configuration of which properties must be indexed, how they must be indexed, scoring profiles, allowed origins for [HTTP access control (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS), and keeps indexed entries. It can be used alone, if populated programmatically.
 * **Data Source**: the source of data that needs to be indexed. For example, it can be a SQL table, a Table Storage, a Blob Storage.
-* **Indexer**: is what creates index entries, reading from a data source. It is associated with a single data source and a single index, and holds configuration of failure handling, scheduling, fields mapping and eventual transformations from source data to indexed values (an example is described below). 
+* **Indexer**: creates index entries, reading from a data source. It is associated with a single data source and a single index, and holds configuration of failure handling, scheduling, fields mapping and eventual transformations from source data to indexed values (an example is described below). 
 
 In our setup, an index is populated by an indexer, which reads from the Blob storage, indexing files metadata and contents, like described in this article: [https://docs.microsoft.com/en-us/azure/search/search-howto-indexing-azure-blob-storage](https://docs.microsoft.com/en-us/azure/search/search-howto-indexing-azure-blob-storage).
 
@@ -30,8 +28,7 @@ Azure Search is a great service, but here I focus mainly on the things I didn't 
 
 ### Limited ARM support
 Azure Search Indexer, Index and Data Source cannot be configured using ARM templates.
-Only Azure Search service itself can be configured in ARM templates, as such, required components need to be configured using the Azure Search REST api. Stating the obvious, had it been possible though ARM templates, it would have taken a much smaller amount of time - but that's how it is.
-As things stand at present, only the smallest part of Azure Search configuration can be handled through ARM templates. For continuous delivery and automated deployments, I wrote PowerShell scripts to do web requests to the REST api.
+Only Azure Search service itself can be configured in ARM templates, required components need to be configured using the Azure Search REST api. Stating the obvious, had it been possible though ARM templates, it would have taken a much smaller amount of time - but that's how it is. As things stand at present, only the smallest part of Azure Search configuration can be handled through ARM templates. For continuous delivery and automated deployments, I wrote PowerShell scripts to do web requests to the REST api.
 
 Useful links:
 * [Azure Search With Powershell, by Rasmus Tolstrup Christensen](http://rasmustc.com/blog/Azure-Search-With-Powershell/)
@@ -40,9 +37,9 @@ Useful links:
 * [Create indexer](https://docs.microsoft.com/en-us/rest/api/searchservice/create-indexer)
 
 ### Another small disappointment about ARM support...
-In our solution, the Azure Search index is queried through GET requests directly from clients: CORS have been configured to allow requests from specific HTTP origins. In this kind of setup, a so called Query Key is used to authorize the use of search service from clients. Azure Search Query Key is stored in web application configuration and served to clients, so they can make direct web requests to Search Service. When provisioned, a new Azure Search Service comes with two administrative keys and a single query key. Also in this case, ARM templates don't help, since Query Keys cannot be returned as output parameters; while it is possible to return administrative keys.
+In our solution, the Azure Search index is queried through GET requests directly from clients: CORS have been configured to allow requests from web applications. In this kind of setup, a so called [_query key_](https://docs.microsoft.com/en-us/azure/search/search-query-rest-api) is used to authorize the use of search service from clients. Azure Search query key is stored in web application configuration and served to clients, so they can make direct web requests to search service. When provisioned, a new Azure Search service comes with two administrative keys and a single query key. Also in this case, ARM templates don't help, since query keys cannot be returned as output parameters; while it is possible to return administrative keys.
 
-Since Azure Search Query Key cannot be returned as output parameter of ARM template, a solution is to use the _Microsoft.Search/searchServices/createQueryKey_ command through PowerShell to generate a query key, then put it in the application configuration.
+A solution for automated deployments is to use the _Microsoft.Search/searchServices/createQueryKey_ command through PowerShell to generate a query key, then put it in the application configuration.
 
 ```ps
   $queryKey = (Invoke-AzureRmResourceAction `
