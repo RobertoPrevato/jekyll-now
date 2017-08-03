@@ -28,7 +28,7 @@ Azure Search is a great service, but here I focus mainly on the things I didn't 
 
 ### Limited ARM support
 Azure Search Indexer, Index and Data Source cannot be configured using ARM templates.
-Only Azure Search service itself can be configured in ARM templates, required components need to be configured using the Azure Search REST api. Stating the obvious, had it been possible though ARM templates, it would have taken a much smaller amount of time - but that's how it is. As things stand at present, only the smallest part of Azure Search configuration can be handled through ARM templates. For continuous delivery and automated deployments, I wrote PowerShell scripts to do web requests to the REST api.
+Only Azure Search service itself can be configured in ARM templates, its required components need to be configured using the Azure Search REST api. Stating the obvious, had it been possible though ARM templates, it would have taken a much smaller amount of time, but that's how it is. As things stand at present, only the smallest part of Azure Search configuration can be handled through ARM templates. For continuous delivery and automated deployments, I had to write PowerShell scripts to do web requests to the REST api.
 
 Useful links:
 * [Azure Search With Powershell, by Rasmus Tolstrup Christensen](http://rasmustc.com/blog/Azure-Search-With-Powershell/)
@@ -37,11 +37,12 @@ Useful links:
 * [Create indexer](https://docs.microsoft.com/en-us/rest/api/searchservice/create-indexer)
 
 ### Another small disappointment about ARM support...
-In our solution, the Azure Search index is queried through GET requests directly from clients: CORS have been configured to allow requests from web applications. In this kind of setup, a so called [_query key_](https://docs.microsoft.com/en-us/azure/search/search-query-rest-api) is used to authorize the use of search service from clients. Azure Search query key is stored in web application configuration and served to clients, so they can make direct web requests to search service. When provisioned, a new Azure Search service comes with two administrative keys and a single query key. Also in this case, ARM templates don't help, since query keys cannot be returned as output parameters; while it is possible to return administrative keys.
+In our solution, the Azure Search index is queried through GET requests directly from clients: CORS have been configured to allow requests from web applications. In this kind of setup, a so called [_query key_](https://docs.microsoft.com/en-us/azure/search/search-query-rest-api) is used to authorize the use of search service from clients. In other words, this query key is stored in web application configuration and served to clients, so they can make direct web requests to search service api. When a new Azure Search service is provisioned, it comes with two administrative keys and a single query key. Also in this case, ARM templates don't help, since query keys cannot be returned as output parameters; while it is possible to return administrative keys.
 
-A solution for automated deployments is to use the _Microsoft.Search/searchServices/createQueryKey_ command through PowerShell to generate a query key, then put it in the application configuration.
+A solution for automated deployments is to use the _Microsoft.Search/searchServices/createQueryKey_ command through PowerShell to generate a query key (or obtain one generated previously), then put it in the application configuration.
 
 ```ps
+  # Creating a query key in PowerShell:
   $queryKey = (Invoke-AzureRmResourceAction `
     -ResourceType "Microsoft.Search/searchServices/createQueryKey" `
     -ResourceGroupName $resourceGroupName `
@@ -59,7 +60,7 @@ As a side note, and to point out the asymmetry, an Azure Search administrative k
 ```
 
 ### Non-standard handling of Base64 URL encoded strings
-When indexing files metadata in Blob storage, and desiring to support non-ASCII characters (who doesn't!?), it's necessary to use URL safe Base64 encoded strings, and configure the indexer fields mappings to use “base64decode” function, like described here:
+When indexing files metadata in Blob storage, and desiring to support non-ASCII characters (_who doesn't!?_), it's necessary to use URL safe Base64 encoded strings, and configure the indexer fields mappings to use “base64decode” function, like described here:
 * [https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.search.models.fieldmappingfunction.base64decode?view=azuresearch-3.0.4](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.search.models.fieldmappingfunction.base64decode?view=azuresearch-3.0.4)
 * [https://docs.microsoft.com/en-us/azure/search/search-indexer-field-mappings](https://docs.microsoft.com/en-us/azure/search/search-indexer-field-mappings)
 
