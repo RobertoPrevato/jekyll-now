@@ -28,7 +28,7 @@ Azure Search is a great service, but here I focus mainly on the things I didn't 
 
 ### Limited ARM support
 Azure Search Indexer, Index and Data Source cannot be configured using ARM templates.
-Only Azure Search service itself can be configured in ARM templates, its required components need to be configured using the Azure Search REST api. Stating the obvious, had it been possible though ARM templates, it would have taken a much smaller amount of time, but that's how it is. As things stand at present, only the smallest part of Azure Search configuration can be handled through ARM templates. For continuous delivery and automated deployments, I had to write PowerShell scripts to do web requests to the REST api.
+Only Azure Search service itself can be configured in ARM templates, its required components need to be configured using the Azure Search REST api. Stating the obvious, had it been possible though ARM templates, it would have taken a much smaller amount of time, but that's how it is. As things stand at present, only the smallest part of Azure Search configuration can be handled through ARM templates. For continuous delivery and automated deployments, I wrote PowerShell scripts to do web requests to the REST api.
 
 Useful links:
 * [Azure Search With Powershell, by Rasmus Tolstrup Christensen](http://rasmustc.com/blog/Azure-Search-With-Powershell/)
