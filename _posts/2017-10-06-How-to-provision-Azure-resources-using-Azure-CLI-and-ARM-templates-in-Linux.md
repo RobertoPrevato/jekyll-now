@@ -57,10 +57,12 @@ Legal docs and information: aka.ms/AzureCliLegal
 
 Thanks to Python virtual environments, is extremely simple to install several versions of Azure CLI, if needed.
 
-> Note: the same commands in Windows would be:
-> ##### py -3 -m venv env
-> ##### .\env\Scripts\activate.bat
-> ##### _same pip command to install azure-cli_
+_The same commands in Windows would be:_
+```
+py -3 -m venv env
+.\env\Scripts\activate.bat
+_same pip command to install azure-cli_
+```
 ----
 
 ## Accessing your account
