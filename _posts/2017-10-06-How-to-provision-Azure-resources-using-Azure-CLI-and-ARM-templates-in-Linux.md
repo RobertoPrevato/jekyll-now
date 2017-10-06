@@ -238,5 +238,5 @@ Thanks to my colleagues Marek Grabarz ([https://marekgrabarz.pl](https://marekgr
 
 ### Useful links
 * [About virtual environments in Python](https://docs.python.org/3/library/venv.html)
-* [`az group deployment commands`](https://docs.microsoft.com/en-us/cli/azure/group/deployment?view=azure-cli-latest)
+* [az group deployment commands](https://docs.microsoft.com/en-us/cli/azure/group/deployment?view=azure-cli-latest)
 
