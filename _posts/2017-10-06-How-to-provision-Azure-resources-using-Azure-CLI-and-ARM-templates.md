@@ -1,9 +1,9 @@
 ---
 layout: post
-title: How to provision Azure resources using Azure CLI 2.0 and ARM templates, in Linux
+title: How to provision Azure resources using Azure CLI 2.0 and ARM templates
 ---
 
-This post describes how to deploy services in [Azure](https://azure.microsoft.com/en-us/), using [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) and [Azure Resource Manager (ARM) templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates), in Linux. The same concepts apply for Windows, but with different commands to install Azure CLI, described anyway below.
+This post describes how to deploy services in [Azure](https://azure.microsoft.com/en-us/), using [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) and [Azure Resource Manager (ARM) templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates).
 
 It requires basic knowledge of Linux and an Azure account. If you don't have an Azure account, Microsoft offers a free 30-day trial period to all new account holders. It's sufficient to go to [https://azure.microsoft.com/en-us/free/](https://azure.microsoft.com/en-us/free/) and click the green "Start free" button. There are several guides on the internet on how to create a trial account for Azure, so I am not going to cover this topic.
 
