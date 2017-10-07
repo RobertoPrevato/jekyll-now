@@ -161,7 +161,7 @@ autorestart=true
 
 This configuration file simply executes the bash script, and it will be placed in a folder read by supervisord process.
 
-### 2. Open the Dockerfile, to start editing it. 
+### 2. Preparing the Dockerfile
 We want to start from an official Docker image for PyPy 3, so we navigate to Docker hub and search the name of such image. There we can see there are such images: `pypy:3-5.8`.
 
 ![Official Docker PyPy image](https://robertoprevato.github.io/images/posts/pypydocker/docker-hub-pypy.png)
@@ -219,8 +219,9 @@ CMD ["supervisord", "-n"]
 
 Just copy-paste the .dockerfile I provided in the GitHub repository.
 
-### 4. Build the image, assigning it desired name:
+### 4. Building the image:
 
+To build the image, with name "pypydemo" and tag "0.1":
 ```bash
 docker build -t pypydemo:0.1 .
 ```
@@ -232,7 +233,7 @@ Successfully built a4d8ce0ac2a5
 Successfully tagged pypydemo:0.1
 ```
 
-### 5. Run the container
+### 5. Running the container
 Try to run the container, mapping a host port to destination port:
 
 ```bash
