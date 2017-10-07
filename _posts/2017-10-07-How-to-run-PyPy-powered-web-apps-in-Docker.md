@@ -63,7 +63,7 @@ pip freeze > requirements.txt
 ```
 The `requirements.txt` file will be used to restore dependencies, when generating the Docker image.
 
-Note: make sure that requirements.txt file doesn't contain a line with this value: 'pkg-resources==0.0.0'; in such case remove this line. This is annoying problem that I have on my computer (it may be caused by some package I installed globally)
+Note: make sure that requirements.txt file doesn't contain a line with this value: 'pkg-resources==0.0.0'; in such case remove this line. This is an annoying problem that I have on my computer (maybe just caused by some package I installed globally)
 
 ### 4. Create a server.py
 Navigate to src folder and create a `server.py` file, which contains code to run a Flask application.

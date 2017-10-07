@@ -83,10 +83,6 @@ I found this problem because of common scenarios:
 In both cases, I needed to write wrapper functions that return non-standard strings.
 This last thing made me waste half day of work, hopefully I will help somebody to save time with this post.
 
-### Following soon...
-
-In my next blog post I will speak about how I bulk-uploaded test data inside development environments, using [Python Azure Storage library](https://github.com/Azure/azure-storage-python); and how to bulk-upload files to Blob storage using the new [asyncio framework](https://docs.python.org/3/library/asyncio.html) of Python 3.4 >.
-
 Cheers!
 
 ------
