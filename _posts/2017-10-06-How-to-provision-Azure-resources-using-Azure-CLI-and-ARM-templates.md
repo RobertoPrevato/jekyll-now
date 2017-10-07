@@ -3,9 +3,9 @@ layout: post
 title: How to provision Azure resources using Azure CLI 2.0 and ARM templates
 ---
 
-This post describes how to deploy services in [Azure](https://azure.microsoft.com/en-us/), using [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) and [Azure Resource Manager (ARM) templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates).
+This post describes how to deploy services in [Azure](https://azure.microsoft.com/en-us/), using [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) and [Azure Resource Manager (ARM) templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates). I am using Linux, but the same concepts apply to Windows and work there as well.
 
-It requires basic knowledge of Linux and an Azure account. If you don't have an Azure account, Microsoft offers a free 30-day trial period to all new account holders. It's sufficient to go to [https://azure.microsoft.com/en-us/free/](https://azure.microsoft.com/en-us/free/) and click the green "Start free" button. There are several guides on the internet on how to create a trial account for Azure, so I am not going to cover this topic.
+Practicing with the things described here requires an Azure account. If you don't have one, Microsoft offers a free 30-day trial period to all new account holders. It's sufficient to go to [https://azure.microsoft.com/en-us/free/](https://azure.microsoft.com/en-us/free/) and click the green "Start free" button. There are several guides on the internet on how to create a trial account for Azure, so I am not going to cover this topic.
 
 Those who know Azure may wonder, why I a decided to write a post about something that is already documented in so many places. The first reason, is because I think the official [MSDN documentation](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) doesn't explain the simplest way to install the Azure CLI; which is also the most comfortable to install several versions of the application at the same time. The second reason is that I want to write other blog posts that require this kind of knowledge, and I want to give context for readers.
 
