@@ -234,7 +234,7 @@ The last beautiful thing I am going to mention here, is this: deployments are "i
 I am going to refer to these things in my following blog posts, without feeling guilty for "giving for granted" things that are not obvious.
 
 ### Thanks
-Thanks to my colleagues Marek Grabarz ([https://marekgrabarz.pl](https://marekgrabarz.pl)), and Janusz N., for teaching me so many things about Azure and ARM! My only touch here is to use Python, Azure CLI and Linux in my private time.
+Thanks to my colleagues [Marek Grabarz](https://www.linkedin.com/in/grabarz/) ([https://marekgrabarz.pl](https://marekgrabarz.pl)), and [Janusz Nowak](https://www.linkedin.com/in/janono/), for teaching me so many things about Azure and ARM! My only touch here is to use Python, Azure CLI and Linux in my private time.
 
 ### Useful links
 * [About virtual environments in Python](https://docs.python.org/3/library/venv.html)
