@@ -14,7 +14,7 @@ Azure CLI 2.0 is implemented in Python and can be easily installed using its pac
 
 The [GitHub repository of Azure CLI](https://github.com/Azure/azure-cli) describes this, at the voice ['edge builds'](https://github.com/Azure/azure-cli#edge-builds), but in a way that is only understandable for Python programmers. However, you don't really need to know Python, to follow along.
 
-Assuming that you have Python 3 installed and [you can install it otherwise](https://www.python.org/downloads/), installing Azure CLI requires three simple commands:
+Assuming that you have Python 3, installing Azure CLI requires three simple commands:
 
 #### 1. Create a Python virtual environment:
 ```bash
