@@ -8,11 +8,12 @@ This post describes how to create an image for a [Docker](https://www.docker.com
 Given the choice of technology, this post is mainly targeting Pythonistas; however the same information apply to any kind of technology stack. The main topic is how to prepare a Docker image.
 
 I published the source code of this tutorial in GitHub: [https://github.com/RobertoPrevato/PyDocker](https://github.com/RobertoPrevato/PyDocker).
+Those who don't want to repeat the process by themselves, may simply clone this repository and follow along.
 
 ### For those who don't know PyPy
-During my job, in the last years, I often heard saying that Python is a "slow performing language", speaking about code execution speed. This is not a correct sentence. Why? Because Python is a _language specification_, not a concrete implementation. It's like saying that the blueprints of a car are slow.
+In the last years, I often heard saying that Python is a "slow performing language", speaking about code execution speed. This is not a correct sentence. Why? Because Python is a _language specification_, not a concrete implementation. It's like saying that the blueprints of a car are slow.
 
-Someone may argue that blueprints may impact on the speed of ending product (like a car having a non-aerodynamic shape by design), but I am pretty sure that [any object can become fast with the right engine underneath](https://www.youtube.com/watch?v=qJHhZ1eFv9E). At least, enough to not be called "slow". As a side note, Instagram recently announced to have 800 millions of users a month, and it's running in Python.
+Someone may argue that blueprints may impact on the speed of ending product (like a car having a non-aerodynamic shape by design), but I am pretty sure that [any object may become fast, with the right engine underneath](https://www.youtube.com/watch?v=qJHhZ1eFv9E). At least, enough to not be called "slow". As a side note, Instagram recently announced to have 800 millions of users a month, and it's running in Python.
 
 In fact, there are [many concrete implementations of Python](https://wiki.python.org/moin/PythonImplementations) programming language, just to mention a few:
 * [CPython](https://www.python.org/downloads/), which is the main implementation, driven by Python author
@@ -20,7 +21,7 @@ In fact, there are [many concrete implementations of Python](https://wiki.python
 * [Jython](https://wiki.python.org/moin/Jython), a Python interpreter implemented in Java that can be integrated into existing Java applications
 * [PyPy](https://pypy.org/download.html), a _fast_ implementation using a Just-in-Time compiler.
 
-So, PyPy is a fast alternative to CPython, compatible with most of source code that run with CPython. Therefore, there are two code lines: one compatible with CPython 2 and one for CPython 3. In this post I am describing PyPy 3. Some applications, depending on the nature of their operations, greatly benefit from JIT compilation.
+So, PyPy is a faster alternative to CPython (code-execution-wise), compatible with most of source code that run with CPython. Therefore, there are two code lines: one compatible with CPython 2 and one for CPython 3. In this post I am describing PyPy 3. Some applications, depending on the nature of their operations, greatly benefit from JIT compilation.
 
 ## Creating the application
 
@@ -218,7 +219,7 @@ CMD ["supervisord", "-n"]
 
 Just copy-paste the .dockerfile I provided in the GitHub repository.
 
-Build the image, assigning it desired name:
+### 4. Build the image, assigning it desired name:
 
 ```bash
 docker build -t pypydemo:0.1 .
@@ -231,6 +232,7 @@ Successfully built a4d8ce0ac2a5
 Successfully tagged pypydemo:0.1
 ```
 
+### 5. Run the container
 Try to run the container, mapping a host port to destination port:
 
 ```bash
