@@ -96,7 +96,7 @@ if __name__ == "__main__":
     app.run(host="", port=int(SERVER_PORT))
 ```
 
-Note how this code is utilizing environmental variables to determine things that should be editable when running the future Docker containers. For example, whether the application should run in debug mode or on which port is should listen to.
+Note how this code is utilizing environmental variables to determine things that should be configurable when running the future Docker containers. For example, whether the application should run in debug mode or on which port is should listen to.
 
 Verify that the application is working by running it (optionally in debug mode):
 
