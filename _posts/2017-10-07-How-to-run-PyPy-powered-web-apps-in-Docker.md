@@ -96,7 +96,7 @@ if __name__ == "__main__":
     app.run(host="", port=int(SERVER_PORT))
 ```
 
-Note how this code is utilizing environmental variables to determine things that should be configurable when running the future Docker containers. For example, whether the application should run in debug mode or on which port is should listen to.
+Note how this code is utilizing environmental variables to determine things that should be configurable when running the future Docker containers. For example, whether the application should run in debug mode or on which port it should listen to.
 
 Verify that the application is working by running it (optionally in debug mode):
 
@@ -136,7 +136,7 @@ You should see an output like the following:
 Above parameters instruct Gunicorn to use Gevent with 1001 worker connections, for each of 4 worker processes. For further information on the arguments for Gunicorn, refer to its [official documentation](http://docs.gunicorn.org/en/stable/settings.html).
 
 ### 5. Add script to start the application with Gunicorn
-Add a new file 'runapp.sh' inside the `scripts` folder. This script will be executed when starting the Docker container, and start serving the Flask application using Gunicorn and Gevent. Note how the bash script will use environmental variables, so that parameters can be overridden when running containers and have default values in Dockerfile.
+Add a new file 'runapp.sh' inside the `scripts` folder. This script will be executed when starting the Docker container, and start serving the Flask application using Gunicorn and Gevent. Note how the bash script will use environmental variables, so that parameters can be overridden when running containers and can have default values in Dockerfile.
 
 ```bash
 #!/bin/sh
@@ -228,8 +228,8 @@ docker build -t pypydemo:0.1 .
 
 If everything works, you should see this last lines, in the console:
 ```bash
-Removing intermediate container 6e562621da14
-Successfully built a4d8ce0ac2a5
+Removing intermediate container ************
+Successfully built ************
 Successfully tagged pypydemo:0.1
 ```
 
@@ -239,6 +239,8 @@ Try to run the container, mapping a host port to destination port:
 ```bash
 docker run -p 80:80 pypydemo:0.1
 ```
+
+Kind reminder: if you already have an application listening on port 80 (e.g. Apache, Nginx, or IIS), you need to use another port in the previous command. For example, `-p 44555:80`. 
 
 You should then see this kind of output, after several other lines:
 ```bash
