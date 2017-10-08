@@ -8,7 +8,7 @@ This post describes how to create an image for a [Docker](https://www.docker.com
 Given the choice of technology, this post is mainly targeting Pythonistas; however the same information apply to any kind of technology stack. The main topic is how to prepare a Docker image.
 
 I published the source code of this tutorial in GitHub: [https://github.com/RobertoPrevato/PyDocker](https://github.com/RobertoPrevato/PyDocker).
-Those who don't want to repeat the process by themselves, may simply clone this repository and follow along.
+Those who don't want to repeat the process by themselves, may simply clone this repository and follow along. The same repository contains another template, for an interesting technology stack using Python 3.6.2, [uvloop and httptools](https://magic.io/blog/uvloop-blazing-fast-python-networking/) and will contain other templates in the future.
 
 ### For those who don't know PyPy
 In the last years, I often heard saying that Python is a "slow performing language", speaking about code execution speed. This is not a correct sentence. Why? Because Python is a _language specification_, not a concrete implementation. It's like saying that the blueprints of a car are slow.
@@ -63,7 +63,7 @@ pip freeze > requirements.txt
 ```
 The `requirements.txt` file will be used to restore dependencies, when generating the Docker image.
 
-Note: make sure that requirements.txt file doesn't contain a line with this value: 'pkg-resources==0.0.0'; in such case remove this line. This is an annoying problem that I have on my computer (maybe just caused by some package I installed globally)
+Note: make sure that requirements.txt file doesn't contain a line with this value: 'pkg-resources==0.0.0'; in such case remove this line. This is an annoying problem that I have on my computer (it seems caused by one of the libraries installed above)
 
 ### 4. Create a server.py
 Navigate to src folder and create a `server.py` file, which contains code to run a Flask application.
