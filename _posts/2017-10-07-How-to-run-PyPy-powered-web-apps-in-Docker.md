@@ -170,7 +170,7 @@ The configuration involves:
 * starting from pypy image
 * copy the contents of project's folder
 * install Python dependencies (Flask, Gevent, Gunicorn)
-* expose ports 80 (on which application server will be listening)
+* expose port 80 (on which application server will be listening)
 * install supervisor, copy necessary files
 * set default environmental variables
 * run supervisor at startup
