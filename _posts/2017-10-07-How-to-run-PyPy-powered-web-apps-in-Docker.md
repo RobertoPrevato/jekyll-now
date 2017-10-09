@@ -5,7 +5,7 @@ title: How to run Python PyPy powered web apps in Docker
 
 This post describes how to create an image for a [Docker](https://www.docker.com) virtual machine, hosting a Python web application powered by [PyPy 3](https://pypy.org/features.html), [Gunicorn server](http://gunicorn.org), [Gevent networking library](http://www.gevent.org) and [Flask web framework](http://flask.pocoo.org). I am using Linux, but the same concepts apply to Windows 10, assuming that you have Docker installed on your system.
 
-Given the choice of technology, this post is mainly targeting Pythonistas; however the same information apply to any kind of technology stack. The main topic is how to prepare a Docker image.
+Given the choice of technology, this post is mainly targeting Pythonistas; however the general concepts apply to any kind of technology stack.
 
 I published the source code of this tutorial in GitHub: [https://github.com/RobertoPrevato/PyDocker](https://github.com/RobertoPrevato/PyDocker).
 Those who don't want to repeat the process by themselves, may simply clone this repository and follow along. The same repository contains another template, for an interesting technology stack using Python 3.6.2, [uvloop and httptools](https://magic.io/blog/uvloop-blazing-fast-python-networking/) and will contain other templates in the future.
@@ -255,7 +255,7 @@ If something goes wrong and you need to enter the running container, do the foll
 docker ps
 
 # enter the container inside bash:
-docker enter -it <container_name> /bin/bash
+docker exec -it <container_name> /bin/bash
 ```
 
 And that's all! In my next blog post, I am going to deploy a custom image inside an Azure Application Service Plan, and show how to deploy it using ARM templates.
