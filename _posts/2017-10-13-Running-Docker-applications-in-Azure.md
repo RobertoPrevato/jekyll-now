@@ -107,7 +107,7 @@ And web application settings have a populated Docker container section.
 
 ![Running application](https://robertoprevato.github.io/images/posts/azuredocker/azure-working-web.png)
 
-As a side note, I did several tests using [Apache Benchmark](http://httpd.apache.org/docs/current/programs/ab.html), from Warsaw, Poland to applications running on Standard S1 machines in Western Europe Microsoft data center: both Go web applications using net/http module and Python 3.6.2 uvloop applications give excellent performance, with similar results, with Python uvloop httptools faster than Go net/http setup - but httptools has less features than net/http in Go). PyPy 3 + Gunicorn + Gevent + Flask and Python 3.6.2 Sanic + uvloop gave good results, too, while providing a more dev-friendly technology stack, in my opinion. Discussing this in details is out of the scope of this post.
+As a side note, I did several tests using [Apache Benchmark](http://httpd.apache.org/docs/current/programs/ab.html), from Warsaw, Poland to applications running on Standard S1 machines in Western Europe Microsoft data center: both Go web applications using net/http module and Python 3.6.2 uvloop applications give excellent performance, with similar results, with Python uvloop httptools faster than Go net/http setup - but httptools has less features than net/http in Go. PyPy 3 + Gunicorn + Gevent + Flask and Python 3.6.2 Sanic + uvloop gave good results, too, while providing a more dev-friendly technology stack, in my opinion. Discussing this in details is out of the scope of this post.
 
 ## Accessing the machine from Azure Portal
 
