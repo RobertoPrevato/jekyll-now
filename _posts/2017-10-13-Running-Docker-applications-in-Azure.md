@@ -12,21 +12,23 @@ I will continue the topic, explaining:
 * how to prepare an ARM template to deploy a Docker powered web application in Azure Application Service Plan
 * how to configure Docker containers so they can be accessed through SSH, optionally by application settings
 
-I decided to write this blog post because I couldn't find examples of ARM templates with images pulled from Docker Hub. The only page I [found in MSDN](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image) is useful, as it describes many interesting things, but lacks description of ARM templates configuration and it links to a GitHub repository that doesn't exist. And, of course, I love this topic.
+I decided to write this blog post because I couldn't find examples of ARM templates with images pulled from Docker Hub. Even though the only page I [found in MSDN](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image) is useful, as it describes many interesting things, it lacks description of ARM templates configuration and it links to a GitHub repository that doesn't exist.
+
+---
 
 Like I did for my previous post, I published final code in GitHub, here: [https://github.com/RobertoPrevato/AzureDocker](https://github.com/RobertoPrevato/AzureDocker). For this tutorial, I prepared images and code for three kinds of applications:
-* [Go 1.9.1](https://golang.org) app using [`net/http` module](https://golang.org/pkg/net/http/)
+* [Go 1.9.1](https://golang.org) app using [net/http module](https://golang.org/pkg/net/http/)
 * [CPython 3.6.2](https://www.python.org) app using [asyncio](https://docs.python.org/3/library/asyncio.html), [uvloop](https://magic.io/blog/uvloop-blazing-fast-python-networking/) (libuv) and [httptools](https://github.com/MagicStack/httptools)
 * [PyPy 3](http://pypy.org) app using [Gunicorn](http://gunicorn.org), [Gevent](http://sdiehl.github.io/gevent-tutorial/#greenlets), [Flask](http://flask.pocoo.org)
 
-Any of these images can be deployed, following instructions below.
+Any of these images can be deployed to Azure, following instructions below.
 
 ## Publishing an image to Docker Hub
 Practicing with the things described here requires a Docker account. Creating a Docker account is free and enables creating unlimited public repositories and a single private one, in [Docker Hub](https://hub.docker.com).
 
 ![Docker Hub](https://robertoprevato.github.io/images/posts/azuredocker/docker-hub-account.png)
 
-Assuming that you already have prepared a Dockerfile, or cloned one of my two repositories ([1](https://github.com/RobertoPrevato/PyDocker), [2](https://github.com/RobertoPrevato/AzureDocker)), let's start by building an image. If the image is built with a name that starts with: **<docker_account_name>/**, later it can be pushed directly to Docker Hub; otherwise command `docker tag` is required.
+Assuming that you already have prepared a Dockerfile, or cloned one of my two repositories ([1](https://github.com/RobertoPrevato/PyDocker), [2](https://github.com/RobertoPrevato/AzureDocker)), let's start by building an image from a `Dockerfile`. If the image is built with a name that starts with: **docker_account_name/**, later it can be pushed directly to Docker Hub; otherwise command `docker tag` is required.
 
 In this example, I use tag procedure.
 ```bash
@@ -81,7 +83,7 @@ ARM template configuration for Docker images, require these settings:
 ]
 ```
 
-Working ARM templates can be downloaded from [here](https://github.com/RobertoPrevato/AzureDocker). To deploy, it's necessary to specify a unique name for the application, at user's discretion. Using [Azure CLI](https://robertoprevato.github.io/How-to-provision-Azure-resources-using-Azure-CLI-and-ARM-templates/):
+Working ARM templates can be found [here](https://github.com/RobertoPrevato/AzureDocker). To deploy, it's necessary to specify a unique name for the application, at user's discretion. Using [Azure CLI](https://robertoprevato.github.io/How-to-provision-Azure-resources-using-Azure-CLI-and-ARM-templates/):
 
 ```bash
 export RGNAME=dockertutorial-rg
