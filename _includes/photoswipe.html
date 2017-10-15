@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="styles/photoswipe.css">
-<link rel="stylesheet" href="styles/photoswipe/default-skin.css">
-<script src="scripts/libs/photoswipe.min.js"></script>
-<script src="scripts/libs/photoswipe-ui-default.min.js"></script>
+<link rel="stylesheet" href="/styles/photoswipe.css">
+<link rel="stylesheet" href="/styles/photoswipe/default-skin.css">
+<script src="/scripts/libs/photoswipe.min.js"></script>
+<script src="/scripts/libs/photoswipe-ui-default.min.js"></script>
 
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="pswp__bg"></div>
@@ -58,7 +58,6 @@
     var newImg = new Image();
 
     newImg.onload = function () {
-      console.info(arguments)
       if (callback != undefined)
         callback({src: imgSrc, w: newImg.width, h: newImg.height})
     }
