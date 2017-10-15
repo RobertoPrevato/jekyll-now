@@ -71,7 +71,13 @@
     preload(src, function (o) {
       items.push(o);
       loaded++;
-      if (loaded === l) {
+      if (loaded === images.length) {
+        items.sort(function (a, b) {
+          var ax = getIndex(a.src, images);
+          var bx = getIndex(b.src, images);
+          if (ax > bx) return 1;
+          return -1;
+        });
         galleryReady = 1;
       }
     });
