@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="styles/photoswipe.css">
+<link rel="stylesheet" href="styles/photoswipe/default-skin.css">
+<script src="scripts/libs/photoswipe.min.js"></script>
+<script src="scripts/libs/photoswipe-ui-default.min.js"></script>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div> 
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var pswpElement = document.querySelectorAll(".pswp")[0];
+
+  var images = document.querySelectorAll(".post img");
+  function getIndex(src, images) {
+    for (var i = 0, l = images.length; i < l; i++) {
+      if (images[i].getAttribute("src") == src)
+        return i;
+    }
+    return -1;
+  }
+  // build items array
+  var items = [];
+
+  var loaded = 0, galleryReady = 0;
+
+  function preload(imgSrc, callback) {
+    var newImg = new Image();
+
+    newImg.onload = function () {
+      console.info(arguments)
+      if (callback != undefined)
+        callback({src: imgSrc, w: newImg.width, h: newImg.height})
+    }
+
+    newImg.src = imgSrc;
+  }
+
+  for (var i = 0, l = images.length; i < l; i++) {
+    var img = images[i], src = img.getAttribute("src");
+
+    preload(src, function (o) {
+      items.push(o);
+      loaded++;
+      if (loaded === l) {
+        galleryReady = 1;
+      }
+    });
+  }
+
+  // Initializes and opens PhotoSwipe
+  var evt = ["click", "tap"];
+  
+  function openGallery(index) {
+    var options = {
+      index: index,
+      shareButtons: [
+        {id:'download', label:'Download image', url:'{{raw_image_url}}', download:true}
+      ]
+    };
+    var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+    gallery.init();
+  }
+
+  for (var i = 0, l = evt.length; i < l; i++) {
+    document.querySelector(".post").addEventListener(evt[i], function (e) {
+      var t = e.target;
+      if (t.tagName == "IMG" && galleryReady) {
+        openGallery(getIndex(t.getAttribute("src"), images));
+      }
+    });
+  }
+})();
+</script>
