@@ -51,7 +51,7 @@ docker push accountname/imagename:tag
 This last step requires a Docker account, creating one is free of charge and offers unlimited public repositories and a single private one, in Docker Hub.
 
 ## Deployment using ARM templates
-I decided to write this blog post because I couldn't find examples of ARM templates with images pulled from Docker Hub. [There is a tutorial about using custom Docker images in MSDN](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image), it describes many useful things, but it lacks description of ARM templates configuration and it links to a GitHub repository that doesn't exist.
+I decided to write this blog post because I couldn't find examples of ARM templates with images pulled from Docker Hub. [There is a tutorial about using custom Docker images in MSDN](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image), which explains many useful things, but it lacks description of ARM templates configuration and it links to a GitHub repository that doesn't exist.
 
 ARM template configuration for Docker images, require these settings:
 * the server farm resource must have following property:
@@ -104,7 +104,7 @@ And web application settings have a populated Docker container section.
 
 ![Docker container configuration in web application](https://robertoprevato.github.io/images/posts/azuredocker/azure-docker-container.png)
 
-The first run and restarting the image may take several minutes; in fact so many that you're likely going to doubt it works, like I did a few times in these days. Azure also offers a [Container Registry](https://azure.microsoft.com/en-us/services/container-registry/) service to store private images, that probably offers faster deployments: I am going to try it soon.
+The first run and restarting the application may take several minutes; so many that you're likely going to doubt it works, like I did a few times in these days. Azure offers a [Container Registry](https://azure.microsoft.com/en-us/services/container-registry/) service to store private images, that probably offers faster deployments: I am going to try it soon.
 
 ![Running application](https://robertoprevato.github.io/images/posts/azuredocker/azure-working-web.png)
 
@@ -115,7 +115,7 @@ Using a private Docker repository involves setting these extra application setti
 
 ---
 
-As a side note, I did several tests using [Apache Benchmark](http://httpd.apache.org/docs/current/programs/ab.html), from Warsaw, Poland to applications running on Standard S1 machines in Western Europe Microsoft data center: both Go web applications using net/http module and Python 3.6.2 uvloop + httptools applications give excellent performance, with comparable results and Python app being slightly faster - but httptools has less features than net/http in Go. PyPy 3 + Gunicorn + Gevent + Flask and Python 3.6.2 Sanic + uvloop (not described here) gave good results, too, while providing a more dev-friendly technology stack, in my opinion. Discussing this in details is out of the scope of this post.
+As a side note, I did several tests using [Apache Benchmark](http://httpd.apache.org/docs/current/programs/ab.html), from Warsaw, Poland to applications running on Standard S1 machines in Western Europe Microsoft data center: both Go web applications using net/http module and Python 3.6.2 uvloop + httptools applications give excellent performance. Their results are comparable, with Python app being slightly faster ([in line with Yury Selivanov's findings](https://magic.io/blog/uvloop-blazing-fast-python-networking/)), but httptools has less features than net/http in Go. PyPy 3 + Gunicorn + Gevent + Flask and Python 3.6.2 Sanic + uvloop (not described here) gave good results, too, while providing a more dev-friendly technology stack, in my opinion. Further discussion on this topic is out of the scope of this post.
 
 ## Accessing the machine from Azure Portal
 
