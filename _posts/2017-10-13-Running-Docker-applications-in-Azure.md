@@ -58,6 +58,19 @@ ARM template configuration for Docker images, require these settings:
 ```json
 "kind": "linux"
 ```
+* the server farm resource must include properties:
+```json
+"properties": {
+  "name": "[variables('hostingPlanName')]",
+  "workerTierName": null,
+  "adminSiteName": null,
+  "hostingEnvironmentProfile": null,
+  "perSiteScaling": false,
+  "reserved": true,
+  "targetWorkerCount": 0,
+  "targetWorkerSizeId": 0
+}
+```
 * the web site resource must have this property:
 ```json
 "kind": "app,linux"
