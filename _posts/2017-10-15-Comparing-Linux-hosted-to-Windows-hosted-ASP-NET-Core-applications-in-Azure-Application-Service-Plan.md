@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Comparing Dockerized ASP.NET Core applications to regular applications in Azure Application Service Plan
+title: Comparing Linux hosted to Windows hosted ASP.NET Core applications in Azure Application Service Plan
 picture: https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/aspcoredocker/win-vs-linux-azure-host.png
 ---
 
