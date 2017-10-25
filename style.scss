@@ -685,3 +685,21 @@ code.highlighter-rouge {
 .post img {
   cursor: pointer;
 }
+
+.highlight {
+  margin: 10px 0 0 0;
+  padding: 0;
+  border: none;
+}
+
+table {
+  font-size: 15px;
+  font-family: monospace;
+  th {
+    text-align: left;
+  }
+  th, td {
+    padding: 4px 10px;
+    border: 1px solid #eee;
+  }
+}
