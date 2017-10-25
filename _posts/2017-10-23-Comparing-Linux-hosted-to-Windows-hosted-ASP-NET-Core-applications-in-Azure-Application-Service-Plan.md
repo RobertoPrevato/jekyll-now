@@ -12,7 +12,7 @@ I've been wondering about this lately, so I decided to test it, doing the follow
 * deployed one instance of this application in a [Standard S1](https://azure.microsoft.com/en-us/pricing/details/app-service/) Application Service Plan, using a Windows host in Western Europe data center
 * deployed one instance in a [Standard S1](https://azure.microsoft.com/en-us/pricing/details/app-service/) Application Service Plan, using a Linux host and a Docker container, in Western Europe data center
 * used [Apache Benchmark](https://httpd.apache.org/docs/2.4/programs/ab.html) to generate load from [Warsaw, Poland](https://goo.gl/maps/HV6JXHtubUz), using a Ubuntu 17.04 client connected through Wi-fi
-* repeated tests using [Visual Studio Web Performance Tests](https://msdn.microsoft.com/en-us/library/ms182551(v=vs.110).aspx) tools, generating load from the same location, using a Windows 10 client connected to the internet through cable 
+* repeated tests using [Visual Studio Web Performance Tests](https://msdn.microsoft.com/en-us/library/ms182551(v=vs.110).aspx) tools, generating load from the same location, using a Windows 10 client connected to the internet through cable
 * analyzed output and compared the results
 
 In both cases, the application is built using `dotnet` CLI in Release configuration, hosted using [Kestrel](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel?tabs=aspnetcore2x), behind the proxy server used by Azure service.
@@ -90,8 +90,7 @@ Document Length:        72 bytes
 Concurrency Level:      150
 Time taken for tests:   22.369 seconds
 Complete requests:      5000
-Failed requests:        516
-   (Connect: 0, Receive: 0, Length: 516, Exceptions: 0)
+Failed requests:        0
 Keep-Alive requests:    0
 Total transferred:      1699416 bytes
 HTML transferred:       359416 bytes
@@ -179,6 +178,8 @@ Nevertheless, it's legitimate to compare results with each other, when they are 
 | Windows | 10KB | 333 | 510 |
 | Windows | 100KB | 108 | 1560 |
 
+---
+
 | Scenario | Linux RPS |
 |----------|-----------|
 | Hello World | +65.98% |
@@ -200,7 +201,7 @@ While I can only compare "Hello World" scenario with other technology stacks I t
 | Python 3.6.1 Sanic, uvloop | ~600, with peaks of ~650 |
 | PyPy 3, Gunicorn, Gevent, Flask | ~600, with peaks of ~650 |
 
-This doesn't remove value from performance comparison between Windows hosted and Linux hosted application, as they are using the same configuration.
+This doesn't remove value from performance comparison between Windows hosted and Linux hosted ASP.NET Core application.
 
 ## Conclusions
 Hosting applications using Linux and Docker in Azure Application Service Plan doesn't affect negatively the performance of the application, unlike one may guess, given that Windows hosting is more mature. It is actually beneficial, performance-wise, especially for requests returning responses with small bodies.
