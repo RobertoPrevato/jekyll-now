@@ -9,9 +9,7 @@ In my [previous post](https://robertoprevato.github.io/Comparing-Linux-hosted-to
 I tested again using a more repeatable and trustworthy approach: I generated web load using [Azure Cloud Agents; with Visual Studio and VSTS](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing), in the cloud. Moreover, *all* previous tests were executed using HTTP, new tests use HTTPS.
 
 ## Running the tests in the cloud!
-Thanks to the amazing job done by Microsoft, [running performance tests in the cloud is really easy](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing). This is done using Visual Studio Web Performance tools and a VSTS account.
-
-Two series of load tests were executed for each of the following scenarios:
+Thanks to the amazing job done by Microsoft, [running performance tests in the cloud is really easy](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing). This is done using Visual Studio Web Performance tools and a VSTS account. Two series of load tests were executed for each of the following scenarios:
 * "Hello, World" message with timestamp
 * response with body of 1Kb
 * response with body of 10Kb
@@ -36,7 +34,7 @@ I used the same tests prepared for the previous blog post and published here: [h
 ![Drum rolling](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/aspcoredocker/drum-roll.gif)
 
 ## Analyzing results
-Results are consistent with those obtained generating load from a computer connected through wire to the internet: the same ASP.NET Core application deployed in Linux and Docker is much faster than one deployed in Windows host (inside an Application Service Plan). These new tests show an even stronger dominance of the application hosted in Linux, especially when serving response with bigger bodies.
+Results are consistent with those obtained generating load from a computer connected through wire to the internet: the same ASP.NET Core application deployed in Linux and Docker is much faster than one deployed in Windows host (both inside Application Service Plan). These new tests show an even stronger dominance of the application hosted in Linux, especially when serving responses with bigger bodies.
 
 #### Requests per second
 
