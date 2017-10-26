@@ -205,3 +205,6 @@ This doesn't remove value from performance comparison between Windows hosted and
 
 ## Conclusions
 Hosting applications using Linux and Docker in Azure Application Service Plan doesn't affect negatively the performance of the application, unlike one may guess, given that Windows hosting is more mature. It is actually beneficial, performance-wise, especially for requests returning responses with small bodies.
+
+## Update
+In my following post, I repeated the tests in the cloud, using [Azure Cloud Agents; with Visual Studio and VSTS](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing).
