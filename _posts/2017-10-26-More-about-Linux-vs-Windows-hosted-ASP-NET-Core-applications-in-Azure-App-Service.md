@@ -6,10 +6,10 @@ picture: https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.
 
 In my [previous post](https://robertoprevato.github.io/Comparing-Linux-hosted-to-Windows-hosted-ASP-NET-Core-applications-in-Azure-Application-Service-Plan/) I wrote about performance comparison of [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/) applications hosted in Windows vs Linux + Docker, inside [Azure Application Service Plans](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview). Since this topic is interesting for many, I decided to write more about it. 
 
-I did further tests, using a more repeatable and trustworthy approach: previously I executed tests from my private computers, at home; I repeated tests generating load using [Azure Cloud Agents; with Visual Studio and VSTS](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing), in the cloud. Moreover, *all* previous tests were executed using HTTP, new tests use HTTPS.
+I tested again using a more repeatable and trustworthy approach: I generated web load using [Azure Cloud Agents; with Visual Studio and VSTS](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing), in the cloud. Moreover, *all* previous tests were executed using HTTP, new tests use HTTPS.
 
 ## Running the tests in the cloud!
-Thanks to the amazing job done by Microsoft, [running performance tests in the cloud from different location of the World is really easy](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing). This is done using Visual Studio Web Performance tools and a VSTS account.
+Thanks to the amazing job done by Microsoft, [running performance tests in the cloud is really easy](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing). This is done using Visual Studio Web Performance tools and a VSTS account.
 
 Two series of load tests were executed for each of the following scenarios:
 * "Hello, World" message with timestamp
@@ -39,8 +39,9 @@ I used the same tests prepared for the previous blog post and published here: [h
 Results are consistent with those obtained generating load from a computer connected through wire to the internet: the same ASP.NET Core application deployed in Linux and Docker inside an Application Service Plan, is much faster than an instance deployed in Windows host. These new tests show an even stronger dominance of the application hosted in Linux, especially when serving response with bigger bodies.
 
 #### Requests per second
+
 | Scenario | Linux | Windows | Linux +% |
-|---------|-------|--------|-------|
+|----------|-------|---------|-------|
 | Hello World | 646.6 | 432.85 | +49.38% |
 | 1KB | 623.05 | 431.95 | +44.24% |
 | 10KB | 573.6 | 361.9 | +58.5% |
@@ -50,6 +51,7 @@ Results are consistent with those obtained generating load from a computer conne
 ---
 
 #### Average response time (ms)
+
 | Scenario | Linux | Windows | Linux -% |
 |---------|-------|--------|-------|
 | Hello World | 168.85 | 242.2 | -30.28% |
