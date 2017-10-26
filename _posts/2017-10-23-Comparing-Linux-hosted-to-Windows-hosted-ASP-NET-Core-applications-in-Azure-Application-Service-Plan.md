@@ -123,7 +123,7 @@ Finally, I aggregated results using a Python script and obtained average results
 
 ## Analyzing AB output
 
-About 250K successful requests were submitted for _Hello World_, _1KB_ scenarios, while between 110K and 70K for _10KB_ and _100KB_ scenarios. Numbers are not exact because sometimes the Azure infrastructure closes the connection ("connection reset by peer"), but number of analyzed requests is high anyway. **Do not pay** particular attention to absolute values below: they make sense relatively to each other, since they depend on the client as well as on the server.
+About 250K successful requests were submitted for _Hello World_, _1KB_ scenarios, while between 110K and 70K for _10KB_ and _100KB_ scenarios. Numbers are not exact because sometimes the Azure infrastructure closes the connection ("connection reset by peer"), but number of analyzed requests is high anyway. **Do not pay** particular attention to absolute values below: they make sense relatively to each other, since they depend on the client as well as on the server. Results below are obtained using a wi-fi connection.
 
 | Host | Scenario | RPS (mean) | 95% within ms |
 |--------|-------|--------|-------|
