@@ -63,6 +63,10 @@ Results are consistent with those obtained generating load from a computer conne
 
 ![VSTS Tests Averate Response Time](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/aspcoredocker/vsts-cloud-tests-avg-response-time.png)
 
+Results can be downloaded from GitHub:
+* [Linux-vs-Windows-benchmark.xlsx](https://github.com/RobertoPrevato/robertoprevato.github.io/raw/master/documents/aspcoredocker/Linux-vs-Windows-benchmark.xlsx)
+* [Linux-vs-Windows-benchmark.ods](https://github.com/RobertoPrevato/robertoprevato.github.io/raw/master/documents/aspcoredocker/Linux-vs-Windows-benchmark.ods)
+
 ## Where Linux host performed worse (is it?)
 Almost all load tests on Linux host caused the surpassing of thresholds for [Processor: %Processor Time](https://technet.microsoft.com/en-us/library/bb734903.aspx), while none of tests run on Windows host produced the same kind of warning. I am not quite sure to understand the documentation when it describes this performance counter, included by default in all new load tests created using Visual Studio. If any reader may help me commenting below, I will be glad to know.
 
