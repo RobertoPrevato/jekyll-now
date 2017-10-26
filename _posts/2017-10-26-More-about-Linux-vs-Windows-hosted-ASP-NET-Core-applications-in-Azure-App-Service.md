@@ -36,7 +36,7 @@ I used the same tests prepared for the previous blog post and published here: [h
 ![Drum rolling](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/aspcoredocker/drum-roll.gif)
 
 ## Analyzing results
-Results are consistent with those obtained generating load from a computer connected through wire to the internet: the same ASP.NET Core application deployed in Linux and Docker inside an Application Service Plan, is much faster than an instance deployed in Windows host. These new tests show an even stronger dominance of the application hosted in Linux, especially when serving response with bigger bodies.
+Results are consistent with those obtained generating load from a computer connected through wire to the internet: the same ASP.NET Core application deployed in Linux and Docker is much faster than one deployed in Windows host (inside an Application Service Plan). These new tests show an even stronger dominance of the application hosted in Linux, especially when serving response with bigger bodies.
 
 #### Requests per second
 
