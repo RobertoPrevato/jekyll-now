@@ -71,7 +71,7 @@ Results can be downloaded from GitHub:
 Almost all load tests on Linux host caused the surpassing of thresholds for [Processor: %Processor Time](https://technet.microsoft.com/en-us/library/bb734903.aspx), while none of tests run on Windows host produced the same kind of warning. I am not quite sure to understand the documentation when it describes this performance counter, included by default in all new load tests created using Visual Studio. If any reader may help me commenting below, I will be glad to know.
 
 ## Weird graphs for Windows performance and throughput
-I noticed a weird pattern when observing performance and throughput graphs of load tests, in VSTS. While graphs for Linux run show graceful lines, Windows graphs show lines that look like saws teeths. Observe, for example, two runs for the 10Kb scenario:
+I noticed a weird pattern when observing performance and throughput graphs of load tests, in VSTS. While graphs for Linux run show graceful lines, Windows graphs show lines that look like saws teeth. Observe, for example, two runs for the 10Kb scenario:
 
 ![Linux 10Kb Graphs](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/aspcoredocker/linux-10kb-graphs.png)
 _Linux 10Kb scenario graphs_
