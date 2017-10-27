@@ -6,7 +6,7 @@ picture: https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.
 
 In my [previous post](https://robertoprevato.github.io/Comparing-Linux-hosted-to-Windows-hosted-ASP-NET-Core-applications-in-Azure-Application-Service-Plan/) I wrote about performance comparison of [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/) applications hosted in Windows vs Linux + Docker, inside [Azure Application Service Plans](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview). Since this topic is interesting for many, I decided to write more about it. 
 
-I tested again using a more repeatable and trustworthy approach: I generated web load using [Azure Cloud Agents; with Visual Studio and VSTS](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing), in the cloud. Moreover, *all* previous tests were executed using HTTP, new tests use HTTPS.
+I tested again using a more repeatable and trustworthy approach: generating web load using [Azure Cloud Agents; with Visual Studio and VSTS](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing), in the cloud. Moreover, *all* previous tests were executed using HTTP, new tests use HTTPS.
 
 ## Running the tests in the cloud!
 Thanks to the amazing job done by Microsoft, [running performance tests in the cloud is really easy](https://docs.microsoft.com/en-us/vsts/load-test/getting-started-with-performance-testing). This is done using Visual Studio Web Performance tools and a VSTS account. Two series of load tests were executed for each of the following scenarios:
@@ -84,8 +84,8 @@ More graph pictures can be found here: [https://github.com/RobertoPrevato/robert
 * [Linux 50Kb graphs](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/aspcoredocker/linux-50kb-graphs.png)
 * [Windows 50Kb graphs](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/aspcoredocker/windows-50kb-graphs.png)
 
-## Conclusion
-At the light of [my previous tests](https://robertoprevato.github.io/Comparing-Linux-hosted-to-Windows-hosted-ASP-NET-Core-applications-in-Azure-Application-Service-Plan/) and the load tests described here, hosting applications using Linux and Docker in Azure Application Service Plan is a good choice, under performance point of view. 
+## Conclusions
+At the light of [my previous tests](https://robertoprevato.github.io/Comparing-Linux-hosted-to-Windows-hosted-ASP-NET-Core-applications-in-Azure-Application-Service-Plan/) and the load tests described here, hosting applications using Linux and Docker in Azure Application Service Plan is a good choice, under performance point of view.
 
 ## Final note
 I have no interest in making Linux look better than Windows - I published all [source code of my tests and instructions](https://robertoprevato.github.io/Comparing-Linux-hosted-to-Windows-hosted-ASP-NET-Core-applications-in-Azure-Application-Service-Plan/) on how to recreate the environments, if anybody suspects I tweaked the results or done anything wrong, she's welcome to repeat them and demonstrate my mistake. It would be good if somebody did a peer review of what I did.
