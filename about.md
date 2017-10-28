@@ -27,12 +27,9 @@ I spend most of my free time reading (usually novels and philosophy books), ridi
 I am fond of board games and used to play Dungeons&Dragons a lot (unfortunately I don't have time for it anymore), and I used to be a passionate videogames player.
 
 ### Contacts
-
-<ul>
-  <li>Email [roberto.prevato@gmail.com](mailto:roberto.prevato@gmail.com)</li>
-  <li>Twitter [https://twitter.com/RobertoPrevato](https://twitter.com/RobertoPrevato)</li>
-  <li>GitHub [https://github.com/RobertoPrevato](https://github.com/RobertoPrevato)</li>
-  <li>LinkedIn [https://pl.linkedin.com/in/roberto-prevato-a186a650](https://pl.linkedin.com/in/roberto-prevato-a186a650)</li>
-</ul>
+* Email [roberto.prevato@gmail.com](mailto:roberto.prevato@gmail.com)
+* Twitter [https://twitter.com/RobertoPrevato](https://twitter.com/RobertoPrevato)
+* GitHub [https://github.com/RobertoPrevato](https://github.com/RobertoPrevato)
+* LinkedIn [https://pl.linkedin.com/in/roberto-prevato-a186a650](https://pl.linkedin.com/in/roberto-prevato-a186a650)
 
 
