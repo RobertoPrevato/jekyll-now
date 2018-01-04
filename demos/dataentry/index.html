@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!--
 /**
- * React project template 1.0.0
+ * React with DataEntry demo and project template 1.0.0
  * 
- * Copyright 2017, Roberto Prevato
- * https://github.com/RobertoPrevato/React-template
+ * Copyright 2018, Roberto Prevato
+ * https://github.com/RobertoPrevato/DataEntry-Vue.js
  * 
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
@@ -33,7 +33,12 @@
       <div class="preloader-icon"></div>
     </div>
   </div>
+  <script src="https://robertoprevato.github.io/demos/kingtable/es6-promise.js"></script>
+  <script>
+  if (typeof Promise == "undefined") {
+    ES6Promise.polyfill();
+  }
+  </script>
   <script src="scripts/root.js"></script>
 </body>
 </html>
-<html>

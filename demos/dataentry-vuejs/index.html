@@ -33,7 +33,12 @@
       <div class="preloader-icon"></div>
     </div>
   </div>
+  <script src="https://robertoprevato.github.io/demos/kingtable/es6-promise.js"></script>
+  <script>
+  if (typeof Promise == "undefined") {
+    ES6Promise.polyfill();
+  }
+  </script>
   <script src="scripts/root.js"></script>
 </body>
 </html>
-<html>
