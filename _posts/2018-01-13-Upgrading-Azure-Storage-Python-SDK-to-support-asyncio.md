@@ -10,9 +10,9 @@ In the last months I had occasion to use [Azure Storage](https://azure.microsoft
 * **Queue Service** - simple, cost-effective messaging system for large volume systems
 * **File Service** - distributed file system
 
-Azure Storage is cost effective and really convenient to store files and tabular data that doesn't require complex queries, even in large quantities.
+Azure Storage is cost effective and really convenient to store files and tabular data that don't require complex queries, even in large quantities.
 
-All these services include [REST APIs](https://docs.microsoft.com/en-us/rest/api/storageservices/azure-storage-services-rest-api-reference) that enable programmatic access and their administration via HTTP/HTTPS. Even though these REST APIs can be used directly, Microsoft distributes several client SDKs to simplify the consumption of these services with some of the most popular programming languages.
+All these services include [REST APIs](https://docs.microsoft.com/en-us/rest/api/storageservices/azure-storage-services-rest-api-reference) that enable programmatic access and administration via HTTP/HTTPS. Even though these REST APIs can be used directly, Microsoft distributes several client SDKs to simplify the consumption of these services with some of the most popular programming languages.
 
 * [Microsoft Azure Storage SDK for .NET](https://github.com/Azure/azure-storage-net)
 * [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python)
@@ -25,15 +25,13 @@ All these services include [REST APIs](https://docs.microsoft.com/en-us/rest/api
 
 These SDKs are necessary because certain operations are not trivial when trying to consume the APIs directly, for example the configuration of [authentication headers](https://docs.microsoft.com/en-us/rest/api/storageservices/authentication-for-the-azure-storage-services).
 
-I mainly use .NET Framework and .NET Core at work, but when I code in my private time and for fun, I prefer to use Python. I am planning to use Azure Storage for my future private projects and I am also planning to use the latest versions of Python with latest features and performance improvements. Unfortunately for me and those who want to do the same, the official Python SDKs by Microsoft are designed to work across all Python versions (like described in [this discussion in GitHub](https://github.com/Azure/azure-sdk-for-python/issues/496)), thus sacrificing the coolest features that are only available in Python 3.
+I mainly use .NET Framework and .NET Core at work, but when I code in my private time and for fun, I prefer to use Python. I am planning to use Azure Storage for my future private projects and I am also planning to use the newest versions of Python with latest features and performance improvements. Unfortunately for me and those who want to do the same, the official Python SDKs by Microsoft are designed to work across all Python versions (like described in [this discussion in GitHub](https://github.com/Azure/azure-sdk-for-python/issues/496)), thus sacrificing the coolest features that are only available in Python 3.
 
-In the case of Azure Storage SDK, this translates into sacrificing support for asynchronous, non blocking web requests that could be implemented using the built-in [`asyncio`](https://docs.python.org/3/library/asyncio.html) infrastructure for event loops, available since version `3.5` of the programming language. As a side note, this is not to say that there aren't options to implement asynchronous web clients and servers in Python 2: some of them were implemented way before the original [Node.js presentation by Ryan Dahl](https://www.youtube.com/watch?v=ztspvPYybIY) (e.g Tornado, Twisted, Gevent), anyway none of them are completely cross platforms and work in both Python 2 and 3 - please correct me if I am wrong -.
+In the case of Azure Storage SDK, this translates into sacrificing support for asynchronous, non blocking web requests that could be implemented using the built-in [`asyncio`](https://docs.python.org/3/library/asyncio.html) infrastructure for event loops, available since version `3.5` of the programming language<sup>1</sup>.
 
 To be more specific, the official Azure Storage SDK for Python uses [`requests`](http://docs.python-requests.org/en/master/) by Kenneth Reitz to make web requests, which is a wonderful library, but doesn't implement asynchronous calls.
 
-Reimplementing a new SDK for Python from scratch would be a bad idea, because most of the logic available in the official repository is reusable.
-
-I decided to try to edit the source code of the official library, to integrate [`asyncio`](https://aiohttp.readthedocs.io/en/stable/glossary.html#term-asyncio) and [`aiohttp`, which is one implementation of HTTP Client/Server for asyncio](https://aiohttp.readthedocs.io/en/stable/), and see if this is feasible. The objective is to find the root function making web requests, replace it with an asynchronous implementation, then traverse back up the call stack to make all calling functions asynchronous, too. To do so effectively (and without losing your mind), it is necessary to debug the source code.
+Reimplementing a new SDK for Python from scratch would be a bad idea, because most of the logic available in the official repository is reusable. I decided to try to edit the source code of the official library, to integrate [`asyncio`](https://aiohttp.readthedocs.io/en/stable/glossary.html#term-asyncio) and [`aiohttp`, which is one implementation of HTTP Client/Server for asyncio](https://aiohttp.readthedocs.io/en/stable/), and see if this approach is feasible. The objective is to find the root function making web requests, replace it with an asynchronous implementation, then traverse back up the call stack to make all calling functions asynchronous, too. To do so effectively (and without losing your mind), it is necessary to debug the source code.
 
 This post describes the steps to achieve this objective. Those who want to try the final result without reading through, can simply [clone my fork](https://github.com/RobertoPrevato/azure-storage-python.git) and use it.
 
@@ -45,7 +43,7 @@ git clone https://github.com/RobertoPrevato/azure-storage-python.git
 ```
 
 ## 2. Preparing the virtual environment
-Like described in the README of the official repository, the source code of the Python SDK is organized in several packages. `azure-storage-common` is, as the name suggests, used by the other projects and contains common code. The picture below illustrates the folder structure of the repository; I decided to start from the Blob service<sup>1</sup>. 
+Like described in the README of the official repository, the source code of the Python SDK is organized in several packages. `azure-storage-common` is, as the name suggests, used by the other projects and contains common code. The picture below illustrates the folder structure of the repository; I decided to start from the Blob service<sup>2</sup>. 
 
 ![Repo folder structure](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/a2e03e16a2cab29f2b937a5e48db43aa8f8ac502/images/posts/azurestoragepython/repo-folder-structure.png)
 
@@ -279,4 +277,5 @@ I am willing to help Python community using Azure. **Join me, if you will!**
 ---
 
 #### Notes
-1. Interestingly, the client for the Table Service was recently removed from this repository and merged to [CosmosDB SDK](https://github.com/Azure/azure-cosmosdb-python), because the two services [(Table Service and CosmosDB Table) share the same API](https://docs.microsoft.com/en-us/azure/cosmos-db/table-support). The choice in naming looks confusing to me, since CosmosDB and Azure Storage are two different services, and the client for Table Service in the Storage service is now published under the CosmosDB specific namespace.
+1. This is not to say that there aren't options to implement asynchronous web clients and servers in Python 2: some of them were implemented way before the original [Node.js presentation by Ryan Dahl](https://www.youtube.com/watch?v=ztspvPYybIY) (e.g Tornado, Twisted, Gevent), anyway none of them are completely cross platforms and work in both Python 2 and 3 - please correct me if I am wrong -.
+2. Interestingly, the client for the Table Service was recently removed from this repository and merged to [CosmosDB SDK](https://github.com/Azure/azure-cosmosdb-python), because the two services [(Table Service and CosmosDB Table) share the same API](https://docs.microsoft.com/en-us/azure/cosmos-db/table-support). The choice in naming looks confusing to me, since CosmosDB and Azure Storage are two different services, and the client for Table Service in the Storage service is now published under the CosmosDB specific namespace.
