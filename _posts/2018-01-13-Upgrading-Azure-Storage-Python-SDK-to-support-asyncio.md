@@ -179,7 +179,24 @@ This piece of code is the one that delegates to `requests` library the duty of m
 
 Switching between `requests` and `aiohttp` is not _that complicated_, since both implement their own kind of HTTP client session having similar functions. We simply need to replace the session object with a session from `aiohttp` and adjust the input parameters accordingly.
 
-For a quick test, I simply replaced this call with the following code and added `import urllib`:
+The session object is set in a single place of the code, inside the `azure.storage.common.StorageClient` class, which was modified to use the `ClientSession` implementation from `aiohttp`.
+
+```python
+def get_aiohttp_session():
+    try:
+        loop = asyncio.get_event_loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+    return aiohttp.ClientSession(loop=loop)
+
+## Later...
+
+        # TODO: eventually define an interface for "SessionProvider", to support alternative implementations
+        request_session = connection_params.request_session or get_aiohttp_session()
+```
+
+Then, I edited the code calling the `request` method of the session to handle differences between the two libraries:
 
 ```python
         query_string = urllib.parse.urlencode(request.query)
@@ -193,7 +210,7 @@ For a quick test, I simply replaced this call with the following code and added 
                                          ) # proxies=self.proxies -- apparently aiohttp can have one proxy, not many (https://docs.aiohttp.org/en/stable/client_reference.html)
 ```
 
-Note: I added `await` keyword before calling `aiohttp` method, and `async` keyword in the calling function definition:
+The method was apapted to use `async` and `await` syntax:
 
 ```python
     async def perform_request(self, request):
