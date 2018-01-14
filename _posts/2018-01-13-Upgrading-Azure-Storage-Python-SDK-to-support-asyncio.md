@@ -100,7 +100,7 @@ My favorite IDE for Python is [PyCharm](https://www.jetbrains.com/pycharm/specia
 
 The original repository contains unit and integration tests, but since the objective is to investigate the source code, it is easier to simply add new tests. By the way, this is made easier by the fact that tests in the original repository are contained in a dedicated folder at the root of the repository.
 
-Adding a new `tests` folder and a new `test_whatever_name.py` file in it with code like the following, enables debugging of Python SDK source code.
+Adding a new `tests` folder and a new `test_whatever_name.py` in it, with code below, enables debugging of Python SDK source code.
 
 ```python
 import unittest
@@ -263,15 +263,15 @@ class TestContainers(unittest.TestCase):
         self.loop.run_until_complete(go())
 ```
 
-This way, I rapidly edited three read functions to use `asyncio`: `list_containers`, `get_blob_metadata`, `list_blobs`. Note that the only I/O bound operations in this library are those interacting with the REST APIs. Arguably, the most complex code in `azure-storage-common` is the one creating and handling `Shared Access Signatures`, and this is CPU bound, so we don't need to touch it.
+This way, I rapidly edited three read functions to be asynchronous: `list_containers`, `get_blob_metadata`, `list_blobs`. Note that the only I/O bound operations in this library are those interacting with the REST APIs. Arguably, the most complex code in `azure-storage-common` is the one creating and handling `Shared Access Signatures`, and this is CPU bound, so we don't need to touch it.
 
-To simplify the process, I checked once again the [original repository](https://github.com/Azure/azure-storage-python) and prepared an environment for debugging, like described above. This way it's possible to debug the original working code while working on edited (and often broken) code.
+To simplify the process, I cloned again the [original repository](https://github.com/Azure/azure-storage-python) in a second folder and prepared an environment for debugging, like described above. This way it's possible to debug the original, working, code while working on edited (and often broken) code.
 
 ---
 
-I then altered two write functions to use `asyncio`: `set_blob_metadata`, `create_blob_from_text`. In this case there was a minor problem: Authentication header was invalid because `aiohttp` is adding extra headers before shooting the REST API, hence invalidating the signed token.
+I then modified two write functions: `set_blob_metadata`, `create_blob_from_text`. In this case there was a minor problem: Authentication header was invalid because `aiohttp` is adding extra headers before shooting the REST API, hence invalidating the signed token.
 
-The solution was found simply by comparing the headers sent by original code using `requests` with the headers sent by `aiohttp`. A quick workaround is to make Azure library aware of these extra headers, before creating the signed access token.
+The solution was found simply, comparing the headers sent by original code using `requests` with the headers sent by `aiohttp`. A quick workaround is to make Azure library aware of these extra headers, before creating the signed access token.
 
 ```python
                     # NB: aiohttp adds extra headers that would break the authentication token
@@ -287,7 +287,7 @@ The solution was found simply by comparing the headers sent by original code usi
 
 Of course a better solution would be to disable these extra headers in `aiohttp`, but this workaround is sufficient for the time being.
 
-**Eureka!** In a couple of hours I managed to integrate `asyncio` in five functions and it wasn't really hard. With a small effort, I could help Python community by completing an alternative Python SDK for Azure Storage, supporting `asyncio`; and I am willing to do so. While Microsoft wouldn't accept pull requests on this matter, since they need to support Python 2, an edited fork in GitHub could be easily installed using `pip` and provided `setup.py` files, and it doesn't look impossible to maintain it. Azure Storage REST APIs are not going to change *that often*, hopefully.
+**Eureka!** In a couple of hours I managed to integrate `asyncio` in five functions and it wasn't really hard. With a small effort, I could help Python community by completing an alternative Python SDK for Azure Storage, supporting asynchronous calls; and I am willing to do so. An fork in GitHub could be easily installed by others, simply cloning the repository and installing the dependency from file system, and it doesn't look impossible to maintain it. Azure Storage REST APIs are not going to change *that often*, hopefully.
 
 I am willing to help Python community using Azure. **Join me, if you will!**
 
