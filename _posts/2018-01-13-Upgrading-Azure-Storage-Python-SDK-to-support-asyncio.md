@@ -39,7 +39,7 @@ This post describes the steps to achieve this objective. Those who want to try t
 Since the source code of the SDKs is public in GitHub, the [original repository](https://github.com/Azure/azure-storage-python) was simply forked and cloned locally. Thanks to Satya Nadella for driving Microsoft to embrace open source! I never liked .NET and MS products so much.
 
 ```bash
-git clone https://github.com/RobertoPrevato/azure-storage-python.git
+git clone https://github.com/Azure/azure-storage-python.git
 ```
 
 ## 2. Preparing the virtual environment
