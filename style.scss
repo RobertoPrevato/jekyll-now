@@ -709,3 +709,7 @@ sup {
   vertical-align: super;
   font-size: xx-small;
 }
+
+.highlighter-rouge > .highlight > .highlight {
+  padding: 5px 20px;
+}
