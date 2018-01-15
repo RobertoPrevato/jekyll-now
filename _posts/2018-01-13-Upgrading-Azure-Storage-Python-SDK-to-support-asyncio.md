@@ -12,7 +12,7 @@ In the last months I had occasion to use [Azure Storage](https://azure.microsoft
 
 Azure Storage is cost effective and really convenient to store files and tabular data that don't require complex queries, even in large quantities.
 
-All these services include [REST APIs](https://docs.microsoft.com/en-us/rest/api/storageservices/azure-storage-services-rest-api-reference) that enable programmatic access and administration via HTTP/HTTPS. Even though these REST APIs can be used directly, Microsoft distributes several client SDKs to simplify the consumption of these services with some of the most popular programming languages.
+All these services include [REST APIs](https://docs.microsoft.com/en-us/rest/api/storageservices/azure-storage-services-rest-api-reference) that enable programmatic access and administration via HTTP/HTTPS. Even though these REST APIs can be used directly, Microsoft distributes several client SDKs to simplify their consumption with some of the most popular programming languages.
 
 * [Microsoft Azure Storage SDK for .NET](https://github.com/Azure/azure-storage-net)
 * [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python)
