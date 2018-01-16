@@ -210,7 +210,7 @@ Then, I edited the code calling the `request` method of the session to handle di
                                          ) # proxies=self.proxies -- apparently aiohttp can have one proxy, not many (https://docs.aiohttp.org/en/stable/client_reference.html)
 ```
 
-The method was apapted to use `async` and `await` syntax:
+The method was adapted to use `async` and `await` syntax:
 
 ```python
     async def perform_request(self, request):
@@ -287,7 +287,7 @@ The solution was found simply, comparing the headers sent by original code using
 
 Of course a better solution would be to disable these extra headers in `aiohttp`, but this workaround is sufficient for the time being.
 
-**Eureka!** In a couple of hours I managed to integrate `asyncio` in five functions and it wasn't really hard, thanks to the great work Microsoft engineers did. With a small effort, I could help Python community by completing an alternative Python SDK for Azure Storage, supporting asynchronous calls; and I am willing to do so. An fork in GitHub could be easily installed by others, simply cloning the repository and installing the dependency from file system, and it doesn't look impossible to maintain. Azure Storage REST APIs are not going to change *that often*, hopefully.
+**Eureka!** In a couple of hours I managed to integrate `asyncio` in five functions and it wasn't really hard. With a small effort, I could help Python community by completing an alternative Python SDK for Azure Storage, supporting asynchronous calls; and I am willing to do so. An fork in GitHub could be easily installed by others, simply cloning the repository and installing the dependency from file system, and it doesn't look impossible to maintain. Azure Storage REST APIs are not going to change *that often*, hopefully.
 
 I am willing to help Python community using Azure. **Join me, if you will!**
 
