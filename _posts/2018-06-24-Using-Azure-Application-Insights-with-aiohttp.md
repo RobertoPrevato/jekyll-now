@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Using Azure Application Insights with aiohttp
-picture: https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/azurestoragepython/banner.png
+picture: https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/azureappinsights/post-banner.png
 ---
 
 In the last months I wrote an [alternative Python SDK](https://robertoprevato.github.io/Upgrading-Azure-Storage-Python-SDK-to-support-asyncio/) for [Azure Storage](https://azure.microsoft.com/en-us/services/storage/?v=16.50) using [aiohttp](http://aiohttp.readthedocs.io/en/stable/), to take advantage of asynchronous web requests. Recently I did the same for [Azure Application Insights](https://azure.microsoft.com/en-us/services/application-insights/). For those who don't know it, Application Insights is a monitoring service that enables collecting telemetry data from applications, such as custom events and traces, information about unhandled exceptions, web requests, page views and much more.
