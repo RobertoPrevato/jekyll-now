@@ -5,7 +5,6 @@ picture: https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.
 description: This post describes an application I wrote to have a rich web explorer for Azure Storage, including an uploader client.
 ---
 
-## How I created my own media storage in Azure
 I used to store my family pictures and videos in Google Photos. Since I have two small children and we are in 2018, I rapidly ran out of the free space that Google offers to store original, full size, pictures. I decided to create my own media storage using Azure services, for a few reasons:
 
 1. Using [Azure Storage](https://azure.microsoft.com/en-us/services/storage/) I forget about space problems
@@ -36,6 +35,10 @@ The application currently implements custom made authentication strategy. Login 
 
 ## Creating albums
 Each album corresponds to a private container in the Blob Service, so uploaded files are _private_ in the cloud. Since Azure Storage takes care of storing files in several copies, the risk of losing data is really little. If the cheapest LRS (_Locally Redundant Storage_) is used, each file stored in three copies in the same Azure data center, this can be changed as desired when handling the instance of Azure Storage. For example, with GRS (_Geographically Redundant Storage_), files are stored in three copies in the main data center and other three copies in a data center in a different geographical location.
+
+<video controls height="200">
+  <source src="https://youtu.be/bb5JpJIB4kE">Your browser does not support videos.
+</video>
 
 [![Create album](https://img.youtube.com/vi/bb5JpJIB4kE/0.jpg)](https://youtu.be/bb5JpJIB4kE)
 
