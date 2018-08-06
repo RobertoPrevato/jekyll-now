@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How I created my own media storage in Azure
-picture: https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/cf362694eeaad85feac479e4d7194e91e2a7c7db/images/posts/aswe/post-banner.png
+picture: https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/cf362694eeaad85feac479e4d7194e91e2a7c7db/images/posts/aswe/post-banner.png?s=1
 description: This post describes an application I wrote to have a rich web explorer for Azure Storage, including an uploader client.
 ---
 
