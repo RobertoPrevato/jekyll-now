@@ -7,14 +7,15 @@ description: This post describes an application I wrote to have a rich web explo
 
 I used to store my family pictures and videos in Google Photos. Since I have two small children and we are in 2018, I rapidly ran out of the free space that Google offers to store original, full size, pictures. I decided to create my own media storage using Azure services, for a few reasons:
 
-1. Using [Azure Storage](https://azure.microsoft.com/en-us/services/storage/) I forget about space problems
-1. I knew how to do it, but I could still practice and learn new things
 1. I love to code in my free time
+1. I knew how to do it, but I could still practice and learn new things
+1. Google Photos offers unlimited storage for resized pictures, but I want to store original pictures
+1. Using [Azure Storage](https://azure.microsoft.com/en-us/services/storage/), I forget about space problems.
 1. I have monthly credit from my [MSDN Enterprise subscription](https://azure.microsoft.com/en-us/offers/ms-azr-0063p/) to spend in Azure, so it looks silly to pay Google for extra space
 
 I built a system from the ground up, having all the features I desired most, including the possibility to share my family pictures with my relatives, while keeping my files private. 
 
-This blog post describes this project, which I provisionally called **ASWE** _(Azure Storage Web Explorer)_, with several videos I uploaded in [YouTube](https://www.youtube.com/channel/UCRM6SkXIC5WUavo3luSDNlQ?view_as=subscriber). The source code is private, I hope to find someone interested in working with me, since I see the possibility to sell it as service or product.
+This blog post describes this project, which I provisionally called **ASWE** _(Azure Storage Web Explorer)_, with several videos I uploaded in [YouTube](https://www.youtube.com/channel/UCRM6SkXIC5WUavo3luSDNlQ?view_as=subscriber).
 
 ## Components
 
@@ -108,4 +109,4 @@ The web application implements deleting albums (whole virtual structure and cont
 * support for comments
 
 # Conclusions
-Get in touch or leave a comment if you found this interesting!
+Get in touch or leave a comment if you found this interesting! I hope to find someone interested in working on this project with me, since I see the possibility to sell it as service or product.
