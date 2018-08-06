@@ -31,12 +31,12 @@ This blog post describes this project, which I provisionally called **ASWE** _(A
 ## Login
 The application currently implements custom made authentication strategy. Login is protected against brute-forcing, passwords are stored using [Argon2](https://en.wikipedia.org/wiki/Argon2) hashing, the application issues its own JWT upon login, implements refresh tokens. This is a temporary solution: in the future the application will be integrated with [Azure Active Directory B2C](https://azure.microsoft.com/en-us/services/active-directory-b2c/). By the way, I had occasion to use and familiarize with Azure B2C recently at work.
 
-<iframe width="420" height="345" src="https://youtu.be/6Ke9-YQvMHg" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="345" src="https://www.youtube.com/embed/6Ke9-YQvMHg" frameborder="0" allowfullscreen></iframe>
 
 ## Creating albums
 Each album corresponds to a private container in the Blob Service, so uploaded files are _private_ in the cloud. Since Azure Storage takes care of storing files in several copies, the risk of losing data is really little. If the cheapest LRS (_Locally Redundant Storage_) is used, each file stored in three copies in the same Azure data center, this can be changed as desired when handling the instance of Azure Storage. For example, with GRS (_Geographically Redundant Storage_), files are stored in three copies in the main data center and other three copies in a data center in a different geographical location.
 
-<iframe width="420" height="345" src="https://youtu.be/bb5JpJIB4kE" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="345" src="https://www.youtube.com/embed/bb5JpJIB4kE" frameborder="0" allowfullscreen></iframe>
 
 ## Uploading pictures using the web interface
 The web interface supports chunked upload of multiple files simultaneously, with progress bars and previews (using HTML5 Canvas for pictures). Any kind of file can be uploaded using the web interface, but pictures are handled in a special way: they are first uploaded in original size directly to Blob Service, then a dedicated Azure Function prepares pictures optimized for the web: thumbnails and medium size pictures. Pictures are automatically rotated analyzing their EXIF metadata, EXIF metadata is removed from pictures optimized for the web, kept for original pictures. Additional picture information such as original size is returned to web client, stored in Table Service and used by front end to implement a rich pictures gallery.
