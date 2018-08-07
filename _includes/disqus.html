@@ -5,7 +5,7 @@
 
     function getPageIdentifier() {
         try {
-            return location.host + location.pathname;
+            return location.origin + location.pathname;
         } catch {
             return undefined;
         }
