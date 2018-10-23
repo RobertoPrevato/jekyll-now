@@ -14,7 +14,7 @@ It covers the following topics:
 1. How to parse and generate JWTs with Python
 1. How to obtain public RSA keys and other metadata from the issuer
 1. How to use JWKS in Python
-1. An example of JWT Bearer authentication in an async web framework
+1. Example of JWT validation 
 
 Instead, the knowledge of the following topics is assumed, and won't be covered here: 
 * [What is JSON Web Token (JWT)](https://jwt.io/introduction/)
