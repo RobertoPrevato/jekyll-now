@@ -18,8 +18,7 @@ It covers the following topics:
 
 Instead, the knowledge of the following topics is assumed, and won't be covered here: 
 * [What is JSON Web Token (JWT)](https://jwt.io/introduction/)
-* [What is "Authorization: Bearer _token_" HTTP header](https://swagger.io/docs/specification/authentication/bearer-authentication/)
-* [Basics about Azure and familiarity with the Azure portal](https://azure.microsoft.com/en-us/overview/what-is-azure/)
+* [Basics about Azure and familiarity with the Azure portal](https://azure.microsoft.com/en-us/overview/what-is-azure/) is a plus
 * Python basics
 
 Even though this post speaks about [Azure Active Directory B2C](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview), most of the knowledge here applies to any identity providers implementing [OpenID Connect](https://en.wikipedia.org/wiki/OpenID_Connect) and [OAuth 2.0](https://oauth.net/2/) standard. Inside this post, I abbreviate the name _"Azure Active Directory B2C"_ with _"Azure B2C"_, although a more proper abbreviation in written documentation is _"Azure AD B2C"_.
