@@ -154,7 +154,6 @@ with open('key.pub', 'r') as pemfile:
     payload = jwt.decode(token, keystring, verify=True)
     print('[*] Decoded: ', payload)
 ```
-##### Thanks to [Ryu_hayabusa in StackOverflow](https://stackoverflow.com/questions/29567905/how-to-verify-a-jwt-using-python-pyjwt-with-a-public-pem-cert)
 
 # How to obtain public RSA keys and other metadata from the issuer
 Knowing how to verify JWTs with public RSA keys, the next question is: _how to obtain public RSA keys from Azure AD B2C?_
