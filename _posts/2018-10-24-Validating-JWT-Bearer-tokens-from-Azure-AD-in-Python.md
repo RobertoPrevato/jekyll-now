@@ -21,15 +21,12 @@ Instead, the knowledge of the following topics is assumed, and won't be covered 
 * [Basics about Azure and familiarity with the Azure portal](https://azure.microsoft.com/en-us/overview/what-is-azure/) is a plus
 * Python basics
 
-Even though this post speaks about [Azure Active Directory B2C](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview), most of the knowledge here applies to any identity providers implementing [OpenID Connect](https://en.wikipedia.org/wiki/OpenID_Connect) and [OAuth 2.0](https://oauth.net/2/) standard. Inside this post, I abbreviate the name _"Azure Active Directory B2C"_ with _"Azure B2C"_, although a more proper abbreviation in written documentation is _"Azure AD B2C"_.
-
-
+Even though this post speaks about [Azure Active Directory B2C](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview), most of the knowledge here applies to any identity provider implementing [OpenID Connect](https://en.wikipedia.org/wiki/OpenID_Connect) and [OAuth 2.0](https://oauth.net/2/) standard. Inside this post, I abbreviate the name _"Azure Active Directory B2C"_ with _"Azure B2C"_, although a more proper abbreviation in written documentation is _"Azure AD B2C"_.
 
 # Quick introduction on Azure AD B2C
 Azure Active Directory B2C is an identity management service that enables interaction among the
 organization using it and customers outside the organization _(Business to Customer)_, offering complex
-features such as passwords management, support for multi-factor authentication, protection against denial-
-of-service and password attacks, integration with popular identity providers (i.e. Facebook, Twitter),
+features such as passwords management, support for multi-factor authentication, protection against denial-of-service and password attacks, integration with popular identity providers (i.e. Facebook, Twitter),
 regulatory compliant handling of customers sensitive information. Azure B2C includes handling of users journeys for _sign-up_, _sign-in_, _password recovery_, _profile editing_, and others such as _parental control_.
 
 When starting using Azure B2C, the first things to learn are generally:
@@ -58,11 +55,11 @@ The configuration page of an Azure B2C looks like in the picture below, presenti
 
 ## Create an app registration
 The next step consists in registering a new application. It is called "app registration" because it refers to metadata: it's the identity of an application in the context of the organization. In other words, this is not a place to _host_ applications, but to handle their identity.
-To create an app registration inside the Azure Portal, it's necessary  navigate to **Applications** and click on the **+ Add** button. For this tutorial, do the following:
+To create an app registration inside the Azure Portal, it's necessary to navigate to **Applications** and click on the **+ Add** button. For this tutorial, do the following:
 
 * Choose a name as desired
 * Enable web app / web api
-* Configure as reply url [https://jwt.ms](https://jwt.ms), which is a web page from Microsoft to inspect JWTs, this is useful for our purpose
+* Configure as reply url [https://jwt.ms](https://jwt.ms): this is a web page from Microsoft made to inspect JWTs, this is useful for our purpose
 * Leave implicit flow enabled
 * Click on _Create_ button to complete
 
@@ -78,8 +75,8 @@ To create a policy for account creation (sign-up) and login (sign-in), click on 
 Select:
 * a name as desired
 * _Local Account_ identity provider with _Email signup_ under "Identity Providers"
-* select _Email Address_, _Given Name_, and _Surname_ under "Sign-up attributes", which are required input when a user creates a new account
-* select _Email Address_, _Given Name_, _Surname_, _User is new_, and _User's Object ID_ under "Application claims", which are claims included in issued JWT
+* select _Email Address_, _Given Name_, and _Surname_ under "Sign-up attributes": these describe the input we require from users, when they create a new account
+* select _Email Address_, _Given Name_, _Surname_, _User is new_, and _User's Object ID_ under "Application claims": these are the claims to include in JWTs issued for our application
 
 ![Creating a policy 4](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/12626c1de8290a4a36c23fbc6c0e194d49a195ad/images/posts/b2cjwtpy/policy-4.png)
 
@@ -90,7 +87,7 @@ It is possible to create a user account using the _Users_ tab, but it is more in
 
 ![Policy details page](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/12626c1de8290a4a36c23fbc6c0e194d49a195ad/images/posts/b2cjwtpy/policy-6.png)
 
-From this point is possible to test the user journeys offered by the policy, clicking the button **Run now**. This button opens a new browser tab on the login page: this is the place where, a web application of yours, would direct the clients for login. Note the input settings: 
+From this point is possible to test the user journeys offered by the policy, clicking the button **Run now**. In this case, this button opens a new browser tab on the login page: this is the place where, a web application of yours, would direct the clients for login. Note the input settings: 
 
 * _Select application_: a policy can be used with any application configured in app registrations
 * _Select reply url_: this depends on the configuration of selected application
@@ -101,7 +98,7 @@ Click on "Sign up now" link to navigate to the account creation page.
 
 ![Built-in sign-up page](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/12626c1de8290a4a36c23fbc6c0e194d49a195ad/images/posts/b2cjwtpy/sign-up-0.png)
 
-The built-in sign-up user journey requires sending a verification code to the inserted email address (to verify ownership of the typed email address), adding passwords and the fields specified in "Sign-up attributes". This journey might be too complex for some users, in such cases, it is possible to create custom account creation pages by altering XML configuration of policies.
+The built-in sign-up user journey requires sending a verification code to the inserted email address (to verify ownership of the typed email address), passwords and the fields specified in "Sign-up attributes".
 
 After account creation, the browser is redirected to the *reply_url* chosen earlier, in this case https://jwt.ms, including an *id_token* as hash parameter. The page at jwt.ms reads this token and displays it on the front-end.
 
@@ -319,9 +316,7 @@ Finally, here a full example of JWT validation, including a diagram:
 
 ```python
 import jwt
-from jwksutils import rsa_pem_from_jwk
-
-# To run this example, follow the instructions in the project README
+from jwksutils import rsa_pem_from_jwk  # <-- this module contains the piece of code described previously
 
 # obtain jwks as you wish: configuration file, HTTP GET request to the endpoint returning them;
 jwks = {
@@ -411,5 +406,6 @@ if __name__ == '__main__':
 ```
 
 Using this knowledge, I implemented JWT Bearer validation for a web service. I hope some developers will find this post useful when integrating with an identity provider using OpenID Connect.
+The code for this demo has been published here in GitHub: [https://github.com/RobertoPrevato/PythonJWTDemo](https://github.com/RobertoPrevato/PythonJWTDemo).
 
 That's all for today!
