@@ -756,8 +756,9 @@ pre code {
 }
 
 table {
-  font-size: 13px;
+  font-size: 14px;
   font-family: monospace;
+  margin: 20px 0 20px 0;
   th {
     text-align: left;
   }
@@ -777,3 +778,9 @@ sup {
   margin: 0;
 }
 
+#main table {
+  
+  a, code.highlighter-rouge {
+    font-family: monospace;
+  }
+}

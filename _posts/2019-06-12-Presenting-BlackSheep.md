@@ -79,6 +79,8 @@ In this post, I am interested in discussing the web frameworks from the first ta
 * include low level operations such as handling connections, reading and writing bytes for HTTP requests and responses.
 * were developed together with such components by the same authors
 
+---
+
 When speaking about asynchronous web frameworks and ASGI, it's important to mention Hypercorn and Quart, although they have a different background: 
 
 | Server | ASGI | Notes |
