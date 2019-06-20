@@ -57,7 +57,7 @@ These frameworks can also be grouped by those that implement, or not implement, 
 Quoting its documentation:
 > ASGI (Asynchronous Server Gateway Interface) is a spiritual successor to WSGI, intended to provide a standard interface between async-capable Python web servers, frameworks, and applications.
 
-The concrete benefit offered by ASGI is that web frameworks can benefit from a shared infrastructure and switch between different implementations of servers. One of the greatest benefits of this approach, is the separation of concern of these components: ASGI servers can be concerned with lower level operations like handling connections, raw bytes of HTTP requests and responses, while web frameworks can be concerned with higher level operations such as routing, middlewares, etc. For example, Starlette is used on top of an ASGI server, which can be one of [_uvicorn_](https://www.uvicorn.org), [_Hypercorn_](https://pgjones.gitlab.io/hypercorn/), or [_daphne_](https://github.com/django/daphne/).
+The concrete benefit offered by ASGI is that web frameworks can use a shared infrastructure and switch between different implementations of servers. One of the greatest pluses of this approach, is the separation of concern of these components: ASGI servers can be concerned with lower level operations like handling connections, raw bytes of HTTP requests and responses, while web frameworks can be concerned with higher level operations such as routing, middlewares, etc. For example, Starlette is used on top of an ASGI server, which can be one of [_uvicorn_](https://www.uvicorn.org), [_Hypercorn_](https://pgjones.gitlab.io/hypercorn/), or [_daphne_](https://github.com/django/daphne/).
 
 | Server | ASGI | Notes |
 |-|-|-|
