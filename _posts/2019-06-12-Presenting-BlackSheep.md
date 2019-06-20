@@ -90,11 +90,11 @@ When speaking about asynchronous web frameworks and ASGI, it's important to ment
 
 Hypercorn and uvicorn are both low-level ASGI servers; the first is more feature-complete, the second offers the best performance.
 
-Some of the frameworks mentioned above are highlighted in the picture below, showing one of the recent results of TechEmpower benckmarks for the "Single Query" category (single database query). If we look at the "Multiple Queries" category, the difference between frameworks disappear: of course, since in this category they run 20 database queries.
-
-Note how Responder, built on top of Starlette, eats most of the performance offered by the latter: this might be explained with the fact that Responder implements higher level abstractions to offer a more programmer-friendly API. Maybe these abstractions are not implemented in a way that avoids performance fees when they are not used. The same doesn't happen in FastAPI, which is also built on top of Starlette. BlackSheep implements many abstractions, some of which are described below in this article and all described in the [Wiki](https://github.com/RobertoPrevato/BlackSheep/wiki), and they are carefully designed to not cause performance fees when they are not  used explicitly.
+Some of the frameworks mentioned above are highlighted in the picture below, showing one of the recent results of TechEmpower benckmarks for the "Single Query" category (single database query). If we look at the "Multiple Queries" category, the difference between frameworks disappear: of course, since in this category they run 20 database queries!
 
 ![Single query results 76a34044-54d6-4349-adfe-863c2d5ae756](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/blacksheep/76a34044-54d6-4349-adfe-863c2d5ae756-single-query.png)
+
+Note how Responder, built on top of Starlette, eats most of the performance offered by the latter: this might be explained with the fact that Responder implements higher level abstractions to offer a more programmer-friendly API. Maybe these abstractions are not implemented in a way that avoids performance fees when they are not used. The same doesn't happen in FastAPI, which is also built on top of Starlette. BlackSheep implements many abstractions, some of which are described below in this article and all described in the [Wiki](https://github.com/RobertoPrevato/BlackSheep/wiki), and they are carefully designed to not cause performance fees when they are not  used explicitly.
 
 # Why BlackSheep does not follow ASGI, and why it should
 When writing the current version of BlackSheep, I decided to not follow ASGI for pretty much subjective opinions:
@@ -120,14 +120,14 @@ When writing the current version of BlackSheep, I decided to not follow ASGI for
 
 ```
 
-The main reason why I didn't adhere to ASGI, is that I was curious to investigate the performance benefits of custom extension types from [Cython](https://cython.readthedocs.io/en/latest/src/tutorial/cdef_classes.html), using exact static typing. Python dictionaries and tuples cannot fully benefit from Cython static typing, because they are by nature dynamic objects and there is no way to constraint the types of their keys and values.
+The main reason why I didn't adhere to ASGI, is that I was curious to investigate the performance benefits of custom extension types from [Cython](https://cython.readthedocs.io/en/latest/src/tutorial/cdef_classes.html), using exact static typing. Python dictionaries and tuples cannot fully benefit from Cython static typing, because they are dynamic objects by design and there is no way to constraint the types of their keys and values.
 
 Now, looking at the performance results in TechEmpower, it's clear I didn't manage to obtain a performance benefit over `uvicorn` and `Starlette`: the performance of these frameworks is pretty much equivalent [<sup>[1.]</sup>](https://www.techempower.com/benchmarks/#section=test&runid=76a34044-54d6-4349-adfe-863c2d5ae756&hw=ph&test=db&l=zijzen-7) [<sup>[2.]</sup>](https://www.techempower.com/benchmarks/#section=test&runid=76a34044-54d6-4349-adfe-863c2d5ae756&hw=ph&test=query&l=zijzen-7) [<sup>[3.]</sup>](https://www.techempower.com/benchmarks/#section=test&runid=fa5f0eca-f8fe-4abf-9d2e-05d251fba24b&hw=ph&test=fortune&l=zijzen-7).
 
 I still think I achieved good results with `BlackSheep`, but using custom extension types from Cython doesn't come for free:
 1. working with Cython is harder and less portable than working in plain Python
 1. only a subset of Python developers wants to work with Cython
-1. every operation must be reimplemented, instead of benefitting from existing infrastructure (to support HTTP 2, for example)
+1. every operation must be reimplemented, instead of adopting existing infrastructure (to support HTTP 2, for example)
 1. Python IDEs don't usually provide hinting while writing code from Cython extensions
 
 Vibora uses Cython too, and according to his author's micro-benchmarks, it is much faster than any other Python web framework. Unfortunately this was not measured in the latest TechEmpower benchmarks, because [tests were run in debug mode for Vibora](https://github.com/vibora-io/vibora/issues/192#issuecomment-488017876).
@@ -147,9 +147,7 @@ This is not something I wanted for BlackSheep. If performance becomes *that* imp
 ## 2. Use of generic classes to describe high level objects
 The second most important reason why I wasn't attracted by ASGI, is that I find unattractive its use of generic classes to describe high level objects such as HTTP requests, responses, headers.
 
-This is of course, cultural bias on my side. I would prefer if ASGI defined interfaces, instead of concrete conventions based on dictionaries, lists, tuples.
-
-I am not alone: in Twitter I read a comment from Andrew Svetlov (author of `aiohttp`, the most mature framework for asyncio), in which he also criticized ASGI for its use of dictionaries - I don't recall the exact words, though. 
+This is of course, cultural bias on my side. I would prefer if ASGI defined interfaces, instead of concrete conventions based on dictionaries, lists, tuples. I am not alone: in Twitter I read a comment from Andrew Svetlov (author of `aiohttp`, the most mature framework for asyncio), in which he also criticized ASGI for its use of dictionaries - I don't recall the exact words, though. 
 
 My .NET mindset is influencing me: I think nobody in .NET community would create a web framework that uses __dynamic__, or __Dictionary<object,&nbsp;object>__ to describe web requests; and __Tuple<byte[],&nbsp;byte[]>__ to describe HTTP headers.
 
@@ -170,9 +168,7 @@ As you can judge from my words, I changed mind about ASGI and I am planning to w
 
 Unfortunately, I don't know much about Sanic design, even though it's on the field since three years. The feeling that contributors were "bullying" [aiohttp](https://aiohttp.readthedocs.io/en/stable/) at the beginning, didn't make me feel favorable towards this framework. An acidic blog post written by Andrew Svetlov in 2018: [_"Sanic: python web server that's written to die fast"_ (2018)](https://www.reddit.com/r/Python/comments/876msl/sanic_python_web_server_thats_written_to_die_fast/), makes me think my initial feeling was not wrong.
 
-When I first read about this web framework, I had the feeling it was presented as "faster and better alternative to aiohttp", and never felt this as a good-enough argument to use Sanic instead of aiohttp.
-
-However, I also think that the communication of Sanic's contributors changed over years and today it looks respectful and reasonable.
+When I first read about this web framework, I had the feeling it was presented as "faster and better alternative to aiohttp", and never felt this as a good-enough argument to use Sanic instead of aiohttp. However, I also think that the communication of Sanic's contributors changed over years and today it looks respectful and reasonable.
 
 As a side note, you can see the difference in the constructive way Yury Selivanov pointed out some performance issues in aiohttp, in his [aforementioned article](https://magic.io/blog/uvloop-blazing-fast-python-networking/). If you look for `aiohttp-pg-raw` in recent TechEmpower results linked above, you can see that `aiohttp` performance is not bad at all today. Since Python is already hit by a good deal of crappy criticism from some other communities, even at the peak of its popularity<sup>&#10033;</sup>, it's best if members of its community keep positive towards each other.
 
@@ -417,4 +413,6 @@ As usual, there is a lot of creative ferment around web frameworks, and particul
 In the free time, I will try to contribute to Python community working on frameworks and writing common libraries to handle things like OpenID Connect flows and OAuth standard in the context of asynchronous applications.
 
 ![BlackSheep](https://raw.githubusercontent.com/RobertoPrevato/robertoprevato.github.io/master/images/posts/blacksheep/blacksheep.png)
-> The BlackSheep logo was drawn using my [Lamy fountain pens](https://www.lamy.com/en/lamy-safari/). 🐑
+> The BlackSheep logo was drawn using my [Lamy fountain pens](https://www.lamy.com/en/lamy-safari/).
+
+🐑
