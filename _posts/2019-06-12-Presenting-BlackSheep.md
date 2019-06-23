@@ -131,7 +131,7 @@ I still think I achieved good results with `BlackSheep`, but using custom extens
 1. Python IDEs don't usually provide hinting while writing code from Cython extensions
 
 Vibora uses Cython too, and according to his author's micro-benchmarks, it is much faster than any other Python web framework. Unfortunately this was not measured in the latest TechEmpower benchmarks, because [tests were run in debug mode for Vibora](https://github.com/vibora-io/vibora/issues/192#issuecomment-488017876).
-However, by ammission of the same author [in code comments](https://github.com/vibora-io/vibora/blob/master/vibora/responses/responses.pyx), Vibora's source code sacrifices cleanliness for the sake of performance:
+However, by admission of the same author [in code comments](https://github.com/vibora-io/vibora/blob/master/vibora/responses/responses.pyx), Vibora's source code sacrifices cleanliness for the sake of performance:
 ```python
 #######################################################
 # This is a very sensitive file.
