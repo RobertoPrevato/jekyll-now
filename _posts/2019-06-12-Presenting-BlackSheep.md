@@ -100,7 +100,7 @@ Note how Responder, built on top of Starlette, eats most of the performance offe
 When writing the current version of BlackSheep, I decided to not follow ASGI for pretty much subjective opinions:
 
 ## 1. Curiosity
-**ASGI** specification uses generic types to a large degree: dictionaries, tuples, lists, to describe requests, headers, responses, parts of request/response cycle. For example, at each web request a scope like the following is created (copied from `uvicorn` documentation):
+**ASGI** specification uses generic types to a large degree: dictionaries, tuples, and lists; to describe requests, headers, responses, parts of request/response cycle. For example, at each web request a scope like the following is created (copied from `uvicorn` documentation):
 
 ```python
 {
@@ -162,7 +162,7 @@ However, not adhering to ASGI because of naming considerations, feels like throw
 
 ---
 
-As you can judge from my words, I changed mind about ASGI and I am planning to work on a refactoring of BlackSheep to adhere to ASGI, finally following a recommendation that [Tom Christie (uvicorn's and Starlette's author) gave me at the end of February](https://github.com/RobertoPrevato/BlackSheep/issues/7#issuecomment-467369069): not only because of the perfomance matter explained above, also because the best features I implemented in BlackSheep are written in pure Python and are concerned with high level operations (more on this later). I see a great value in the separation of concern between the low-level HTTP server and the web framework component.
+As you can judge from my words, I changed mind about ASGI and I am planning to work on a refactoring of BlackSheep to adhere to ASGI, finally following a recommendation that [Tom Christie (uvicorn's and Starlette's author) gave me at the end of February](https://github.com/RobertoPrevato/BlackSheep/issues/7#issuecomment-467369069); and [Phil Jones (Hypercorn's and Quart's author) encouraged in April](https://github.com/RobertoPrevato/BlackSheep/issues/8). Not only because of the perfomance matter explained above, also because the best features I implemented in BlackSheep are written in pure Python and are concerned with high level operations (more on this later). I see a great value in the separation of concern between the low-level HTTP server and the web framework component.
 
 # About Sanic
 
@@ -181,7 +181,7 @@ The same dynamics can be seen in many fields: music, cinema, arts, politics.
 # About Vibora
 When Vibora was announced in Twitter, with micro-benchmarks and its captivating website (a bit boasting, calling it a _"sexy framework"_), it obtained a lot of visibility and about 4K starts in GitHub in a few days.
 
-I exchanged a couple of emails and messages in GitHub with Frank Vieira, Vibora's author, and I think he is a very nice person, kind and helpful. Vieira is working on a complete rework of Vibora and he started again from scratch, as he explained in [GitHub](https://github.com/vibora-io/vibora/issues/192#issuecomment-488331858) and explained in [interviews](https://www.blog.pythonlibrary.org/2018/11/12/pydev-of-the-week-frank-vieira/).
+I exchanged a couple of emails and messages in GitHub with Frank Vieira, Vibora's author, and I think he is a very nice person, kind and helpful. Vieira is working on a complete rework of Vibora and he started again from scratch, as he explained in [GitHub](https://github.com/vibora-io/vibora/issues/192#issuecomment-488331858) and in [interviews](https://www.blog.pythonlibrary.org/2018/11/12/pydev-of-the-week-frank-vieira/).
 
 Vibora is extremely interesting because of the performance it promises, but as it stands currently, I see two defects in it:
 
