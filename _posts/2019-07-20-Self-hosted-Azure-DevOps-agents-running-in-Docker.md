@@ -34,6 +34,8 @@ Running private agents in Docker has key advantages:
 * possibility to create new images without making a whole host dirty, while experimenting and installing dependencies
 * possibility to share images with others, and start new containers rapidly
 
+---
+
 Starting an agent this way is extremely easy, and requires only seven steps:
 
 1. create a folder for the image
@@ -45,7 +47,7 @@ Starting an agent this way is extremely easy, and requires only seven steps:
     docker build -t dockeragent:latest .
     ```
 
-1. create an access token
+1. create an [access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops)
 1. prepare a run command like in the box below
 1. run the command
 
@@ -60,8 +62,6 @@ When the machine starts, it will automatically connect to the given Azure DevOps
 
 ![Running Agent](https://labeuwstacc.blob.core.windows.net/posts/running-agent.png)
 
-And the agent appears in the `Default` pool:
-
 ![Agent in default pool](https://labeuwstacc.blob.core.windows.net/posts/agent-in-default-pool.png)
 
 If you want to use a different pool, you can do it by using an additional variable:
@@ -74,7 +74,7 @@ docker run -e AZP_URL=<Azure DevOps instance> \
   dockeragent:latest
 ```
 
-At this point, our agent running inside the Docker container can start taking jobs:
+At this point, our agent running inside a Docker container can start accepting jobs:
 
 ![Running pipeline](https://labeuwstacc.blob.core.windows.net/posts/running-pipeline.png)
 
@@ -86,7 +86,7 @@ So far I only described what you can find in MSDN, adding a few screenshots; in 
 
 # The challenges
 
-The first challenge to face, is: _How to install tools?_ Since I recalled tasks called _"Use Node.js"_ and _"Use Python"_, I decided to give them a try; certain that they would fail because I didn't have these tools on my agent.
+The first challenge to face, is: _How to install tools?_ Since I recalled tasks called _"Use Node.js"_ and _"Use Python"_, I decided to give them a try; expecting they would fail because I didn't have these tools on my agent.
 
 ![Use Node, use Python 3](https://labeuwstacc.blob.core.windows.net/posts/use-node-use-python3.png)
 
@@ -133,38 +133,36 @@ To my surprise, as the agent restarted, everything was gone: Python 3.7.3 I inst
 
 I don't like two things in the start scripts that Microsoft offers to run private agents in Docker, both [PowerShell and Bash](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops).
 
-1. Every single time the agent starts, it wipes out the agent files and downloads a ~88MB package of Agent Pipelines files - even though the package it's about to download it's the same version as the one currently present on file system (more on why this is wrong later)
-1. The folder where it installs work tools (such as Node.js and Python), is by default a child of the agent folder, the one that gets wiped at each restart. Therefore, every time you need to restart your agent, you also need to download again all the tools when a pipeline run
+1. Every single time the agent starts, it wipes out the agent files, and downloads again a **~88MB** package of Agent Pipelines files - even though the package it downloads is the same as the one that was just deleted!
+1. The folder where it installs work tools (such as Node.js and Python), is by default a child of the agent folder, the one that gets deleted at each restart. Therefore, every time you need to restart your agent, you also need to download again all the tools when a pipeline runs
 
 Imagine a poor guy like me, who wants to enjoy faster builds and releases, by spinning up a Docker container inside his work laptop, not being able to benefit from `caching`, only because he doesn't have a dedicated, always-on machine for this.
 Caching tools and build dependencies is one of the main reasons for using private agents in the first place, isn't it? As it happens, I don`t always have access to optical fiber.
 
 <img src="https://labeuwstacc.blob.core.windows.net/posts/optical-fiber-meme.jpg" data-canonical-src="https://labeuwstacc.blob.core.windows.net/posts/optical-fiber-meme.jpg" width="200" height="200" />
 
-And what's the point of downloading again a package that is no different than the one already on file system? I think especially about the Azure Pipelines agent files themselves (~88MB) and those tools that cannot be installed using official tasks.
+And what's the point of downloading again a package that is no different than the one already on file system? I think especially about the Azure Pipelines agent files themselves and installed tools.
 
 I therefore improved, I dare to say, the bash script to do the following:
 
 1. By default, it downloads the Azure Pipelines agent files only if _not already_ present on file system
 1. It offers the _option_ to wipe out the files and download the latest version of the agent, if the user desires so
-1. By default, it uses a different folder to store work tools, so they are not wiped out, even if the agents file are updated; it's Docker so if you want a clean machine, just start a new container
+1. By default, it uses a different folder to store work tools, so they are not wiped out, even if the agents file are updated; it's Docker, so if you want a clean machine, just start a new container
 1. To support restarts, using a method already included in the `start.sh`, to reconfigure the agent across restarts
 
-My script can be found [in this repository of mine: AzureDevOps-agents](https://github.com/RobertoPrevato/AzureDevOps-agents/blob/master/ubuntu16.04-base/start.sh). To force the update of the agent files, use an env variable `AZP_UPDATE=1`.
+My script can be found [in this repository of mine: `AzureDevOps-agents`](https://github.com/RobertoPrevato/AzureDevOps-agents/blob/master/ubuntu16.04-base/start.sh). To force the update of the agent files, use an env variable `AZP_UPDATE=1`.
 
 # Bonus content: Docker images I prepared
-I often feel grateful that Microsoft embraced open source, I feel my job is way more fun now. You can find the scripts to build images for the [official Azure DevOps Hosted agents](https://github.com/microsoft/azure-pipelines-image-generation/tree/d649c0ceda61f397e4ec3defe18cfc9402ee3296/images/linux).
+I often feel grateful that Microsoft embraced open source, I feel my job is way more fun now. You can find the scripts to build images for the [official Azure DevOps Hosted agents](https://github.com/microsoft/azure-pipelines-image-generation/tree/d649c0ceda61f397e4ec3defe18cfc9402ee3296/images/linux). Studying and adopting these scripts, I prepared three Docker images that can be used as agents, with some pre-installed tools and with my `start.sh` file. By the way, I am using `Ubuntu 16.04` instead of `18.04`, because it's easier to adopt existing scripts for this OS version. 
 
-Studying and adopting these scripts, I prepared three Docker images that can be used as agents, with some pre-installed tools and with my `start.sh` file. By the way, I am using `Ubuntu 16.04` instead of `18.04`, because it's easier to adopt existing scripts for this OS version. 
-
-Docker images used for CI and CD pipelines are not your everyday's Docker images: it is necessary to find a compromise between image size and having a pool of tools that can be used to cover many scenarios. In fact, the official hosted images look like "factotum" (note: I refused to write English plural form _factotums_ for a latin word), having a ton of tools.
+Docker images for CI and CD pipelines are not your everyday's Docker images: it is necessary to find a compromise between size and having a pool of tools that can be used to cover many scenarios. In fact, the official hosted images look like "factotum" (note: I refused to write English plural form _factotums_ for a latin word), having a ton of tools.
 
 My images can be used as reference, to create agents with other tools such as ASP.NET Core, Go, Rust, Ruby, etc. They are here: [https://github.com/RobertoPrevato/AzureDevOps-agents](https://github.com/RobertoPrevato/AzureDevOps-agents).
 
-## Base image
+## 1. Base image
 A base image with my `start.sh` script and some tools, including Azure CLI, Azure DevOps extension for the CLI, azcopy, curl, wget, ca-certificates, tools to compile `C` libraries, etc. Maybe I am wrong, but I think libraries for C compilation are generally important on build agents - please leave a comment if you think I am wrong.
 
-## Docker inside Docker
+## 2. Docker inside Docker
 A base image with Docker, for build pipelines that need to create and publish Docker images.
 
 To run it on a Linux host having Docker, use these command:
@@ -190,7 +188,7 @@ docker run -v /var/run/docker.sock:/var/run/docker.sock \
 
 ![Docker inside Docker](https://labeuwstacc.blob.core.windows.net/posts/docker-inception.png)
 
-## Python.. of course
+## 3. Python.. of course
 Of course, an image for Python 3.7.3, PyPy 3.5, Python 3.5 and Python 2.7 - because it's me. 🐍
 
 # Hope you enjoyed this post
