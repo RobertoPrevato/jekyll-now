@@ -7,7 +7,7 @@ description: This post shares useful information about self-hosted Azure DevOps 
 
 In this post I share my experience with self-hosted agents for [Azure DevOps running in Docker](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops), with Ubuntu; and information about images I prepared and published in [GitHub](https://github.com/RobertoPrevato/AzureDevOps-agents) and [Docker Hub](https://hub.docker.com/u/robertoprevato).
 
-Those who are passionate about Azure DevOps and Linux, like me, should find this topic exciting and fun. This post can interesting for those who are considering running their own agents for CI and CD pipelines for workloads running on Ubuntu, or want to know something more on how Azure Pipelines agents work.
+Those who are passionate about Azure DevOps and Linux, like me, should find this topic exciting and fun. This post can be interesting for those who are considering running their own agents for CI and CD pipelines, for workloads running on Ubuntu, or want to know something more about Azure Pipelines agents.
 
 It covers the following topics:
 1. Quick introduction on the subject
