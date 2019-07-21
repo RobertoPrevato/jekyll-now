@@ -291,7 +291,7 @@ footer {
 
 .entry {
   ul li {
-    margin-bottom: 2px;
+    margin-bottom: 10px;
   }
 }
 
@@ -783,4 +783,8 @@ sup {
   a, code.highlighter-rouge {
     font-family: monospace;
   }
+}
+
+li .highlighter-rouge {
+  margin-bottom: 15px;
 }
