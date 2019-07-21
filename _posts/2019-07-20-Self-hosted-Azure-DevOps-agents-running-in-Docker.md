@@ -133,7 +133,7 @@ To my surprise, as the agent restarted, everything was gone: Python 3.7.3 I inst
 
 I don't like two things in the start scripts that Microsoft offers to run private agents in Docker, both [PowerShell and Bash](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops).
 
-1. Every single time the agent starts, it wipes out the agent files, and downloads again a **~88MB** package of Agent Pipelines files - even though the package it downloads is the that was just deleted!
+1. Every single time the agent starts, it wipes out the agent files, and downloads again a **~88MB** package of Agent Pipelines files - even though the package it downloads is the same that was just deleted!
 1. The folder where it installs work tools (such as Node.js and Python), is by default a child of the agent folder: the one that gets deleted at each restart. Therefore, every time you restart your agent, you also need to download again all the tools when a pipeline runs
 
 Imagine a poor guy like me, who wants to enjoy faster builds and releases, by spinning up a Docker container inside his work laptop, not being able to benefit from `caching`, only because he doesn't have a dedicated, always-on machine for this.
