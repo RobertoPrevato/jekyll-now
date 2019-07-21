@@ -290,8 +290,10 @@ footer {
 @import "svg-icons";
 
 .entry {
-  ul li {
-    margin-bottom: 10px;
+  ul, ol { 
+    li {
+      margin-bottom: 10px;
+    }
   }
 }
 
